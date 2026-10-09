@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>أمير سوفت</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f0f0f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="أمير سوفت">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0f0f0f;--bg2:#1a1a1a;--bg3:#242424;--bg4:#2e2e2e;
+  --text:#f0f0f0;--text2:#aaa;--text3:#666;
+  --accent:#3b82f6;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--purple:#a855f7;
+  --border:#333;--border2:#444;--radius:12px;--radius-sm:8px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Tahoma,Arial,sans-serif;min-height:100vh;padding-bottom:80px;direction:rtl}
+.topbar{background:var(--bg2);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border)}
+.topbar-title{font-size:15px;font-weight:700}
+.tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:57px;z-index:9;overflow-x:auto}
+.tab{flex:1;min-width:70px;padding:11px 4px;font-size:12px;font-weight:600;border:none;background:transparent;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;font-family:inherit}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.page{padding:14px 14px 0;display:none}
+.page.active{display:block}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.metric{background:var(--bg2);border-radius:var(--radius-sm);padding:12px 10px;border:1px solid var(--border);text-align:center}
+.metric-label{font-size:11px;color:var(--text3);margin-bottom:4px}
+.metric-value{font-size:20px;font-weight:700}
+.search-row{display:flex;gap:8px;margin-bottom:12px;flex-direction:row-reverse}
+.search-row input,.search-row select{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;color:var(--text);font-size:13px;outline:none;font-family:inherit;direction:rtl}
+.search-row input{flex:1}
+.search-row select{width:130px}
+.search-row input:focus,.search-row select:focus{border-color:var(--accent)}
+.parts-list{display:flex;flex-direction:column;gap:8px}
+.part-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
+.part-card.low-stock{border-color:var(--amber)}
+.part-card.out-stock{border-color:var(--red)}
+.part-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.part-name{font-size:15px;font-weight:600}
+.part-model{font-size:12px;color:var(--text2);margin-top:2px}
+.cat-badge{font-size:11px;padding:3px 8px;border-radius:20px;background:var(--bg3);color:var(--text2);border:1px solid var(--border2);white-space:nowrap}
+.part-bottom{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.price{font-size:17px;font-weight:700;color:var(--accent)}
+.qty-wrap{display:flex;align-items:center;gap:8px;margin-right:auto}
+.qty-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:500}
+.qty-btn:active{background:var(--bg4)}
+.qty-num{font-size:15px;font-weight:700;min-width:30px;text-align:center}
+.stock-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-amber{background:var(--amber)}.dot-red{background:var(--red)}
+.part-notes{font-size:12px;color:var(--text3);margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+.part-actions{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);justify-content:flex-end}
+.btn{padding:9px 14px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
+.btn:active{opacity:.8}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-sm{padding:7px 12px;font-size:12px}
+.btn-green{background:var(--green);border-color:var(--green);color:#000;font-weight:700}
+.btn-red{color:var(--red);border-color:var(--border2)}
+.btn-purple{background:var(--purple);border-color:var(--purple);color:#fff}
+.fab{position:fixed;bottom:24px;left:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.4);z-index:20}
+.fab:active{transform:scale(.95)}
+.empty{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:50;align-items:flex-end;justify-content:center}
+.overlay.open{display:flex}
+.sheet{background:var(--bg2);border-radius:20px 20px 0 0;width:100%;max-width:500px;padding:20px 16px 32px;max-height:92vh;overflow-y:auto;direction:rtl}
+.sheet-title{font-size:17px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.close-btn{width:32px;height:32px;border-radius:50%;background:var(--bg3);border:none;color:var(--text2);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.field{margin-bottom:12px}
+.field label{font-size:12px;color:var(--text2);display:block;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:11px 12px;color:var(--text);font-size:15px;font-family:inherit;outline:none;direction:rtl}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field select option{background:var(--bg3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+.sheet-actions{display:flex;gap:8px;margin-top:16px;flex-direction:row-reverse}
+.sheet-actions .btn{flex:1;justify-content:center}
+.sale-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.sale-name{font-size:14px;font-weight:600}
+.sale-meta{font-size:12px;color:var(--text2);margin-top:3px}
+.sale-price{font-size:16px;font-weight:700;color:var(--accent);text-align:left}
+.sale-sub{font-size:12px;color:var(--text3);text-align:left;margin-top:3px}
+.alert-card{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:var(--radius-sm);padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:center;flex-direction:row-reverse}
+.alert-icon{font-size:20px}
+.alert-text{font-size:13px;color:var(--amber);text-align:right}
+.alert-bold{font-weight:700}
+.backup-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px}
+.backup-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.backup-desc{font-size:12px;color:var(--text2);margin-bottom:12px}
+.backup-row{display:flex;gap:8px}
+.alert-count{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 5px;border-radius:20px;min-width:16px;text-align:center}
+/* DEVICES */
+.device-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:8px;cursor:pointer}
+.device-card.status-waiting{border-right:4px solid var(--amber)}
+.device-card.status-inprogress{border-right:4px solid var(--accent)}
+.device-card.status-done{border-right:4px solid var(--green)}
+.device-card.status-delivered{border-right:4px solid var(--text3);opacity:.65}
+.device-card.status-unrepaired{border-right:4px solid var(--red)}
+.device-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.device-id{font-size:18px;font-weight:800;color:var(--accent);letter-spacing:1px;direction:ltr;text-align:right}
+.device-name{font-size:14px;font-weight:600;margin-top:1px}
+.device-issue{font-size:12px;color:var(--text2);margin-top:2px}
+.status-badge{font-size:11px;padding:4px 9px;border-radius:20px;font-weight:600;white-space:nowrap}
+.sb-waiting{background:rgba(245,158,11,.15);color:var(--amber)}
+.sb-inprogress{background:rgba(59,130,246,.15);color:var(--accent)}
+.sb-done{background:rgba(34,197,94,.15);color:var(--green)}
+.sb-delivered{background:var(--bg3);color:var(--text3)}
+.sb-unrepaired{background:rgba(239,68,68,.15);color:var(--red)}
+.unrepaired-reason{font-size:12px;color:var(--red);margin-top:4px}
+.device-info{display:flex;flex-wrap:wrap;gap:8px;flex-direction:row-reverse}
+.dinfo{font-size:12px;color:var(--text2)}
+.device-shelf{display:inline-block;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;font-size:13px;font-weight:700;color:var(--text);margin-top:4px;direction:ltr}
+.shelf-big{display:inline-block;background:var(--bg3);border:2px solid var(--border2);border-radius:8px;padding:6px 16px;font-size:26px;font-weight:800;letter-spacing:2px;color:var(--text);direction:ltr}
+.job-id-display{font-size:34px;font-weight:900;color:var(--accent);letter-spacing:3px;text-align:center;padding:10px 0 2px;direction:ltr}
+.divider{height:1px;background:var(--border);margin:12px 0}
+.detail-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">🔧 أمير سوفت</div>
+  <div style="display:flex;gap:8px">
+    <button class="btn btn-sm" id="lang-btn" onclick="toggleLang()" style="font-weight:700;min-width:44px">EN</button>
+    <button class="btn btn-sm" onclick="openBackup()">⬆ <span data-ar="نسخ" data-en="Backup">نسخ</span></button>
+  </div>
+</div>
+
+<!-- الأجهزة -->
+<div id="page-devices" class="page active">
+  <div class="cards">
+    <div class="metric"><div class="metric-label">نشط</div><div class="metric-value" id="dstat-active">0</div></div>
+    <div class="metric"><div class="metric-label">جاهز</div><div class="metric-value" id="dstat-done" style="color:var(--green)">0</div></div>
+    <div class="metric"><div class="metric-label">الكل</div><div class="metric-value" id="dstat-total">0</div></div>
+  </div>
+  <div class="search-row">
+    <input type="text" id="device-search" placeholder="بحث بالاسم أو الموديل أو الرقم..." oninput="renderDevices()">
+    <select id="device-filter" onchange="renderDevices()">
+      <option value="">الكل</option>
+      <option value="waiting">بانتظار الإصلاح</option>
+      <option value="inprogress">قيد الإصلاح</option>
+      <option value="done">جاهز</option>
+      <option value="delivered">تم التسليم</option>
+      <option value="unrepaired">لم يصلح</option>
+    </select>
+  </div>
+  <div id="devices-list"></div>
+</div>
+
+<button class="fab" onclick="openAddDevice()" id="fab-btn">+</button>
+
+<!-- إضافة/تعديل جهاز -->
+<div class="overlay" id="device-sheet">
+  <div class="sheet">
+    <div class="sheet-title">
+      <span id="dsheet-title">طلب إصلاح جديد</span>
+      <button class="close-btn" onclick="closeSheet('device-sheet')">✕</button>
+    </div>
+    <div class="row2">
+      <div class="field"><label>اسم العميل</label><input type="text" id="d-customer" placeholder="مثال: أحمد علي"></div>
+      <div class="field"><label>رقم الهاتف</label><input type="tel" id="d-phone" placeholder="07XX XXX XXXX" inputmode="tel" style="direction:ltr"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>موديل الجهاز</label><input type="text" id="d-model" placeholder="مثال: Samsung A54"></div>
+      <div class="field"><label>رقم الرف</label><input type="text" id="d-shelf" placeholder="مثال: A3" style="text-transform:uppercase;direction:ltr"></div>
+    </div>
+    <div class="field"><label>المشكلة</label><input type="text" id="d-issue" placeholder="مثال: شاشة مكسورة، لا يشحن..."></div>
+    <div class="row2">
+      <div class="field"><label>نوع الإصلاح</label>
+        <select id="d-type">
+          <option value="إصلاح بورد">إصلاح بورد</option>
+          <option value="سوفت وير">سوفت وير</option>
+          <option value="أخرى">أخرى</option>
+        </select>
+      </div>
+      <div class="field"><label>السعر المتفق ($)</label><input type="number" id="d-price" min="0" step="0.5" placeholder="0" inputmode="decimal" style="direction:ltr"></div>
+    </div>
+    <div class="field"><label>ملاحظات</label><textarea id="d-notes" rows="2" placeholder="الباسورد، الملحقات، تعليمات خاصة..."></textarea></div>
+    <div class="sheet-actions">
+      <button class="btn btn-primary" onclick="saveDevice()">حفظ</button>
+      <button class="btn" onclick="closeSheet('device-sheet')">إلغاء</button>
+      <button class="btn btn-red" id="d-delete-btn" onclick="deleteDevice()" style="display:none;flex:0;padding:9px 14px">🗑</button>
+    </div>
+  </div>
+</div>
+
+<!-- سبب عدم الإصلاح -->
+<div class="overlay" id="unrepaired-sheet">
+  <div class="sheet">
+    <div class="sheet-title">
+      <span id="usheet-title">لم يصلح الجهاز</span>
+      <button class="close-btn" onclick="closeSheet('unrepaired-sheet')">✕</button>
+    </div>
+    <div class="field"><label id="u-reason-label">سبب عدم الإصلاح</label><textarea id="u-reason" rows="3" placeholder="مثال: القطعة غير متوفرة، الضرر أكبر من المتوقع، العميل لم يوافق على السعر..."></textarea></div>
+    <div class="sheet-actions">
+      <button class="btn btn-primary" onclick="confirmUnrepaired()" id="u-confirm-btn">✓ تأكيد</button>
+      <button class="btn" onclick="closeSheet('unrepaired-sheet')" id="u-cancel-btn">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- تفاصيل الجهاز -->
+<div class="overlay" id="detail-sheet">
+  <div class="sheet">
+    <div class="sheet-title">
+      <span>تفاصيل الإصلاح</span>
+      <button class="close-btn" onclick="closeSheet('detail-sheet')">✕</button>
+    </div>
+    <div id="detail-body"></div>
+  </div>
+</div>
+
+<!-- نسخ احتياطي -->
+<div class="overlay" id="backup-sheet">
+  <div class="sheet">
+    <div class="sheet-title">
+      <span>النسخ الاحتياطي</span>
+      <button class="close-btn" onclick="closeSheet('backup-sheet')">✕</button>
+    </div>
+    <div class="backup-section">
+      <div class="backup-title">💾 تصدير نسخة احتياطية</div>
+      <div class="backup-desc">يحفظ جميع طلبات الإصلاح وبيانات العملاء في ملف JSON. احفظه على Google Drive أو أرسله لنفسك.</div>
+      <div class="backup-row"><button class="btn btn-primary" onclick="exportData()" style="flex:1">⬇ تنزيل النسخة الاحتياطية</button></div>
+    </div>
+    <div class="backup-section">
+      <div class="backup-title">📂 استعادة من نسخة احتياطية</div>
+      <div class="backup-desc">اختر ملف النسخة الاحتياطية. سيستبدل جميع البيانات الحالية.</div>
+      <div class="backup-row">
+        <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+        <button class="btn" onclick="document.getElementById('import-file').click()" style="flex:1">📁 اختر ملف</button>
+      </div>
+    </div>
+    <button class="btn" onclick="closeSheet('backup-sheet')" style="width:100%;justify-content:center;margin-top:4px">إغلاق</button>
+  </div>
+</div>
+
+<script>
+let devices = JSON.parse(localStorage.getItem('devices_v1') || '[]');
+let editDeviceId=null, unrepairedDeviceId=null;
+let jobCounter = parseInt(localStorage.getItem('job_counter')||'0');
+
+function save(){
+  localStorage.setItem('devices_v1',JSON.stringify(devices));
+  localStorage.setItem('job_counter',String(jobCounter));
+}
+function nextJobId(){ jobCounter++; return 'J-'+String(jobCounter).padStart(4,'0'); }
+function closeSheet(id){ document.getElementById(id).classList.remove('open'); }
+
+/* ---- الأجهزة ---- */
+function statusInfo(s){
+  if(s==='waiting')    return {text:'بانتظار الإصلاح', cls:'sb-waiting'};
+  if(s==='inprogress') return {text:'قيد الإصلاح',     cls:'sb-inprogress'};
+  if(s==='done')       return {text:'جاهز ✓',           cls:'sb-done'};
+  if(s==='delivered')  return {text:'تم التسليم',       cls:'sb-delivered'};
+  if(s==='unrepaired') return {text:'لم يصلح',           cls:'sb-unrepaired'};
+  return {text:s,cls:'sb-waiting'};
+}
+function openAddDevice(){
+  editDeviceId=null;
+  document.getElementById('dsheet-title').textContent='طلب إصلاح جديد';
+  document.getElementById('d-delete-btn').style.display='none';
+  ['customer','phone','model','shelf','issue','notes'].forEach(f=>document.getElementById('d-'+f).value='');
+  document.getElementById('d-price').value='';
+  document.getElementById('d-type').value='سوفت وير';
+  document.getElementById('device-sheet').classList.add('open');
+}
+function openEditDevice(id){
+  const d=devices.find(x=>x.id===id); if(!d) return;
+  editDeviceId=id;
+  document.getElementById('dsheet-title').textContent='تعديل '+d.jobId;
+  document.getElementById('d-delete-btn').style.display='inline-flex';
+  document.getElementById('d-customer').value=d.customer;
+  document.getElementById('d-phone').value=d.phone||'';
+  document.getElementById('d-model').value=d.model;
+  document.getElementById('d-shelf').value=d.shelf||'';
+  document.getElementById('d-issue').value=d.issue||'';
+  document.getElementById('d-type').value=d.type;
+  document.getElementById('d-price').value=d.price||'';
+  document.getElementById('d-notes').value=d.notes||'';
+  document.getElementById('device-sheet').classList.add('open');
+}
+function saveDevice(){
+  const customer=document.getElementById('d-customer').value.trim();
+  const model=document.getElementById('d-model').value.trim();
+  if(!customer){alert('أدخل اسم العميل');return;}
+  if(!model){alert('أدخل موديل الجهاز');return;}
+  const shelf=(document.getElementById('d-shelf').value.trim()||'').toUpperCase();
+  if(editDeviceId){
+    const d=devices.find(x=>x.id===editDeviceId);
+    Object.assign(d,{customer,model,shelf,
+      phone:document.getElementById('d-phone').value.trim(),
+      issue:document.getElementById('d-issue').value.trim(),
+      type:document.getElementById('d-type').value,
+      price:parseFloat(document.getElementById('d-price').value)||0,
+      notes:document.getElementById('d-notes').value.trim(),
+      updatedAt:new Date().toISOString()
+    });
+  } else {
+    devices.unshift({
+      id:Date.now(), jobId:nextJobId(),
+      customer, model, shelf,
+      phone:document.getElementById('d-phone').value.trim(),
+      issue:document.getElementById('d-issue').value.trim(),
+      type:document.getElementById('d-type').value,
+      price:parseFloat(document.getElementById('d-price').value)||0,
+      notes:document.getElementById('d-notes').value.trim(),
+      status:'waiting',
+      createdAt:new Date().toISOString(),
+      updatedAt:new Date().toISOString()
+    });
+  }
+  save(); closeSheet('device-sheet'); renderDevices(); updateDeviceStats();
+}
+function deleteDevice(){
+  if(!confirm('حذف هذا الطلب؟')) return;
+  devices=devices.filter(x=>x.id!==editDeviceId);
+  save(); closeSheet('device-sheet'); renderDevices(); updateDeviceStats();
+}
+function setStatus(id,status){
+  const d=devices.find(x=>x.id===id); if(!d) return;
+  d.status=status; d.updatedAt=new Date().toISOString();
+  if(status==='delivered') d.deliveredAt=new Date().toISOString();
+  if(status!=='unrepaired') d.unrepairedReason='';
+  save(); closeSheet('detail-sheet'); renderDevices(); updateDeviceStats();
+}
+function openUnrepairedSheet(id){
+  unrepairedDeviceId=id;
+  const d=devices.find(x=>x.id===id);
+  document.getElementById('u-reason').value=(d&&d.unrepairedReason)||'';
+  document.getElementById('unrepaired-sheet').classList.add('open');
+}
+function confirmUnrepaired(){
+  const d=devices.find(x=>x.id===unrepairedDeviceId); if(!d) return;
+  d.status='unrepaired';
+  d.unrepairedReason=document.getElementById('u-reason').value.trim();
+  d.updatedAt=new Date().toISOString();
+  save(); closeSheet('unrepaired-sheet'); closeSheet('detail-sheet'); renderDevices(); updateDeviceStats();
+}
+function openDetail(id){
+  const d=devices.find(x=>x.id===id); if(!d) return;
+  const si=statusInfo(d.status);
+  const ds=new Date(d.createdAt).toLocaleDateString('ar-IQ')+' '+new Date(d.createdAt).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  let btns='';
+  if(d.status==='waiting')    btns+=`<button class="btn btn-primary btn-sm" onclick="setStatus(${d.id},'inprogress')">▶ بدء الإصلاح</button>`;
+  if(d.status==='inprogress') btns+=`<button class="btn btn-green btn-sm" onclick="setStatus(${d.id},'done')">✓ جاهز</button>`;
+  if(d.status==='done')       btns+=`<button class="btn btn-purple btn-sm" onclick="setStatus(${d.id},'delivered')">📤 تم التسليم</button>`;
+  if(d.status==='waiting'||d.status==='inprogress') btns+=`<button class="btn btn-red btn-sm" onclick="openUnrepairedSheet(${d.id})">✕ لم يصلح</button>`;
+  btns+=`<button class="btn btn-sm" onclick="closeSheet('detail-sheet');openEditDevice(${d.id})">✏ تعديل</button>`;
+  document.getElementById('detail-body').innerHTML=`
+    <div class="job-id-display">${d.jobId}</div>
+    <div style="text-align:center;margin-bottom:12px"><span class="status-badge ${si.cls}">${si.text}</span></div>
+    <div class="divider"></div>
+    <div class="detail-row">
+      <div>
+        <div style="font-size:16px;font-weight:700">${d.customer}</div>
+        ${d.phone?`<div style="font-size:13px;color:var(--text2);direction:ltr;text-align:right">${d.phone}</div>`:''}
+      </div>
+      ${d.shelf?`<div style="text-align:center"><div style="font-size:11px;color:var(--text3);margin-bottom:3px">الرف</div><div class="shelf-big">${d.shelf}</div></div>`:''}
+    </div>
+    <div style="font-size:15px;font-weight:600;margin-bottom:3px">${d.model}</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:4px">${d.type}</div>
+    ${d.issue?`<div style="font-size:13px;color:var(--text3);margin-bottom:8px">${d.issue}</div>`:''}
+    ${d.status==='unrepaired'&&d.unrepairedReason?`<div style="font-size:12px;color:var(--red);background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);padding:8px 10px;border-radius:8px;margin-bottom:10px"><b>سبب عدم الإصلاح:</b> ${d.unrepairedReason}</div>`:''}
+    ${d.price?`<div style="font-size:15px;font-weight:700;color:var(--green);margin-bottom:8px">$${d.price.toFixed(2)}</div>`:''}
+    ${d.notes?`<div style="font-size:12px;color:var(--text3);background:var(--bg3);padding:8px 10px;border-radius:8px;margin-bottom:10px">${d.notes}</div>`:''}
+    <div style="font-size:12px;color:var(--text3);margin-bottom:14px">استُلم: ${ds}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;flex-direction:row-reverse">${btns}</div>
+  `;
+  document.getElementById('detail-sheet').classList.add('open');
+}
+function renderDevices(){
+  const q=(document.getElementById('device-search').value||'').toLowerCase();
+  const sf=document.getElementById('device-filter').value;
+  const filtered=devices.filter(d=>{
+    const match=!q||(d.jobId+' '+d.customer+' '+d.model+' '+(d.shelf||'')+' '+(d.issue||'')).toLowerCase().includes(q);
+    return match&&(!sf||d.status===sf);
+  });
+  const el=document.getElementById('devices-list');
+  if(!filtered.length){el.innerHTML='<div class="empty">لا توجد أجهزة.<br>اضغط + لإضافة جهاز جديد.</div>';return;}
+  el.innerHTML=filtered.map(d=>{
+    const si=statusInfo(d.status);
+    const ds=new Date(d.createdAt).toLocaleDateString('ar-IQ');
+    return `<div class="device-card status-${d.status}" onclick="openDetail(${d.id})">
+      <div class="device-header">
+        <div>
+          <div class="device-name">${d.customer} — ${d.model}</div>
+          ${d.issue?`<div class="device-issue">${d.issue}</div>`:''}
+          <div class="dinfo" style="margin-top:4px">${d.type} · ${ds}</div>
+        </div>
+        <div style="text-align:left">
+          <div class="device-id">${d.jobId}</div>
+          <span class="status-badge ${si.cls}">${si.text}</span>
+          ${d.shelf?`<div><span class="device-shelf">${d.shelf}</span></div>`:''}
+        </div>
+      </div>
+      ${d.status==='unrepaired'&&d.unrepairedReason?`<div class="unrepaired-reason">✕ ${d.unrepairedReason}</div>`:''}
+      ${d.price?`<div style="font-size:13px;color:var(--green);font-weight:600">$${d.price.toFixed(2)}</div>`:''}
+    </div>`;
+  }).join('');
+  updateDeviceStats();
+}
+function updateDeviceStats(){
+  document.getElementById('dstat-active').textContent=devices.filter(d=>d.status==='waiting'||d.status==='inprogress').length;
+  document.getElementById('dstat-done').textContent=devices.filter(d=>d.status==='done').length;
+  document.getElementById('dstat-total').textContent=devices.length;
+}
+
+function openBackup(){document.getElementById('backup-sheet').classList.add('open');}
+function exportData(){
+  const data={devices,jobCounter,exported:new Date().toISOString(),version:3};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='نسخة_احتياطية_'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+function importData(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{
+      const data=JSON.parse(ev.target.result);
+      if(!data.devices){alert('ملف غير صالح.');return;}
+      if(!confirm('سيتم استبدال جميع البيانات الحالية. هل أنت متأكد؟')) return;
+      devices=data.devices||[]; jobCounter=data.jobCounter||0;
+      save(); renderDevices(); updateDeviceStats();
+      closeSheet('backup-sheet');
+      alert('تم الاستعادة! '+devices.length+' جهاز.');
+    } catch(err){alert('تعذر قراءة الملف.');}
+  };
+  reader.readAsText(file); e.target.value='';
+}
+renderDevices(); updateDeviceStats();
+
+/* ---- تبديل اللغة ---- */
+let currentLang = localStorage.getItem('lang') || 'ar';
+
+const T = {
+  ar: {
+    jobs:'🔧 الأجهزة',
+    active:'نشط', done:'جاهز', total:'الكل',
+    searchDevice:'بحث بالاسم أو الموديل أو الرقم...',
+    allFilter:'الكل', waiting:'بانتظار الإصلاح', inprogress:'قيد الإصلاح', doneF:'جاهز', delivered:'تم التسليم',
+    newJob:'طلب إصلاح جديد', customerName:'اسم العميل', phoneNum:'رقم الهاتف',
+    deviceModel:'موديل الجهاز', shelf:'رقم الرف', problem:'المشكلة',
+    repairType:'نوع الإصلاح', agreedPrice:'السعر المتفق ($)', notes:'ملاحظات',
+    save:'حفظ', cancel:'إلغاء',
+    confirm:'✓ تأكيد', repairDetail:'تفاصيل الإصلاح', backup:'نسخ',
+    types:['إصلاح بورد','سوفت وير','أخرى'],
+    statusWaiting:'بانتظار الإصلاح', statusInprogress:'قيد الإصلاح', statusDone:'جاهز ✓', statusDelivered:'تم التسليم', statusUnrepaired:'لم يصلح',
+    startBtn:'▶ بدء الإصلاح', doneBtn:'✓ جاهز', deliveredBtn:'📤 تم التسليم', editBtn:'✏ تعديل', notRepairedBtn:'✕ لم يصلح',
+    notRepairedTitle:'لم يصلح الجهاز', reasonLabel:'سبب عدم الإصلاح',
+    reasonPlaceholder:'مثال: القطعة غير متوفرة، الضرر أكبر من المتوقع، العميل لم يوافق على السعر...',
+    shelfLabel:'الرف', receivedLabel:'استُلم:', emptyDevices:'لا توجد أجهزة.<br>اضغط + لإضافة جهاز جديد.',
+    deleteDevice:'حذف هذا الطلب؟',
+    enterCustomer:'أدخل اسم العميل', enterModel:'أدخل موديل الجهاز',
+    backupTitle:'النسخ الاحتياطي', exportTitle:'💾 تصدير نسخة احتياطية',
+    exportDesc:'يحفظ جميع طلبات الإصلاح وبيانات العملاء في ملف JSON.',
+    downloadBtn:'⬇ تنزيل النسخة الاحتياطية', restoreTitle:'📂 استعادة من نسخة احتياطية',
+    restoreDesc:'اختر ملف النسخة الاحتياطية. سيستبدل جميع البيانات الحالية.',
+    chooseFile:'📁 اختر ملف', close:'إغلاق',
+    invalidFile:'ملف غير صالح.', cannotRead:'تعذر قراءة الملف.',
+    replaceConfirm:'سيتم استبدال جميع البيانات الحالية. هل أنت متأكد؟',
+    editJob: id=>'تعديل '+id,
+    dir:'rtl', lang:'ar'
+  },
+  en: {
+    jobs:'🔧 Jobs',
+    active:'Active', done:'Done', total:'Total',
+    searchDevice:'Search name, model, ID...',
+    allFilter:'All', waiting:'Waiting', inprogress:'In Progress', doneF:'Done', delivered:'Delivered',
+    newJob:'New Repair Job', customerName:'Customer Name', phoneNum:'Phone Number',
+    deviceModel:'Device Model', shelf:'Shelf / Location', problem:'Problem / Issue',
+    repairType:'Repair Type', agreedPrice:'Agreed Price ($)', notes:'Notes',
+    save:'Save', cancel:'Cancel',
+    confirm:'✓ Confirm', repairDetail:'Repair Job', backup:'Backup',
+    types:['Motherboard repair','Software','Other'],
+    statusWaiting:'Waiting', statusInprogress:'In Progress', statusDone:'Done ✓', statusDelivered:'Delivered', statusUnrepaired:'Not Repaired',
+    startBtn:'▶ Start Repair', doneBtn:'✓ Mark Done', deliveredBtn:'📤 Delivered', editBtn:'✏ Edit', notRepairedBtn:'✕ Not Repaired',
+    notRepairedTitle:'Device Not Repaired', reasonLabel:'Reason Not Repaired',
+    reasonPlaceholder:'e.g. Part unavailable, damage worse than expected, customer declined the price...',
+    shelfLabel:'SHELF', receivedLabel:'Received:',
+    emptyDevices:'No repair jobs.<br>Tap + to add a device.',
+    deleteDevice:'Delete this repair job?',
+    enterCustomer:'Enter customer name', enterModel:'Enter device model',
+    backupTitle:'Backup & Restore', exportTitle:'💾 Export Backup',
+    exportDesc:'Downloads all repair jobs and customer info as a JSON file.',
+    downloadBtn:'⬇ Download Backup', restoreTitle:'📂 Restore from Backup',
+    restoreDesc:'Choose a backup file. This will replace all current data.',
+    chooseFile:'📁 Choose File', close:'Close',
+    invalidFile:'Invalid backup file.', cannotRead:'Could not read file.',
+    replaceConfirm:'This will replace ALL current data. Are you sure?',
+    editJob: id=>'Edit '+id,
+    dir:'ltr', lang:'en'
+  }
+};
+
+function t(){ return T[currentLang]; }
+
+function toggleLang(){
+  currentLang = currentLang==='ar' ? 'en' : 'ar';
+  localStorage.setItem('lang', currentLang);
+  applyLang();
+  renderDevices();
+}
+
+function applyLang(){
+  const l = t();
+  const html = document.documentElement;
+  html.setAttribute('dir', l.dir);
+  html.setAttribute('lang', l.lang);
+  document.body.style.direction = l.dir;
+
+  // lang button
+  document.getElementById('lang-btn').textContent = currentLang==='ar' ? 'EN' : 'ع';
+
+  // metrics - devices
+  document.querySelector('#dstat-active').closest('.metric').querySelector('.metric-label').textContent = l.active;
+  document.querySelector('#dstat-done').closest('.metric').querySelector('.metric-label').textContent = l.done;
+  document.querySelector('#dstat-total').closest('.metric').querySelector('.metric-label').textContent = l.total;
+
+  // device search
+  document.getElementById('device-search').placeholder = l.searchDevice;
+  const df = document.getElementById('device-filter');
+  df.options[0].text = l.allFilter;
+  df.options[1].text = l.waiting;
+  df.options[2].text = l.inprogress;
+  df.options[3].text = l.doneF;
+  df.options[4].text = l.delivered;
+  df.options[5].text = l.statusUnrepaired;
+
+  // unrepaired reason sheet
+  document.getElementById('usheet-title').textContent = l.notRepairedTitle;
+  document.getElementById('u-reason-label').textContent = l.reasonLabel;
+  document.getElementById('u-reason').placeholder = l.reasonPlaceholder;
+  document.getElementById('u-confirm-btn').textContent = l.confirm;
+  document.getElementById('u-cancel-btn').textContent = l.cancel;
+
+  // device sheet
+  document.getElementById('dsheet-title').textContent = l.newJob;
+  setLabel('d-customer', l.customerName); setPlaceholder('d-customer', currentLang==='ar'?'مثال: أحمد علي':'e.g. Ahmed Ali');
+  setLabel('d-phone', l.phoneNum);
+  setLabel('d-model', l.deviceModel); setPlaceholder('d-model', 'e.g. Samsung A54');
+  setLabel('d-shelf', l.shelf);
+  setLabel('d-issue', l.problem); setPlaceholder('d-issue', currentLang==='ar'?'مثال: شاشة مكسورة، لا يشحن...':'e.g. Cracked screen, no charge...');
+  setLabel('d-type', l.repairType);
+  // repair type options
+  const dt = document.getElementById('d-type');
+  for(let i=0;i<dt.options.length;i++) dt.options[i].text = l.types[i];
+  setLabel('d-price', l.agreedPrice);
+  setLabel('d-notes', l.notes); document.getElementById('d-notes').placeholder = currentLang==='ar'?'الباسورد، الملحقات، تعليمات خاصة...':'Password, accessories, special instructions...';
+
+  // device sheet buttons
+  const dActions = document.querySelector('#device-sheet .sheet-actions');
+  dActions.children[0].textContent = l.save;
+  dActions.children[1].textContent = l.cancel;
+
+  // detail sheet title
+  document.querySelector('#detail-sheet .sheet-title span').textContent = l.repairDetail;
+
+  // backup sheet
+  document.querySelector('#backup-sheet .sheet-title span').textContent = l.backupTitle;
+  document.querySelector('#backup-sheet .backup-section:nth-child(1) .backup-title').textContent = l.exportTitle;
+  document.querySelector('#backup-sheet .backup-section:nth-child(1) .backup-desc').textContent = l.exportDesc;
+  document.querySelector('#backup-sheet .backup-section:nth-child(1) button').textContent = l.downloadBtn;
+  document.querySelector('#backup-sheet .backup-section:nth-child(2) .backup-title').textContent = l.restoreTitle;
+  document.querySelector('#backup-sheet .backup-section:nth-child(2) .backup-desc').textContent = l.restoreDesc;
+  document.querySelector('#backup-sheet .backup-section:nth-child(2) button').textContent = l.chooseFile;
+  document.querySelector('#backup-sheet > .sheet > .btn:last-child').textContent = l.close;
+
+  // fab direction
+  document.getElementById('fab-btn').style.left = l.dir==='rtl' ? '16px' : 'auto';
+  document.getElementById('fab-btn').style.right = l.dir==='ltr' ? '16px' : 'auto';
+
+  // sheet directions
+  document.querySelectorAll('.sheet').forEach(s=>s.style.direction=l.dir);
+  document.querySelectorAll('.sheet-actions').forEach(sa=>{
+    sa.style.flexDirection = l.dir==='rtl' ? 'row-reverse' : 'row';
+  });
+}
+
+function setLabel(id, text){
+  const el = document.getElementById(id);
+  if(el && el.previousElementSibling && el.previousElementSibling.tagName==='LABEL')
+    el.previousElementSibling.textContent = text;
+  else {
+    const field = el ? el.closest('.field') : null;
+    if(field){ const lbl=field.querySelector('label'); if(lbl) lbl.textContent=text; }
+  }
+}
+function setPlaceholder(id, text){ const el=document.getElementById(id); if(el) el.placeholder=text; }
+
+// patch statusInfo to use t()
+statusInfo = function(s){
+  const l=t();
+  if(s==='waiting')    return {text:l.statusWaiting,    cls:'sb-waiting'};
+  if(s==='inprogress') return {text:l.statusInprogress, cls:'sb-inprogress'};
+  if(s==='done')       return {text:l.statusDone,       cls:'sb-done'};
+  if(s==='delivered')  return {text:l.statusDelivered,  cls:'sb-delivered'};
+  if(s==='unrepaired') return {text:l.statusUnrepaired,  cls:'sb-unrepaired'};
+  return {text:s,cls:'sb-waiting'};
+};
+
+// apply on load
+applyLang();
+
+// register service worker for installability / offline use
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
