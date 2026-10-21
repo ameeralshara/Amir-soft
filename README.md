@@ -1,14 +1,15 @@
-# أمير سوفت — Repair Tracker
+# أمير سوفت (Amir Soft)
 
-Offline-first PWA for tracking repair jobs (customer, device, issue, price, status, shelf). Arabic/English, no backend.
+أداة ويب لتصفح وتنزيل نسخ iOS الرسمية لأجهزة آيفون، بالاعتماد على بيانات [ipsw.me](https://ipsw.me) العامة. الملفات تُنزَّل مباشرة من خوادم Apple.
 
-- Data lives in the browser's `localStorage` — **per device and per browser**. Use the in-app backup (export/import JSON) regularly.
-- Clearing site data deletes everything.
+## المزايا
+- بحث عن أي جهاز آيفون وعرض كل نسخ iOS المتوفرة له، مع حالة التوقيع (موقّعة الآن / غير موقّعة)
+- تحميل جماعي: يجلب أحدث نسخة iOS **موقّعة حالياً فقط** لكل الأجهزة من iPhone 6 إلى iPhone 16 Pro Max
+- تصدير قائمة روابط بصيغة `.txt` لاستيرادها مباشرة في أي برنامج تحميل (IDM، ADM، وغيرها)
+- عربي/إنجليزي، بدون خادم خلفي — كل شيء يعمل من المتصفح مباشرة
 
-## Deploy (GitHub Pages)
-1. Push these files to a repo (e.g. `repair-tracker`).
-2. Settings → Pages → Deploy from branch → `main` / root.
-3. Open `https://ameeralshara.github.io/repair-tracker/` and use "Add to Home Screen".
+## الاستخدام
+افتح `index.html` مباشرة، أو فعّل GitHub Pages لهذا المستودع (Settings → Pages → Deploy from branch → main → /root).
 
-## Files
-`index.html` app · `manifest.json` PWA manifest · `sw.js` offline cache · `icon-*.png` icons · `.nojekyll`
+## ملاحظة
+هذه الأداة لا تستضيف أي ملفات — هي فقط واجهة بحث فوق فهرس عام (ipsw.me)، والتنزيل الفعلي يتم من خوادم Apple.
