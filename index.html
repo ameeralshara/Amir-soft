@@ -758,7 +758,7 @@ body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transp
   &lt;div id=&quot;ipsw-device-matches&quot; style=&quot;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px&quot;&gt;&lt;/div&gt;
 
   &lt;div class=&quot;backup-section&quot;&gt;
-    &lt;div class=&quot;backup-title&quot; id=&quot;ipsw-bulk-title&quot;&gt;تحميل جماعي — الأحدث فقط (iPhone 6 → 16 Pro Max)&lt;/div&gt;
+    &lt;div class=&quot;backup-title&quot; id=&quot;ipsw-bulk-title&quot;&gt;تحميل جماعي — الأحدث فقط (iPhone 6 وما بعده)&lt;/div&gt;
     &lt;div class=&quot;backup-desc&quot; id=&quot;ipsw-bulk-desc&quot;&gt;يجلب أحدث نسخة iOS موقّعة حالياً لكل الأجهزة، ثم يصدّر قائمة روابط لاستيرادها في برنامج التحميل (IDM / ADM / إلخ).&lt;/div&gt;
     &lt;div class=&quot;backup-row&quot;&gt;
       &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;bulkFetchLatest(&#x27;iphone&#x27;)&quot; style=&quot;flex:1&quot; id=&quot;ipsw-bulk-btn&quot;&gt;▶ جلب الأحدث لكل الأجهزة&lt;/button&gt;
@@ -955,7 +955,7 @@ function applyLang(){
   document.getElementById(&#x27;lang-btn&#x27;).textContent = isAr ? &#x27;EN&#x27; : &#x27;ع&#x27;;
   document.getElementById(&#x27;app-title&#x27;).textContent = isAr ? &#x27;أمير سوفت&#x27; : &#x27;Ameer Soft&#x27;;
   document.getElementById(&#x27;ipsw-search&#x27;).placeholder = isAr ? &#x27;اسم الجهاز، مثال: iPhone 13&#x27; : &#x27;Device name, e.g. iPhone 13&#x27;;
-  document.getElementById(&#x27;ipsw-bulk-title&#x27;).textContent = isAr ? &#x27;تحميل جماعي — الأحدث فقط (iPhone 6 → 16 Pro Max)&#x27; : &#x27;Bulk download — latest only (iPhone 6 → 16 Pro Max)&#x27;;
+  document.getElementById(&#x27;ipsw-bulk-title&#x27;).textContent = isAr ? &#x27;تحميل جماعي — الأحدث فقط (iPhone 6 وما بعده)&#x27; : &#x27;Bulk download — latest only (iPhone 6 and newer)&#x27;;
   document.getElementById(&#x27;ipsw-bulk-desc&#x27;).textContent = isAr
     ? &#x27;يجلب أحدث نسخة iOS موقّعة حالياً لكل الأجهزة، ثم يصدّر قائمة روابط لاستيرادها في برنامج التحميل (IDM / ADM / إلخ).&#x27;
     : &#x27;Fetches the latest currently-signed iOS version for every device, then exports a link list to import into your download manager (IDM / ADM / etc).&#x27;;
@@ -1014,7 +1014,8 @@ let ipswDeviceList = JSON.parse(localStorage.getItem(&#x27;ipsw_devices_v1&#x27;
 let ipswSearchTimer = null;
 
 async function ensureIpswDeviceList(force){
-  if(ipswDeviceList &amp;&amp; !force) return ipswDeviceList;
+  const ipswTs=Number(localStorage.getItem(&#x27;ipsw_devices_ts&#x27;)||0);
+  if(ipswDeviceList &amp;&amp; ipswDeviceList.length &amp;&amp; !force &amp;&amp; Date.now()-ipswTs&lt;86400000) return ipswDeviceList;
   const btn = document.getElementById(&#x27;ipsw-refresh-btn&#x27;);
   if(btn) btn.textContent = &#x27;…&#x27;;
   try{
@@ -1032,6 +1033,7 @@ async function ensureIpswDeviceList(force){
 }
 function refreshIpswDeviceList(){ ensureIpswDeviceList(true).then(renderIpswDeviceMatches); }
 
+function identKey(id){const m=/(\d+),(\d+)/.exec(id||&#x27;&#x27;);return m?Number(m[1])*1000+Number(m[2]):0;}
 function renderIpswDeviceMatches(){
   clearTimeout(ipswSearchTimer);
   ipswSearchTimer = setTimeout(async ()=&gt;{
@@ -1041,7 +1043,7 @@ function renderIpswDeviceMatches(){
     if(!q){ listEl.innerHTML=&#x27;&#x27;; document.getElementById(&#x27;ipsw-firmware-list&#x27;).innerHTML=&#x27;&#x27;; return; }
     listEl.innerHTML = `&lt;div class=&quot;empty&quot; style=&quot;padding:10px&quot;&gt;${isAr?&#x27;...جارٍ البحث&#x27;:&#x27;Searching...&#x27;}&lt;/div&gt;`;
     const devices = await ensureIpswDeviceList(false);
-    const matches = devices.filter(d=&gt;d.name.toLowerCase().includes(q)).slice(0,12);
+    const matches = devices.filter(d=&gt;d.name.toLowerCase().includes(q)).sort((a,b)=&gt;identKey(b.identifier)-identKey(a.identifier)).slice(0,60);
     if(!matches.length){
       listEl.innerHTML = `&lt;div class=&quot;empty&quot; style=&quot;padding:10px&quot;&gt;${isAr?&#x27;لا توجد نتائج&#x27;:&#x27;No matches&#x27;}&lt;/div&gt;`;
       return;
@@ -1154,17 +1156,15 @@ async function bulkFetchLatest(kind){
       if(!seenNames.has(d.name)){ seenNames.add(d.name); targets.push(d); }
     });
   } else {
-    IPSW_BULK_RANGE.forEach(name=&gt;{
-      // some devices are region-suffixed on ipsw.me (e.g. &quot;iPhone X (Global)&quot;, &quot;iPhone X (GSM)&quot;)
-      // strip that suffix before comparing so &quot;iPhone X&quot; still matches those exactly,
-      // without also matching a different model like &quot;iPhone XS&quot;/&quot;iPhone XS Max&quot;
-      const stripRegion = n =&gt; n.replace(/\s*\((?:GSM\/CDMA|GSM|CDMA|Global)\)\s*$/i,&#x27;&#x27;).trim().toLowerCase();
-      const candidates = devices.filter(d=&gt;stripRegion(d.name) === name.toLowerCase());
-      // exclude any GSM-only labeled variant, prefer a Global-labeled one if present
-      const noGsm = candidates.filter(d=&gt;!/\bgsm\b/i.test(d.name));
-      const pick = noGsm.find(d=&gt;/global/i.test(d.name)) || noGsm[0] || candidates[0];
-      if(pick &amp;&amp; !targets.some(t=&gt;t.identifier===pick.identifier)) targets.push(pick);
+    const iph = devices
+      .filter(d=&gt;/^iphone/i.test(d.identifier) &amp;&amp; identKey(d.identifier) &gt;= 7000)
+      .sort((a,b)=&gt;(/\bgsm\b/i.test(a.name)?1:0)-(/\bgsm\b/i.test(b.name)?1:0));
+    const seenKeys = new Set();
+    iph.forEach(d=&gt;{
+      const k = d.name.replace(/\s*\((?:GSM\/CDMA|GSM|CDMA|Global)\)\s*$/i,&#x27;&#x27;).trim().toLowerCase();
+      if(!seenKeys.has(k)){ seenKeys.add(k); targets.push(d); }
     });
+    targets.sort((a,b)=&gt;identKey(b.identifier)-identKey(a.identifier));
   }
 
   for(let i=0;i&lt;targets.length;i++){
