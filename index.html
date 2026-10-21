@@ -1,22 +1,51 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-<title>أمير سوفت</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f0f0f">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="أمير سوفت">
-<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Amir Soft</title>
+<meta name="theme-color" content="#0a0c10">
 <link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0a0c10;color:#eef0f4;font-family:-apple-system,"Segoe UI",Roboto,sans-serif}
+body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+.hub{display:flex;align-items:center;gap:10px;padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top));background:#10131a;border-bottom:1px solid rgba(255,255,255,.08)}
+.hub img{width:34px;height:34px;border-radius:9px;flex-shrink:0}
+.hub-name{font-weight:700;font-size:16px;margin-right:auto;letter-spacing:-.01em}
+.hub button{padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#a2aab8;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.hub button.on{background:rgba(138,169,255,.16);color:#cfdcff;border-color:rgba(138,169,255,.35)}
+iframe{flex:1;width:100%;border:0;display:block}
+iframe[hidden]{display:none}
+</style>
+</head>
+<body>
+<div class="hub">
+  <img src="icon-192.png" alt="Amir Soft">
+  <span class="hub-name">Amir Soft</span>
+  <button data-tab="tracker" class="on" onclick="show('tracker')">Tracker</button>
+  <button data-tab="firmware" onclick="show('firmware')">Firmware</button>
+</div>
+<iframe id="f-tracker" title="Repair Tracker" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover&quot;&gt;
+&lt;title&gt;أمير سوفت&lt;/title&gt;
+&lt;link rel=&quot;manifest&quot; href=&quot;manifest.json&quot;&gt;
+&lt;meta name=&quot;theme-color&quot; content=&quot;#0f0f0f&quot;&gt;
+&lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot;&gt;
+&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;أمير سوفت&quot;&gt;
+&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;icon-192.png&quot;&gt;
+&lt;link rel=&quot;icon&quot; href=&quot;icon-192.png&quot;&gt;
+&lt;style&gt;
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#0a0c10;--ink:#eef0f4;--ink2:#a2aab8;--ink3:#6a7282;--line:rgba(255,255,255,.06);--line2:rgba(255,255,255,.1);--acc:#8aa9ff;--acc-rgb:138,169,255;--ease:cubic-bezier(.32,.72,0,1);--pop:cubic-bezier(.34,1.5,.64,1);--r:16px;--r-sm:12px}
 .m-all{--c:200,208,224}.m-finished,.st-done,.sb-done{--c:104,212,166}.m-working,.st-inprogress,.sb-inprogress{--c:128,166,255}.st-waiting,.sb-waiting{--c:236,184,98}.m-unrepaired,.st-unrepaired,.sb-unrepaired{--c:255,130,120}.st-delivered,.sb-delivered{--c:150,160,178}
-body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transparent 62%) fixed,var(--bg);color:var(--ink);font-family:-apple-system,"SF Pro Text","Segoe UI",Roboto,Tahoma,"Noto Sans Arabic",sans-serif;font-size:14px;line-height:1.45;min-height:100vh;padding-bottom:120px;direction:rtl;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transparent 62%) fixed,var(--bg);color:var(--ink);font-family:-apple-system,&quot;SF Pro Text&quot;,&quot;Segoe UI&quot;,Roboto,Tahoma,&quot;Noto Sans Arabic&quot;,sans-serif;font-size:14px;line-height:1.45;min-height:100vh;padding-bottom:120px;direction:rtl;-webkit-font-smoothing:antialiased}
 .chrome{position:sticky;top:0;z-index:10;background:rgba(10,12,16,.72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 6px}
 .brand{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-.01em}
@@ -38,7 +67,7 @@ body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transp
 .metric:active{transform:scale(.97)}
 .metric.active{border-color:rgba(var(--c),.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(var(--c),.1),0 12px 28px -14px rgba(var(--c),.5)}
 .metric-label{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink2)}
-.metric-label::before{content:"";width:6px;height:6px;border-radius:50%;background:rgb(var(--c));box-shadow:0 0 8px rgba(var(--c),.9)}
+.metric-label::before{content:&quot;&quot;;width:6px;height:6px;border-radius:50%;background:rgb(var(--c));box-shadow:0 0 8px rgba(var(--c),.9)}
 .metric-value{width:fit-content;font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-top:8px;font-variant-numeric:tabular-nums}
 .metric-sub{font-size:11px;color:var(--ink3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .search{position:relative;margin-bottom:10px}
@@ -53,14 +82,14 @@ body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transp
 .chip.active{background:rgba(var(--acc-rgb),.14);border-color:rgba(var(--acc-rgb),.3);color:#cfdcff}
 .device-card,.part-card{position:relative;overflow:hidden;margin-bottom:10px;padding:14px 16px 12px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(165deg,rgba(255,255,255,.055),rgba(255,255,255,.014) 55%),#12151b;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 1px 2px rgba(0,0,0,.4),0 14px 28px -16px rgba(0,0,0,.85);cursor:pointer;transition:transform .2s var(--ease),box-shadow .3s}
 .device-card:active,.part-card:active{transform:scale(.98)}
-.device-card::before{content:"";position:absolute;inset-block:14px;inset-inline-start:0;width:3px;border-radius:3px;background:rgb(var(--c));box-shadow:0 0 14px rgba(var(--c),.7)}
+.device-card::before{content:&quot;&quot;;position:absolute;inset-block:14px;inset-inline-start:0;width:3px;border-radius:3px;background:rgb(var(--c));box-shadow:0 0 14px rgba(var(--c),.7)}
 .device-card.st-delivered{opacity:.7}
 .enter{animation:rise .5s var(--ease) backwards;animation-delay:calc(var(--i)*35ms)}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}}
 .dc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .device-id{direction:ltr;unicode-bidi:isolate;font-size:13px;font-weight:700;letter-spacing:-.02em;color:#b9c8ff;font-variant-numeric:tabular-nums}
 .status-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap;color:rgb(var(--c));background:rgba(var(--c),.11);border:1px solid rgba(var(--c),.18)}
-.status-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.status-badge::before{content:&quot;&quot;;width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
 .device-name{font-size:16px;font-weight:650;letter-spacing:-.01em}
 .device-model{font-size:13px;color:var(--ink2);margin-top:1px}
 .device-issue{font-size:12.5px;color:var(--ink3);margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -87,7 +116,7 @@ body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transp
 .overlay.open{opacity:1;visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
 .sheet{position:relative;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;direction:rtl;padding:26px 18px calc(28px + env(safe-area-inset-bottom));border-radius:28px 28px 0 0;border-top:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,#1b2029,#12151b);box-shadow:0 -20px 50px -10px rgba(0,0,0,.6);transform:translateY(100%);transition:transform .45s var(--ease)}
 .overlay.open .sheet{transform:none}
-.sheet::before{content:"";position:absolute;top:8px;left:50%;width:36px;height:4px;margin-left:-18px;border-radius:2px;background:rgba(255,255,255,.14)}
+.sheet::before{content:&quot;&quot;;position:absolute;top:8px;left:50%;width:36px;height:4px;margin-left:-18px;border-radius:2px;background:rgba(255,255,255,.14)}
 .sheet-title{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
 .close-btn{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);border:none;color:var(--ink2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s var(--ease)}
 .close-btn:active{transform:scale(.9)}
@@ -116,420 +145,420 @@ body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transp
 .d-actions{display:flex;gap:8px;flex-wrap:wrap}
 .d-actions .btn{flex:1 1 120px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
-</style>
-</head>
-<body>
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-<header class="chrome">
-  <div class="topbar">
-    <div class="brand">
-      <span class="mark"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#b9c8ff" stroke-width="1.4" stroke-linecap="round"><rect x="4" y="4" width="8" height="8" rx="1.8"/><path d="M6.5 1.5V4M9.5 1.5V4M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5"/></svg></span>
-      <span>أمير سوفت</span>
-    </div>
-    <div class="top-actions">
-      <button class="btn btn-sm" id="lang-btn" onclick="toggleLang()" style="min-width:44px">EN</button>
-      <button class="btn btn-sm" onclick="openBackup()"><span data-ar="نسخ" data-en="Backup">نسخ</span></button>
-    </div>
-  </div>
-  <nav class="tabs" role="tablist">
-    <button class="tab m-all" role="tab" data-view="all" onclick="setView('all')"><span data-k="tabAll">الكل</span><span class="count" id="tc-all"></span></button>
-    <button class="tab m-finished" role="tab" data-view="finished" onclick="setView('finished')"><span data-k="tabFinished">منتهية</span><span class="count" id="tc-finished"></span></button>
-    <button class="tab m-working" role="tab" data-view="working" onclick="setView('working')"><span data-k="tabWorking">قيد العمل</span><span class="count" id="tc-working"></span></button>
-    <button class="tab m-unrepaired" role="tab" data-view="unrepaired" onclick="setView('unrepaired')"><span data-k="tabUnrepaired">لم تُصلح</span><span class="count" id="tc-unrepaired"></span></button>
-  </nav>
-</header>
+&lt;header class=&quot;chrome&quot;&gt;
+  &lt;div class=&quot;topbar&quot;&gt;
+    &lt;div class=&quot;brand&quot;&gt;
+      &lt;span class=&quot;mark&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;none&quot; stroke=&quot;#b9c8ff&quot; stroke-width=&quot;1.4&quot; stroke-linecap=&quot;round&quot;&gt;&lt;rect x=&quot;4&quot; y=&quot;4&quot; width=&quot;8&quot; height=&quot;8&quot; rx=&quot;1.8&quot;/&gt;&lt;path d=&quot;M6.5 1.5V4M9.5 1.5V4M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span&gt;أمير سوفت&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;top-actions&quot;&gt;
+      &lt;button class=&quot;btn btn-sm&quot; id=&quot;lang-btn&quot; onclick=&quot;toggleLang()&quot; style=&quot;min-width:44px&quot;&gt;EN&lt;/button&gt;
+      &lt;button class=&quot;btn btn-sm&quot; onclick=&quot;openBackup()&quot;&gt;&lt;span data-ar=&quot;نسخ&quot; data-en=&quot;Backup&quot;&gt;نسخ&lt;/span&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;nav class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab m-all&quot; role=&quot;tab&quot; data-view=&quot;all&quot; onclick=&quot;setView(&#x27;all&#x27;)&quot;&gt;&lt;span data-k=&quot;tabAll&quot;&gt;الكل&lt;/span&gt;&lt;span class=&quot;count&quot; id=&quot;tc-all&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;tab m-finished&quot; role=&quot;tab&quot; data-view=&quot;finished&quot; onclick=&quot;setView(&#x27;finished&#x27;)&quot;&gt;&lt;span data-k=&quot;tabFinished&quot;&gt;منتهية&lt;/span&gt;&lt;span class=&quot;count&quot; id=&quot;tc-finished&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;tab m-working&quot; role=&quot;tab&quot; data-view=&quot;working&quot; onclick=&quot;setView(&#x27;working&#x27;)&quot;&gt;&lt;span data-k=&quot;tabWorking&quot;&gt;قيد العمل&lt;/span&gt;&lt;span class=&quot;count&quot; id=&quot;tc-working&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;tab m-unrepaired&quot; role=&quot;tab&quot; data-view=&quot;unrepaired&quot; onclick=&quot;setView(&#x27;unrepaired&#x27;)&quot;&gt;&lt;span data-k=&quot;tabUnrepaired&quot;&gt;لم تُصلح&lt;/span&gt;&lt;span class=&quot;count&quot; id=&quot;tc-unrepaired&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
 
-<!-- الأجهزة -->
-<div id="page-devices" class="page active">
-  <div class="cards">
-    <button class="metric m-finished" data-view="finished" onclick="setView('finished')"><div class="metric-label" data-k="mFinished">منتهية</div><div class="metric-value" id="dstat-finished"></div><div class="metric-sub" id="dsub-finished"></div></button>
-    <button class="metric m-working" data-view="working" onclick="setView('working')"><div class="metric-label" data-k="mWorking">قيد العمل</div><div class="metric-value" id="dstat-working"></div><div class="metric-sub" id="dsub-working"></div></button>
-    <button class="metric m-unrepaired" data-view="unrepaired" onclick="setView('unrepaired')"><div class="metric-label" data-k="mUnrepaired">لم تُصلح</div><div class="metric-value" id="dstat-unrepaired"></div><div class="metric-sub" id="dsub-unrepaired"></div></button>
-  </div>
-  <div class="search">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.8"/><path d="M10.6 10.6 14 14"/></svg>
-    <input type="text" id="device-search" placeholder="بحث بالاسم أو الموديل أو الرقم..." oninput="animate=false;renderDevices()">
-  </div>
-  <div class="chips" id="sub-chips"></div>
-  <div id="devices-list"></div>
-</div>
+&lt;!-- الأجهزة --&gt;
+&lt;div id=&quot;page-devices&quot; class=&quot;page active&quot;&gt;
+  &lt;div class=&quot;cards&quot;&gt;
+    &lt;button class=&quot;metric m-finished&quot; data-view=&quot;finished&quot; onclick=&quot;setView(&#x27;finished&#x27;)&quot;&gt;&lt;div class=&quot;metric-label&quot; data-k=&quot;mFinished&quot;&gt;منتهية&lt;/div&gt;&lt;div class=&quot;metric-value&quot; id=&quot;dstat-finished&quot;&gt;&lt;/div&gt;&lt;div class=&quot;metric-sub&quot; id=&quot;dsub-finished&quot;&gt;&lt;/div&gt;&lt;/button&gt;
+    &lt;button class=&quot;metric m-working&quot; data-view=&quot;working&quot; onclick=&quot;setView(&#x27;working&#x27;)&quot;&gt;&lt;div class=&quot;metric-label&quot; data-k=&quot;mWorking&quot;&gt;قيد العمل&lt;/div&gt;&lt;div class=&quot;metric-value&quot; id=&quot;dstat-working&quot;&gt;&lt;/div&gt;&lt;div class=&quot;metric-sub&quot; id=&quot;dsub-working&quot;&gt;&lt;/div&gt;&lt;/button&gt;
+    &lt;button class=&quot;metric m-unrepaired&quot; data-view=&quot;unrepaired&quot; onclick=&quot;setView(&#x27;unrepaired&#x27;)&quot;&gt;&lt;div class=&quot;metric-label&quot; data-k=&quot;mUnrepaired&quot;&gt;لم تُصلح&lt;/div&gt;&lt;div class=&quot;metric-value&quot; id=&quot;dstat-unrepaired&quot;&gt;&lt;/div&gt;&lt;div class=&quot;metric-sub&quot; id=&quot;dsub-unrepaired&quot;&gt;&lt;/div&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;search&quot;&gt;
+    &lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.6&quot; stroke-linecap=&quot;round&quot;&gt;&lt;circle cx=&quot;7&quot; cy=&quot;7&quot; r=&quot;4.8&quot;/&gt;&lt;path d=&quot;M10.6 10.6 14 14&quot;/&gt;&lt;/svg&gt;
+    &lt;input type=&quot;text&quot; id=&quot;device-search&quot; placeholder=&quot;بحث بالاسم أو الموديل أو الرقم...&quot; oninput=&quot;animate=false;renderDevices()&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;chips&quot; id=&quot;sub-chips&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;devices-list&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 
-<button class="fab" onclick="openAddDevice()" id="fab-btn">+</button>
+&lt;button class=&quot;fab&quot; onclick=&quot;openAddDevice()&quot; id=&quot;fab-btn&quot;&gt;+&lt;/button&gt;
 
-<!-- إضافة/تعديل جهاز -->
-<div class="overlay" id="device-sheet">
-  <div class="sheet">
-    <div class="sheet-title">
-      <span id="dsheet-title">طلب إصلاح جديد</span>
-      <button class="close-btn" onclick="closeSheet('device-sheet')">✕</button>
-    </div>
-    <div class="row2">
-      <div class="field"><label>اسم العميل</label><input type="text" id="d-customer" placeholder="مثال: أحمد علي"></div>
-      <div class="field"><label>رقم الهاتف</label><input type="tel" id="d-phone" placeholder="07XX XXX XXXX" inputmode="tel" style="direction:ltr"></div>
-    </div>
-    <div class="row2">
-      <div class="field"><label>موديل الجهاز</label><input type="text" id="d-model" placeholder="مثال: Samsung A54"></div>
-      <div class="field"><label>رقم الرف</label><input type="text" id="d-shelf" placeholder="مثال: A3" style="text-transform:uppercase;direction:ltr"></div>
-    </div>
-    <div class="field"><label>المشكلة</label><input type="text" id="d-issue" placeholder="مثال: شاشة مكسورة، لا يشحن..."></div>
-    <div class="row2">
-      <div class="field"><label>نوع الإصلاح</label>
-        <select id="d-type">
-          <option value="إصلاح بورد">إصلاح بورد</option>
-          <option value="سوفت وير">سوفت وير</option>
-          <option value="أخرى">أخرى</option>
-        </select>
-      </div>
-      <div class="field"><label>السعر المتفق (د.ع)</label><input type="number" id="d-price" min="0" step="250" placeholder="0" inputmode="decimal" style="direction:ltr"></div>
-    </div>
-    <div class="field"><label>ملاحظات</label><textarea id="d-notes" rows="2" placeholder="الباسورد، الملحقات، تعليمات خاصة..."></textarea></div>
-    <div class="sheet-actions">
-      <button class="btn btn-primary" onclick="saveDevice()">حفظ</button>
-      <button class="btn" onclick="closeSheet('device-sheet')">إلغاء</button>
-      <button class="btn btn-red" id="d-delete-btn" onclick="deleteDevice()" style="display:none;flex:0;padding:9px 14px">🗑</button>
-    </div>
-  </div>
-</div>
+&lt;!-- إضافة/تعديل جهاز --&gt;
+&lt;div class=&quot;overlay&quot; id=&quot;device-sheet&quot;&gt;
+  &lt;div class=&quot;sheet&quot;&gt;
+    &lt;div class=&quot;sheet-title&quot;&gt;
+      &lt;span id=&quot;dsheet-title&quot;&gt;طلب إصلاح جديد&lt;/span&gt;
+      &lt;button class=&quot;close-btn&quot; onclick=&quot;closeSheet(&#x27;device-sheet&#x27;)&quot;&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row2&quot;&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label&gt;اسم العميل&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;d-customer&quot; placeholder=&quot;مثال: أحمد علي&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label&gt;رقم الهاتف&lt;/label&gt;&lt;input type=&quot;tel&quot; id=&quot;d-phone&quot; placeholder=&quot;07XX XXX XXXX&quot; inputmode=&quot;tel&quot; style=&quot;direction:ltr&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;row2&quot;&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label&gt;موديل الجهاز&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;d-model&quot; placeholder=&quot;مثال: Samsung A54&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label&gt;رقم الرف&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;d-shelf&quot; placeholder=&quot;مثال: A3&quot; style=&quot;text-transform:uppercase;direction:ltr&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;label&gt;المشكلة&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;d-issue&quot; placeholder=&quot;مثال: شاشة مكسورة، لا يشحن...&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;row2&quot;&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label&gt;نوع الإصلاح&lt;/label&gt;
+        &lt;select id=&quot;d-type&quot;&gt;
+          &lt;option value=&quot;إصلاح بورد&quot;&gt;إصلاح بورد&lt;/option&gt;
+          &lt;option value=&quot;سوفت وير&quot;&gt;سوفت وير&lt;/option&gt;
+          &lt;option value=&quot;أخرى&quot;&gt;أخرى&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;field&quot;&gt;&lt;label&gt;السعر المتفق (د.ع)&lt;/label&gt;&lt;input type=&quot;number&quot; id=&quot;d-price&quot; min=&quot;0&quot; step=&quot;250&quot; placeholder=&quot;0&quot; inputmode=&quot;decimal&quot; style=&quot;direction:ltr&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;label&gt;ملاحظات&lt;/label&gt;&lt;textarea id=&quot;d-notes&quot; rows=&quot;2&quot; placeholder=&quot;الباسورد، الملحقات، تعليمات خاصة...&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+    &lt;div class=&quot;sheet-actions&quot;&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;saveDevice()&quot;&gt;حفظ&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; onclick=&quot;closeSheet(&#x27;device-sheet&#x27;)&quot;&gt;إلغاء&lt;/button&gt;
+      &lt;button class=&quot;btn btn-red&quot; id=&quot;d-delete-btn&quot; onclick=&quot;deleteDevice()&quot; style=&quot;display:none;flex:0;padding:9px 14px&quot;&gt;🗑&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-<!-- سبب عدم الإصلاح -->
-<div class="overlay" id="unrepaired-sheet">
-  <div class="sheet">
-    <div class="sheet-title">
-      <span id="usheet-title">لم يصلح الجهاز</span>
-      <button class="close-btn" onclick="closeSheet('unrepaired-sheet')">✕</button>
-    </div>
-    <div class="field"><label id="u-reason-label">سبب عدم الإصلاح</label><textarea id="u-reason" rows="3" placeholder="مثال: القطعة غير متوفرة، الضرر أكبر من المتوقع، العميل لم يوافق على السعر..."></textarea></div>
-    <div class="sheet-actions">
-      <button class="btn btn-primary" onclick="confirmUnrepaired()" id="u-confirm-btn">✓ تأكيد</button>
-      <button class="btn" onclick="closeSheet('unrepaired-sheet')" id="u-cancel-btn">إلغاء</button>
-    </div>
-  </div>
-</div>
+&lt;!-- سبب عدم الإصلاح --&gt;
+&lt;div class=&quot;overlay&quot; id=&quot;unrepaired-sheet&quot;&gt;
+  &lt;div class=&quot;sheet&quot;&gt;
+    &lt;div class=&quot;sheet-title&quot;&gt;
+      &lt;span id=&quot;usheet-title&quot;&gt;لم يصلح الجهاز&lt;/span&gt;
+      &lt;button class=&quot;close-btn&quot; onclick=&quot;closeSheet(&#x27;unrepaired-sheet&#x27;)&quot;&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;&lt;label id=&quot;u-reason-label&quot;&gt;سبب عدم الإصلاح&lt;/label&gt;&lt;textarea id=&quot;u-reason&quot; rows=&quot;3&quot; placeholder=&quot;مثال: القطعة غير متوفرة، الضرر أكبر من المتوقع، العميل لم يوافق على السعر...&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+    &lt;div class=&quot;sheet-actions&quot;&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;confirmUnrepaired()&quot; id=&quot;u-confirm-btn&quot;&gt;✓ تأكيد&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; onclick=&quot;closeSheet(&#x27;unrepaired-sheet&#x27;)&quot; id=&quot;u-cancel-btn&quot;&gt;إلغاء&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-<!-- تفاصيل الجهاز -->
-<div class="overlay" id="detail-sheet">
-  <div class="sheet">
-    <div class="sheet-title">
-      <span>تفاصيل الإصلاح</span>
-      <button class="close-btn" onclick="closeSheet('detail-sheet')">✕</button>
-    </div>
-    <div id="detail-body"></div>
-  </div>
-</div>
+&lt;!-- تفاصيل الجهاز --&gt;
+&lt;div class=&quot;overlay&quot; id=&quot;detail-sheet&quot;&gt;
+  &lt;div class=&quot;sheet&quot;&gt;
+    &lt;div class=&quot;sheet-title&quot;&gt;
+      &lt;span&gt;تفاصيل الإصلاح&lt;/span&gt;
+      &lt;button class=&quot;close-btn&quot; onclick=&quot;closeSheet(&#x27;detail-sheet&#x27;)&quot;&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;detail-body&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-<!-- نسخ احتياطي -->
-<div class="overlay" id="backup-sheet">
-  <div class="sheet">
-    <div class="sheet-title">
-      <span>النسخ الاحتياطي</span>
-      <button class="close-btn" onclick="closeSheet('backup-sheet')">✕</button>
-    </div>
-    <div class="backup-section">
-      <div class="backup-title">تصدير نسخة احتياطية</div>
-      <div class="backup-desc">يحفظ جميع طلبات الإصلاح وبيانات العملاء في ملف JSON. احفظه على Google Drive أو أرسله لنفسك.</div>
-      <div class="backup-row"><button class="btn btn-primary" onclick="exportData()" style="flex:1">تنزيل النسخة الاحتياطية</button></div>
-    </div>
-    <div class="backup-section">
-      <div class="backup-title">استعادة من نسخة احتياطية</div>
-      <div class="backup-desc">اختر ملف النسخة الاحتياطية. سيستبدل جميع البيانات الحالية.</div>
-      <div class="backup-row">
-        <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
-        <button class="btn" onclick="document.getElementById('import-file').click()" style="flex:1">اختر ملف</button>
-      </div>
-    </div>
-    <button class="btn" onclick="closeSheet('backup-sheet')" style="width:100%;justify-content:center;margin-top:4px">إغلاق</button>
-  </div>
-</div>
+&lt;!-- نسخ احتياطي --&gt;
+&lt;div class=&quot;overlay&quot; id=&quot;backup-sheet&quot;&gt;
+  &lt;div class=&quot;sheet&quot;&gt;
+    &lt;div class=&quot;sheet-title&quot;&gt;
+      &lt;span&gt;النسخ الاحتياطي&lt;/span&gt;
+      &lt;button class=&quot;close-btn&quot; onclick=&quot;closeSheet(&#x27;backup-sheet&#x27;)&quot;&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-section&quot;&gt;
+      &lt;div class=&quot;backup-title&quot;&gt;تصدير نسخة احتياطية&lt;/div&gt;
+      &lt;div class=&quot;backup-desc&quot;&gt;يحفظ جميع طلبات الإصلاح وبيانات العملاء في ملف JSON. احفظه على Google Drive أو أرسله لنفسك.&lt;/div&gt;
+      &lt;div class=&quot;backup-row&quot;&gt;&lt;button class=&quot;btn btn-primary&quot; onclick=&quot;exportData()&quot; style=&quot;flex:1&quot;&gt;تنزيل النسخة الاحتياطية&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-section&quot;&gt;
+      &lt;div class=&quot;backup-title&quot;&gt;استعادة من نسخة احتياطية&lt;/div&gt;
+      &lt;div class=&quot;backup-desc&quot;&gt;اختر ملف النسخة الاحتياطية. سيستبدل جميع البيانات الحالية.&lt;/div&gt;
+      &lt;div class=&quot;backup-row&quot;&gt;
+        &lt;input type=&quot;file&quot; id=&quot;import-file&quot; accept=&quot;.json&quot; style=&quot;display:none&quot; onchange=&quot;importData(event)&quot;&gt;
+        &lt;button class=&quot;btn&quot; onclick=&quot;document.getElementById(&#x27;import-file&#x27;).click()&quot; style=&quot;flex:1&quot;&gt;اختر ملف&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;btn&quot; onclick=&quot;closeSheet(&#x27;backup-sheet&#x27;)&quot; style=&quot;width:100%;justify-content:center;margin-top:4px&quot;&gt;إغلاق&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-<script>
-let devices = JSON.parse(localStorage.getItem('devices_v1') || '[]');
+&lt;script&gt;
+let devices = JSON.parse(localStorage.getItem(&#x27;devices_v1&#x27;) || &#x27;[]&#x27;);
 let editDeviceId=null, unrepairedDeviceId=null;
-let jobCounter = parseInt(localStorage.getItem('job_counter')||'0');
+let jobCounter = parseInt(localStorage.getItem(&#x27;job_counter&#x27;)||&#x27;0&#x27;);
 
 function save(){
-  localStorage.setItem('devices_v1',JSON.stringify(devices));
-  localStorage.setItem('job_counter',String(jobCounter));
+  localStorage.setItem(&#x27;devices_v1&#x27;,JSON.stringify(devices));
+  localStorage.setItem(&#x27;job_counter&#x27;,String(jobCounter));
 }
-function money(n){return Number(n).toLocaleString('en-US')+((localStorage.getItem('lang')||'ar')==='ar'?' د.ع':' IQD');}
-function nextJobId(){ jobCounter++; return 'J-'+String(jobCounter).padStart(4,'0'); }
-function closeSheet(id){ document.getElementById(id).classList.remove('open'); }
+function money(n){return Number(n).toLocaleString(&#x27;en-US&#x27;)+((localStorage.getItem(&#x27;lang&#x27;)||&#x27;ar&#x27;)===&#x27;ar&#x27;?&#x27; د.ع&#x27;:&#x27; IQD&#x27;);}
+function nextJobId(){ jobCounter++; return &#x27;J-&#x27;+String(jobCounter).padStart(4,&#x27;0&#x27;); }
+function closeSheet(id){ document.getElementById(id).classList.remove(&#x27;open&#x27;); }
 
 /* ---- الأجهزة ---- */
 function statusInfo(s){
-  if(s==='waiting')    return {text:'بانتظار الإصلاح', cls:'sb-waiting'};
-  if(s==='inprogress') return {text:'قيد الإصلاح',     cls:'sb-inprogress'};
-  if(s==='done')       return {text:'جاهز ✓',           cls:'sb-done'};
-  if(s==='delivered')  return {text:'تم التسليم',       cls:'sb-delivered'};
-  if(s==='unrepaired') return {text:'لم يصلح',           cls:'sb-unrepaired'};
-  return {text:s,cls:'sb-waiting'};
+  if(s===&#x27;waiting&#x27;)    return {text:&#x27;بانتظار الإصلاح&#x27;, cls:&#x27;sb-waiting&#x27;};
+  if(s===&#x27;inprogress&#x27;) return {text:&#x27;قيد الإصلاح&#x27;,     cls:&#x27;sb-inprogress&#x27;};
+  if(s===&#x27;done&#x27;)       return {text:&#x27;جاهز ✓&#x27;,           cls:&#x27;sb-done&#x27;};
+  if(s===&#x27;delivered&#x27;)  return {text:&#x27;تم التسليم&#x27;,       cls:&#x27;sb-delivered&#x27;};
+  if(s===&#x27;unrepaired&#x27;) return {text:&#x27;لم يصلح&#x27;,           cls:&#x27;sb-unrepaired&#x27;};
+  return {text:s,cls:&#x27;sb-waiting&#x27;};
 }
 function openAddDevice(){
   editDeviceId=null;
-  document.getElementById('dsheet-title').textContent='طلب إصلاح جديد';
-  document.getElementById('d-delete-btn').style.display='none';
-  ['customer','phone','model','shelf','issue','notes'].forEach(f=>document.getElementById('d-'+f).value='');
-  document.getElementById('d-price').value='';
-  document.getElementById('d-type').value='سوفت وير';
-  document.getElementById('device-sheet').classList.add('open');
+  document.getElementById(&#x27;dsheet-title&#x27;).textContent=&#x27;طلب إصلاح جديد&#x27;;
+  document.getElementById(&#x27;d-delete-btn&#x27;).style.display=&#x27;none&#x27;;
+  [&#x27;customer&#x27;,&#x27;phone&#x27;,&#x27;model&#x27;,&#x27;shelf&#x27;,&#x27;issue&#x27;,&#x27;notes&#x27;].forEach(f=&gt;document.getElementById(&#x27;d-&#x27;+f).value=&#x27;&#x27;);
+  document.getElementById(&#x27;d-price&#x27;).value=&#x27;&#x27;;
+  document.getElementById(&#x27;d-type&#x27;).value=&#x27;سوفت وير&#x27;;
+  document.getElementById(&#x27;device-sheet&#x27;).classList.add(&#x27;open&#x27;);
 }
 function openEditDevice(id){
-  const d=devices.find(x=>x.id===id); if(!d) return;
+  const d=devices.find(x=&gt;x.id===id); if(!d) return;
   editDeviceId=id;
-  document.getElementById('dsheet-title').textContent='تعديل '+d.jobId;
-  document.getElementById('d-delete-btn').style.display='inline-flex';
-  document.getElementById('d-customer').value=d.customer;
-  document.getElementById('d-phone').value=d.phone||'';
-  document.getElementById('d-model').value=d.model;
-  document.getElementById('d-shelf').value=d.shelf||'';
-  document.getElementById('d-issue').value=d.issue||'';
-  document.getElementById('d-type').value=d.type;
-  document.getElementById('d-price').value=d.price||'';
-  document.getElementById('d-notes').value=d.notes||'';
-  document.getElementById('device-sheet').classList.add('open');
+  document.getElementById(&#x27;dsheet-title&#x27;).textContent=&#x27;تعديل &#x27;+d.jobId;
+  document.getElementById(&#x27;d-delete-btn&#x27;).style.display=&#x27;inline-flex&#x27;;
+  document.getElementById(&#x27;d-customer&#x27;).value=d.customer;
+  document.getElementById(&#x27;d-phone&#x27;).value=d.phone||&#x27;&#x27;;
+  document.getElementById(&#x27;d-model&#x27;).value=d.model;
+  document.getElementById(&#x27;d-shelf&#x27;).value=d.shelf||&#x27;&#x27;;
+  document.getElementById(&#x27;d-issue&#x27;).value=d.issue||&#x27;&#x27;;
+  document.getElementById(&#x27;d-type&#x27;).value=d.type;
+  document.getElementById(&#x27;d-price&#x27;).value=d.price||&#x27;&#x27;;
+  document.getElementById(&#x27;d-notes&#x27;).value=d.notes||&#x27;&#x27;;
+  document.getElementById(&#x27;device-sheet&#x27;).classList.add(&#x27;open&#x27;);
 }
 function saveDevice(){
-  const customer=document.getElementById('d-customer').value.trim();
-  const model=document.getElementById('d-model').value.trim();
-  if(!customer){alert('أدخل اسم العميل');return;}
-  if(!model){alert('أدخل موديل الجهاز');return;}
-  const shelf=(document.getElementById('d-shelf').value.trim()||'').toUpperCase();
+  const customer=document.getElementById(&#x27;d-customer&#x27;).value.trim();
+  const model=document.getElementById(&#x27;d-model&#x27;).value.trim();
+  if(!customer){alert(&#x27;أدخل اسم العميل&#x27;);return;}
+  if(!model){alert(&#x27;أدخل موديل الجهاز&#x27;);return;}
+  const shelf=(document.getElementById(&#x27;d-shelf&#x27;).value.trim()||&#x27;&#x27;).toUpperCase();
   if(editDeviceId){
-    const d=devices.find(x=>x.id===editDeviceId);
+    const d=devices.find(x=&gt;x.id===editDeviceId);
     Object.assign(d,{customer,model,shelf,
-      phone:document.getElementById('d-phone').value.trim(),
-      issue:document.getElementById('d-issue').value.trim(),
-      type:document.getElementById('d-type').value,
-      price:parseFloat(document.getElementById('d-price').value)||0,
-      notes:document.getElementById('d-notes').value.trim(),
+      phone:document.getElementById(&#x27;d-phone&#x27;).value.trim(),
+      issue:document.getElementById(&#x27;d-issue&#x27;).value.trim(),
+      type:document.getElementById(&#x27;d-type&#x27;).value,
+      price:parseFloat(document.getElementById(&#x27;d-price&#x27;).value)||0,
+      notes:document.getElementById(&#x27;d-notes&#x27;).value.trim(),
       updatedAt:new Date().toISOString()
     });
   } else {
     devices.unshift({
       id:Date.now(), jobId:nextJobId(),
       customer, model, shelf,
-      phone:document.getElementById('d-phone').value.trim(),
-      issue:document.getElementById('d-issue').value.trim(),
-      type:document.getElementById('d-type').value,
-      price:parseFloat(document.getElementById('d-price').value)||0,
-      notes:document.getElementById('d-notes').value.trim(),
-      status:'waiting',
+      phone:document.getElementById(&#x27;d-phone&#x27;).value.trim(),
+      issue:document.getElementById(&#x27;d-issue&#x27;).value.trim(),
+      type:document.getElementById(&#x27;d-type&#x27;).value,
+      price:parseFloat(document.getElementById(&#x27;d-price&#x27;).value)||0,
+      notes:document.getElementById(&#x27;d-notes&#x27;).value.trim(),
+      status:&#x27;waiting&#x27;,
       createdAt:new Date().toISOString(),
       updatedAt:new Date().toISOString()
     });
   }
-  save(); closeSheet('device-sheet'); renderDevices(); updateDeviceStats();
+  save(); closeSheet(&#x27;device-sheet&#x27;); renderDevices(); updateDeviceStats();
 }
 function deleteDevice(){
-  if(!confirm('حذف هذا الطلب؟')) return;
-  devices=devices.filter(x=>x.id!==editDeviceId);
-  save(); closeSheet('device-sheet'); renderDevices(); updateDeviceStats();
+  if(!confirm(&#x27;حذف هذا الطلب؟&#x27;)) return;
+  devices=devices.filter(x=&gt;x.id!==editDeviceId);
+  save(); closeSheet(&#x27;device-sheet&#x27;); renderDevices(); updateDeviceStats();
 }
 function setStatus(id,status){
-  const d=devices.find(x=>x.id===id); if(!d) return;
+  const d=devices.find(x=&gt;x.id===id); if(!d) return;
   d.status=status; d.updatedAt=new Date().toISOString();
-  if(status==='delivered') d.deliveredAt=new Date().toISOString();
-  if(status!=='unrepaired') d.unrepairedReason='';
-  save(); closeSheet('detail-sheet'); renderDevices(); updateDeviceStats();
+  if(status===&#x27;delivered&#x27;) d.deliveredAt=new Date().toISOString();
+  if(status!==&#x27;unrepaired&#x27;) d.unrepairedReason=&#x27;&#x27;;
+  save(); closeSheet(&#x27;detail-sheet&#x27;); renderDevices(); updateDeviceStats();
 }
 function openUnrepairedSheet(id){
   unrepairedDeviceId=id;
-  const d=devices.find(x=>x.id===id);
-  document.getElementById('u-reason').value=(d&&d.unrepairedReason)||'';
-  document.getElementById('unrepaired-sheet').classList.add('open');
+  const d=devices.find(x=&gt;x.id===id);
+  document.getElementById(&#x27;u-reason&#x27;).value=(d&amp;&amp;d.unrepairedReason)||&#x27;&#x27;;
+  document.getElementById(&#x27;unrepaired-sheet&#x27;).classList.add(&#x27;open&#x27;);
 }
 function confirmUnrepaired(){
-  const d=devices.find(x=>x.id===unrepairedDeviceId); if(!d) return;
-  d.status='unrepaired';
-  d.unrepairedReason=document.getElementById('u-reason').value.trim();
+  const d=devices.find(x=&gt;x.id===unrepairedDeviceId); if(!d) return;
+  d.status=&#x27;unrepaired&#x27;;
+  d.unrepairedReason=document.getElementById(&#x27;u-reason&#x27;).value.trim();
   d.updatedAt=new Date().toISOString();
-  save(); closeSheet('unrepaired-sheet'); closeSheet('detail-sheet'); renderDevices(); updateDeviceStats();
+  save(); closeSheet(&#x27;unrepaired-sheet&#x27;); closeSheet(&#x27;detail-sheet&#x27;); renderDevices(); updateDeviceStats();
 }
-function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-const GROUPS={finished:['done','delivered'],working:['inprogress','waiting'],unrepaired:['unrepaired']};
-let view=localStorage.getItem('view_v1')||'all', sub='', animate=true;
-if(view!=='all'&&!GROUPS[view]) view='all';
-function setView(v){view=v;sub='';animate=true;localStorage.setItem('view_v1',v);renderDevices();window.scrollTo({top:0,behavior:'smooth'});}
+function esc(x){return String(x==null?&#x27;&#x27;:x).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));}
+const GROUPS={finished:[&#x27;done&#x27;,&#x27;delivered&#x27;],working:[&#x27;inprogress&#x27;,&#x27;waiting&#x27;],unrepaired:[&#x27;unrepaired&#x27;]};
+let view=localStorage.getItem(&#x27;view_v1&#x27;)||&#x27;all&#x27;, sub=&#x27;&#x27;, animate=true;
+if(view!==&#x27;all&#x27;&amp;&amp;!GROUPS[view]) view=&#x27;all&#x27;;
+function setView(v){view=v;sub=&#x27;&#x27;;animate=true;localStorage.setItem(&#x27;view_v1&#x27;,v);renderDevices();window.scrollTo({top:0,behavior:&#x27;smooth&#x27;});}
 function setSub(s){sub=s;animate=false;renderDevices();}
 function openDetail(id){
-  const d=devices.find(x=>x.id===id); if(!d) return;
-  const l=t(), si=statusInfo(d.status), loc=currentLang==='ar'?'ar-IQ':'en-GB', c=new Date(d.createdAt);
-  const ds=c.toLocaleDateString(loc)+' '+c.toLocaleTimeString(loc,{hour:'2-digit',minute:'2-digit'});
-  let btns='';
-  if(d.status==='waiting')    btns+=`<button class="btn btn-primary btn-sm" onclick="setStatus(${d.id},'inprogress')">${l.startBtn}</button>`;
-  if(d.status==='inprogress') btns+=`<button class="btn btn-green btn-sm" onclick="setStatus(${d.id},'done')">${l.doneBtn}</button>`;
-  if(d.status==='done')       btns+=`<button class="btn btn-purple btn-sm" onclick="setStatus(${d.id},'delivered')">${l.deliveredBtn}</button>`;
-  if(d.status==='waiting'||d.status==='inprogress') btns+=`<button class="btn btn-red btn-sm" onclick="openUnrepairedSheet(${d.id})">${l.notRepairedBtn}</button>`;
-  btns+=`<button class="btn btn-sm" onclick="closeSheet('detail-sheet');openEditDevice(${d.id})">${l.editBtn}</button>`;
-  document.getElementById('detail-body').innerHTML=`
-    <div class="d-id">${esc(d.jobId)}</div>
-    <div class="d-badge"><span class="status-badge sb-${d.status}">${si.text}</span></div>
-    <div class="divider"></div>
-    <div class="detail-row">
-      <div><div class="d-name">${esc(d.customer)}</div>${d.phone?`<div class="d-phone">${esc(d.phone)}</div>`:''}</div>
-      ${d.shelf?`<div class="shelf-big">${esc(d.shelf)}</div>`:''}
-    </div>
-    <div class="d-model">${esc(d.model)}</div>
-    <div class="d-sub">${esc(d.type)}</div>
-    ${d.issue?`<div class="d-sub">${esc(d.issue)}</div>`:''}
-    ${d.status==='unrepaired'&&d.unrepairedReason?`<div class="unrepaired-reason"><b>${l.reasonLabel}:</b> ${esc(d.unrepairedReason)}</div>`:''}
-    ${d.price?`<div class="d-price">${money(d.price)}</div>`:''}
-    ${d.notes?`<div class="d-note">${esc(d.notes)}</div>`:''}
-    <div class="d-date">${l.receivedLabel} ${ds}</div>
-    <div class="d-actions">${btns}</div>`;
-  document.getElementById('detail-sheet').classList.add('open');
+  const d=devices.find(x=&gt;x.id===id); if(!d) return;
+  const l=t(), si=statusInfo(d.status), loc=currentLang===&#x27;ar&#x27;?&#x27;ar-IQ&#x27;:&#x27;en-GB&#x27;, c=new Date(d.createdAt);
+  const ds=c.toLocaleDateString(loc)+&#x27; &#x27;+c.toLocaleTimeString(loc,{hour:&#x27;2-digit&#x27;,minute:&#x27;2-digit&#x27;});
+  let btns=&#x27;&#x27;;
+  if(d.status===&#x27;waiting&#x27;)    btns+=`&lt;button class=&quot;btn btn-primary btn-sm&quot; onclick=&quot;setStatus(${d.id},&#x27;inprogress&#x27;)&quot;&gt;${l.startBtn}&lt;/button&gt;`;
+  if(d.status===&#x27;inprogress&#x27;) btns+=`&lt;button class=&quot;btn btn-green btn-sm&quot; onclick=&quot;setStatus(${d.id},&#x27;done&#x27;)&quot;&gt;${l.doneBtn}&lt;/button&gt;`;
+  if(d.status===&#x27;done&#x27;)       btns+=`&lt;button class=&quot;btn btn-purple btn-sm&quot; onclick=&quot;setStatus(${d.id},&#x27;delivered&#x27;)&quot;&gt;${l.deliveredBtn}&lt;/button&gt;`;
+  if(d.status===&#x27;waiting&#x27;||d.status===&#x27;inprogress&#x27;) btns+=`&lt;button class=&quot;btn btn-red btn-sm&quot; onclick=&quot;openUnrepairedSheet(${d.id})&quot;&gt;${l.notRepairedBtn}&lt;/button&gt;`;
+  btns+=`&lt;button class=&quot;btn btn-sm&quot; onclick=&quot;closeSheet(&#x27;detail-sheet&#x27;);openEditDevice(${d.id})&quot;&gt;${l.editBtn}&lt;/button&gt;`;
+  document.getElementById(&#x27;detail-body&#x27;).innerHTML=`
+    &lt;div class=&quot;d-id&quot;&gt;${esc(d.jobId)}&lt;/div&gt;
+    &lt;div class=&quot;d-badge&quot;&gt;&lt;span class=&quot;status-badge sb-${d.status}&quot;&gt;${si.text}&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;detail-row&quot;&gt;
+      &lt;div&gt;&lt;div class=&quot;d-name&quot;&gt;${esc(d.customer)}&lt;/div&gt;${d.phone?`&lt;div class=&quot;d-phone&quot;&gt;${esc(d.phone)}&lt;/div&gt;`:&#x27;&#x27;}&lt;/div&gt;
+      ${d.shelf?`&lt;div class=&quot;shelf-big&quot;&gt;${esc(d.shelf)}&lt;/div&gt;`:&#x27;&#x27;}
+    &lt;/div&gt;
+    &lt;div class=&quot;d-model&quot;&gt;${esc(d.model)}&lt;/div&gt;
+    &lt;div class=&quot;d-sub&quot;&gt;${esc(d.type)}&lt;/div&gt;
+    ${d.issue?`&lt;div class=&quot;d-sub&quot;&gt;${esc(d.issue)}&lt;/div&gt;`:&#x27;&#x27;}
+    ${d.status===&#x27;unrepaired&#x27;&amp;&amp;d.unrepairedReason?`&lt;div class=&quot;unrepaired-reason&quot;&gt;&lt;b&gt;${l.reasonLabel}:&lt;/b&gt; ${esc(d.unrepairedReason)}&lt;/div&gt;`:&#x27;&#x27;}
+    ${d.price?`&lt;div class=&quot;d-price&quot;&gt;${money(d.price)}&lt;/div&gt;`:&#x27;&#x27;}
+    ${d.notes?`&lt;div class=&quot;d-note&quot;&gt;${esc(d.notes)}&lt;/div&gt;`:&#x27;&#x27;}
+    &lt;div class=&quot;d-date&quot;&gt;${l.receivedLabel} ${ds}&lt;/div&gt;
+    &lt;div class=&quot;d-actions&quot;&gt;${btns}&lt;/div&gt;`;
+  document.getElementById(&#x27;detail-sheet&#x27;).classList.add(&#x27;open&#x27;);
 }
 function renderDevices(){
-  const l=t(), q=(document.getElementById('device-search').value||'').toLowerCase();
+  const l=t(), q=(document.getElementById(&#x27;device-search&#x27;).value||&#x27;&#x27;).toLowerCase();
   const grp=GROUPS[view]||null, rank={inprogress:0,waiting:1,done:0,delivered:1};
-  const list=devices.filter(d=>{
-    if(grp&&!grp.includes(d.status)) return false;
-    if(sub&&d.status!==sub) return false;
-    return !q||(d.jobId+' '+d.customer+' '+d.model+' '+(d.shelf||'')+' '+(d.issue||'')).toLowerCase().includes(q);
+  const list=devices.filter(d=&gt;{
+    if(grp&amp;&amp;!grp.includes(d.status)) return false;
+    if(sub&amp;&amp;d.status!==sub) return false;
+    return !q||(d.jobId+&#x27; &#x27;+d.customer+&#x27; &#x27;+d.model+&#x27; &#x27;+(d.shelf||&#x27;&#x27;)+&#x27; &#x27;+(d.issue||&#x27;&#x27;)).toLowerCase().includes(q);
   });
-  if(grp) list.sort((a,b)=>(rank[a.status]||0)-(rank[b.status]||0));
+  if(grp) list.sort((a,b)=&gt;(rank[a.status]||0)-(rank[b.status]||0));
   const names={waiting:l.waiting,inprogress:l.inprogress,done:l.doneF,delivered:l.delivered};
-  const inView=devices.filter(d=>!grp||grp.includes(d.status));
-  document.getElementById('sub-chips').innerHTML=(grp&&grp.length>1)
-    ?[['',l.allFilter,inView.length]].concat(grp.map(s=>[s,names[s],devices.filter(d=>d.status===s).length]))
-      .map(c=>`<button class="chip${sub===c[0]?' active':''}" onclick="setSub('${c[0]}')">${c[1]}<b>${c[2]}</b></button>`).join(''):'';
-  const el=document.getElementById('devices-list');
-  if(!list.length){el.innerHTML=`<div class="empty">${view==='all'?l.emptyDevices:l.empty[view]}</div>`;animate=false;updateDeviceStats();return;}
-  el.innerHTML=list.map((d,i)=>{
+  const inView=devices.filter(d=&gt;!grp||grp.includes(d.status));
+  document.getElementById(&#x27;sub-chips&#x27;).innerHTML=(grp&amp;&amp;grp.length&gt;1)
+    ?[[&#x27;&#x27;,l.allFilter,inView.length]].concat(grp.map(s=&gt;[s,names[s],devices.filter(d=&gt;d.status===s).length]))
+      .map(c=&gt;`&lt;button class=&quot;chip${sub===c[0]?&#x27; active&#x27;:&#x27;&#x27;}&quot; onclick=&quot;setSub(&#x27;${c[0]}&#x27;)&quot;&gt;${c[1]}&lt;b&gt;${c[2]}&lt;/b&gt;&lt;/button&gt;`).join(&#x27;&#x27;):&#x27;&#x27;;
+  const el=document.getElementById(&#x27;devices-list&#x27;);
+  if(!list.length){el.innerHTML=`&lt;div class=&quot;empty&quot;&gt;${view===&#x27;all&#x27;?l.emptyDevices:l.empty[view]}&lt;/div&gt;`;animate=false;updateDeviceStats();return;}
+  el.innerHTML=list.map((d,i)=&gt;{
     const si=statusInfo(d.status);
-    const ds=new Date(d.createdAt).toLocaleDateString(currentLang==='ar'?'ar-IQ':'en-GB');
-    return `<div class="device-card st-${d.status}${animate?' enter':''}" style="--i:${Math.min(i,8)}" onclick="openDetail(${d.id})">
-      <div class="dc-top"><span class="device-id">${esc(d.jobId)}</span><span class="status-badge sb-${d.status}">${si.text}</span></div>
-      <div class="device-name">${esc(d.customer)}</div>
-      <div class="device-model">${esc(d.model)}</div>
-      ${d.issue?`<div class="device-issue">${esc(d.issue)}</div>`:''}
-      ${d.status==='unrepaired'&&d.unrepairedReason?`<div class="unrepaired-reason">${esc(d.unrepairedReason)}</div>`:''}
-      <div class="dc-foot">
-        <div class="dc-meta"><span>${esc(d.type)}</span><span>${ds}</span></div>
-        <div class="dc-end">${d.price?`<span class="price">${money(d.price)}</span>`:''}${d.shelf?`<span class="device-shelf"><small>${l.shelfLabel}</small>${esc(d.shelf)}</span>`:''}</div>
-      </div>
-    </div>`;
-  }).join('');
+    const ds=new Date(d.createdAt).toLocaleDateString(currentLang===&#x27;ar&#x27;?&#x27;ar-IQ&#x27;:&#x27;en-GB&#x27;);
+    return `&lt;div class=&quot;device-card st-${d.status}${animate?&#x27; enter&#x27;:&#x27;&#x27;}&quot; style=&quot;--i:${Math.min(i,8)}&quot; onclick=&quot;openDetail(${d.id})&quot;&gt;
+      &lt;div class=&quot;dc-top&quot;&gt;&lt;span class=&quot;device-id&quot;&gt;${esc(d.jobId)}&lt;/span&gt;&lt;span class=&quot;status-badge sb-${d.status}&quot;&gt;${si.text}&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;device-name&quot;&gt;${esc(d.customer)}&lt;/div&gt;
+      &lt;div class=&quot;device-model&quot;&gt;${esc(d.model)}&lt;/div&gt;
+      ${d.issue?`&lt;div class=&quot;device-issue&quot;&gt;${esc(d.issue)}&lt;/div&gt;`:&#x27;&#x27;}
+      ${d.status===&#x27;unrepaired&#x27;&amp;&amp;d.unrepairedReason?`&lt;div class=&quot;unrepaired-reason&quot;&gt;${esc(d.unrepairedReason)}&lt;/div&gt;`:&#x27;&#x27;}
+      &lt;div class=&quot;dc-foot&quot;&gt;
+        &lt;div class=&quot;dc-meta&quot;&gt;&lt;span&gt;${esc(d.type)}&lt;/span&gt;&lt;span&gt;${ds}&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;dc-end&quot;&gt;${d.price?`&lt;span class=&quot;price&quot;&gt;${money(d.price)}&lt;/span&gt;`:&#x27;&#x27;}${d.shelf?`&lt;span class=&quot;device-shelf&quot;&gt;&lt;small&gt;${l.shelfLabel}&lt;/small&gt;${esc(d.shelf)}&lt;/span&gt;`:&#x27;&#x27;}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;`;
+  }).join(&#x27;&#x27;);
   animate=false;
   updateDeviceStats();
 }
 function setCount(id,n){
   const e=document.getElementById(id); if(!e) return; const v=String(n);
   if(e.textContent===v) return;
-  const had=e.textContent!==''; e.textContent=v;
-  if(had){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump');}
+  const had=e.textContent!==&#x27;&#x27;; e.textContent=v;
+  if(had){e.classList.remove(&#x27;bump&#x27;);void e.offsetWidth;e.classList.add(&#x27;bump&#x27;);}
 }
 function updateDeviceStats(){
-  const c=s=>devices.filter(d=>d.status===s).length, l=t();
-  const fin=c('done')+c('delivered'), wrk=c('waiting')+c('inprogress'), bad=c('unrepaired'), tot=devices.length;
-  [['finished',fin],['working',wrk],['unrepaired',bad]].forEach(p=>{setCount('dstat-'+p[0],p[1]);setCount('tc-'+p[0],p[1]);});
-  setCount('tc-all',tot);
-  document.getElementById('dsub-finished').textContent=l.subReady(c('done'));
-  document.getElementById('dsub-working').textContent=l.subWaiting(c('waiting'));
-  document.getElementById('dsub-unrepaired').textContent=l.subShare(tot?Math.round(bad/tot*100):0);
-  document.querySelectorAll('[data-view]').forEach(e=>{const on=e.dataset.view===view;e.classList.toggle('active',on);if(e.getAttribute('role')==='tab')e.setAttribute('aria-selected',on);});
+  const c=s=&gt;devices.filter(d=&gt;d.status===s).length, l=t();
+  const fin=c(&#x27;done&#x27;)+c(&#x27;delivered&#x27;), wrk=c(&#x27;waiting&#x27;)+c(&#x27;inprogress&#x27;), bad=c(&#x27;unrepaired&#x27;), tot=devices.length;
+  [[&#x27;finished&#x27;,fin],[&#x27;working&#x27;,wrk],[&#x27;unrepaired&#x27;,bad]].forEach(p=&gt;{setCount(&#x27;dstat-&#x27;+p[0],p[1]);setCount(&#x27;tc-&#x27;+p[0],p[1]);});
+  setCount(&#x27;tc-all&#x27;,tot);
+  document.getElementById(&#x27;dsub-finished&#x27;).textContent=l.subReady(c(&#x27;done&#x27;));
+  document.getElementById(&#x27;dsub-working&#x27;).textContent=l.subWaiting(c(&#x27;waiting&#x27;));
+  document.getElementById(&#x27;dsub-unrepaired&#x27;).textContent=l.subShare(tot?Math.round(bad/tot*100):0);
+  document.querySelectorAll(&#x27;[data-view]&#x27;).forEach(e=&gt;{const on=e.dataset.view===view;e.classList.toggle(&#x27;active&#x27;,on);if(e.getAttribute(&#x27;role&#x27;)===&#x27;tab&#x27;)e.setAttribute(&#x27;aria-selected&#x27;,on);});
 }
 
-function openBackup(){document.getElementById('backup-sheet').classList.add('open');}
+function openBackup(){document.getElementById(&#x27;backup-sheet&#x27;).classList.add(&#x27;open&#x27;);}
 function exportData(){
   const data={devices,jobCounter,exported:new Date().toISOString(),version:3};
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:&#x27;application/json&#x27;});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url; a.download='نسخة_احتياطية_'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+  const a=document.createElement(&#x27;a&#x27;);
+  a.href=url; a.download=&#x27;نسخة_احتياطية_&#x27;+new Date().toISOString().slice(0,10)+&#x27;.json&#x27;; a.click();
   URL.revokeObjectURL(url);
 }
 function importData(e){
   const file=e.target.files[0]; if(!file) return;
   const reader=new FileReader();
-  reader.onload=ev=>{
+  reader.onload=ev=&gt;{
     try{
       const data=JSON.parse(ev.target.result);
-      if(!data.devices){alert('ملف غير صالح.');return;}
-      if(!confirm('سيتم استبدال جميع البيانات الحالية. هل أنت متأكد؟')) return;
+      if(!data.devices){alert(&#x27;ملف غير صالح.&#x27;);return;}
+      if(!confirm(&#x27;سيتم استبدال جميع البيانات الحالية. هل أنت متأكد؟&#x27;)) return;
       devices=data.devices||[]; jobCounter=data.jobCounter||0;
       save(); renderDevices(); updateDeviceStats();
-      closeSheet('backup-sheet');
-      alert('تم الاستعادة! '+devices.length+' جهاز.');
-    } catch(err){alert('تعذر قراءة الملف.');}
+      closeSheet(&#x27;backup-sheet&#x27;);
+      alert(&#x27;تم الاستعادة! &#x27;+devices.length+&#x27; جهاز.&#x27;);
+    } catch(err){alert(&#x27;تعذر قراءة الملف.&#x27;);}
   };
-  reader.readAsText(file); e.target.value='';
+  reader.readAsText(file); e.target.value=&#x27;&#x27;;
 }
 /* ---- تبديل اللغة ---- */
-let currentLang = localStorage.getItem('lang') || 'ar';
+let currentLang = localStorage.getItem(&#x27;lang&#x27;) || &#x27;ar&#x27;;
 
 const T = {
   ar: {
-    jobs:'الأجهزة',
-    active:'نشط', done:'جاهز', total:'الكل',
-    searchDevice:'بحث بالاسم أو الموديل أو الرقم...',
-    allFilter:'الكل', waiting:'بانتظار الإصلاح', inprogress:'قيد الإصلاح', doneF:'جاهز', delivered:'تم التسليم',
-    newJob:'طلب إصلاح جديد', customerName:'اسم العميل', phoneNum:'رقم الهاتف',
-    deviceModel:'موديل الجهاز', shelf:'رقم الرف', problem:'المشكلة',
-    repairType:'نوع الإصلاح', agreedPrice:'السعر المتفق (د.ع)', notes:'ملاحظات',
-    save:'حفظ', cancel:'إلغاء',
-    confirm:'✓ تأكيد', repairDetail:'تفاصيل الإصلاح', backup:'نسخ',
-    types:['إصلاح بورد','سوفت وير','أخرى'],
-    statusWaiting:'بانتظار الإصلاح', statusInprogress:'قيد الإصلاح', statusDone:'جاهز ✓', statusDelivered:'تم التسليم', statusUnrepaired:'لم يصلح',
-    startBtn:'▶ بدء الإصلاح', doneBtn:'✓ جاهز', deliveredBtn:'تم التسليم', editBtn:'تعديل', notRepairedBtn:'✕ لم يصلح',
-    notRepairedTitle:'لم يصلح الجهاز', reasonLabel:'سبب عدم الإصلاح',
-    reasonPlaceholder:'مثال: القطعة غير متوفرة، الضرر أكبر من المتوقع، العميل لم يوافق على السعر...',
-    shelfLabel:'الرف', receivedLabel:'استُلم:', emptyDevices:'لا توجد أجهزة.<br>اضغط + لإضافة جهاز جديد.',
-    deleteDevice:'حذف هذا الطلب؟',
-    enterCustomer:'أدخل اسم العميل', enterModel:'أدخل موديل الجهاز',
-    backupTitle:'النسخ الاحتياطي', exportTitle:'تصدير نسخة احتياطية',
-    exportDesc:'يحفظ جميع طلبات الإصلاح وبيانات العملاء في ملف JSON.',
-    downloadBtn:'تنزيل النسخة الاحتياطية', restoreTitle:'استعادة من نسخة احتياطية',
-    restoreDesc:'اختر ملف النسخة الاحتياطية. سيستبدل جميع البيانات الحالية.',
-    chooseFile:'اختر ملف', close:'إغلاق',
-    invalidFile:'ملف غير صالح.', cannotRead:'تعذر قراءة الملف.',
-    replaceConfirm:'سيتم استبدال جميع البيانات الحالية. هل أنت متأكد؟',
-    editJob: id=>'تعديل '+id,
-    tabAll:'الكل', tabFinished:'منتهية', tabWorking:'قيد العمل', tabUnrepaired:'لم تُصلح',
-    mFinished:'منتهية', mWorking:'قيد العمل', mUnrepaired:'لم تُصلح',
-    subReady:n=>n+' جاهز للتسليم', subWaiting:n=>n+' لم يبدأ', subShare:p=>p+'% من الطلبات',
-    empty:{finished:'لا توجد أجهزة منتهية بعد.', working:'لا توجد أجهزة قيد العمل.', unrepaired:'لا توجد أجهزة تعذّر إصلاحها.'},
-    dir:'rtl', lang:'ar'
+    jobs:&#x27;الأجهزة&#x27;,
+    active:&#x27;نشط&#x27;, done:&#x27;جاهز&#x27;, total:&#x27;الكل&#x27;,
+    searchDevice:&#x27;بحث بالاسم أو الموديل أو الرقم...&#x27;,
+    allFilter:&#x27;الكل&#x27;, waiting:&#x27;بانتظار الإصلاح&#x27;, inprogress:&#x27;قيد الإصلاح&#x27;, doneF:&#x27;جاهز&#x27;, delivered:&#x27;تم التسليم&#x27;,
+    newJob:&#x27;طلب إصلاح جديد&#x27;, customerName:&#x27;اسم العميل&#x27;, phoneNum:&#x27;رقم الهاتف&#x27;,
+    deviceModel:&#x27;موديل الجهاز&#x27;, shelf:&#x27;رقم الرف&#x27;, problem:&#x27;المشكلة&#x27;,
+    repairType:&#x27;نوع الإصلاح&#x27;, agreedPrice:&#x27;السعر المتفق (د.ع)&#x27;, notes:&#x27;ملاحظات&#x27;,
+    save:&#x27;حفظ&#x27;, cancel:&#x27;إلغاء&#x27;,
+    confirm:&#x27;✓ تأكيد&#x27;, repairDetail:&#x27;تفاصيل الإصلاح&#x27;, backup:&#x27;نسخ&#x27;,
+    types:[&#x27;إصلاح بورد&#x27;,&#x27;سوفت وير&#x27;,&#x27;أخرى&#x27;],
+    statusWaiting:&#x27;بانتظار الإصلاح&#x27;, statusInprogress:&#x27;قيد الإصلاح&#x27;, statusDone:&#x27;جاهز ✓&#x27;, statusDelivered:&#x27;تم التسليم&#x27;, statusUnrepaired:&#x27;لم يصلح&#x27;,
+    startBtn:&#x27;▶ بدء الإصلاح&#x27;, doneBtn:&#x27;✓ جاهز&#x27;, deliveredBtn:&#x27;تم التسليم&#x27;, editBtn:&#x27;تعديل&#x27;, notRepairedBtn:&#x27;✕ لم يصلح&#x27;,
+    notRepairedTitle:&#x27;لم يصلح الجهاز&#x27;, reasonLabel:&#x27;سبب عدم الإصلاح&#x27;,
+    reasonPlaceholder:&#x27;مثال: القطعة غير متوفرة، الضرر أكبر من المتوقع، العميل لم يوافق على السعر...&#x27;,
+    shelfLabel:&#x27;الرف&#x27;, receivedLabel:&#x27;استُلم:&#x27;, emptyDevices:&#x27;لا توجد أجهزة.&lt;br&gt;اضغط + لإضافة جهاز جديد.&#x27;,
+    deleteDevice:&#x27;حذف هذا الطلب؟&#x27;,
+    enterCustomer:&#x27;أدخل اسم العميل&#x27;, enterModel:&#x27;أدخل موديل الجهاز&#x27;,
+    backupTitle:&#x27;النسخ الاحتياطي&#x27;, exportTitle:&#x27;تصدير نسخة احتياطية&#x27;,
+    exportDesc:&#x27;يحفظ جميع طلبات الإصلاح وبيانات العملاء في ملف JSON.&#x27;,
+    downloadBtn:&#x27;تنزيل النسخة الاحتياطية&#x27;, restoreTitle:&#x27;استعادة من نسخة احتياطية&#x27;,
+    restoreDesc:&#x27;اختر ملف النسخة الاحتياطية. سيستبدل جميع البيانات الحالية.&#x27;,
+    chooseFile:&#x27;اختر ملف&#x27;, close:&#x27;إغلاق&#x27;,
+    invalidFile:&#x27;ملف غير صالح.&#x27;, cannotRead:&#x27;تعذر قراءة الملف.&#x27;,
+    replaceConfirm:&#x27;سيتم استبدال جميع البيانات الحالية. هل أنت متأكد؟&#x27;,
+    editJob: id=&gt;&#x27;تعديل &#x27;+id,
+    tabAll:&#x27;الكل&#x27;, tabFinished:&#x27;منتهية&#x27;, tabWorking:&#x27;قيد العمل&#x27;, tabUnrepaired:&#x27;لم تُصلح&#x27;,
+    mFinished:&#x27;منتهية&#x27;, mWorking:&#x27;قيد العمل&#x27;, mUnrepaired:&#x27;لم تُصلح&#x27;,
+    subReady:n=&gt;n+&#x27; جاهز للتسليم&#x27;, subWaiting:n=&gt;n+&#x27; لم يبدأ&#x27;, subShare:p=&gt;p+&#x27;% من الطلبات&#x27;,
+    empty:{finished:&#x27;لا توجد أجهزة منتهية بعد.&#x27;, working:&#x27;لا توجد أجهزة قيد العمل.&#x27;, unrepaired:&#x27;لا توجد أجهزة تعذّر إصلاحها.&#x27;},
+    dir:&#x27;rtl&#x27;, lang:&#x27;ar&#x27;
   },
   en: {
-    jobs:'Jobs',
-    active:'Active', done:'Done', total:'Total',
-    searchDevice:'Search name, model, ID...',
-    allFilter:'All', waiting:'Waiting', inprogress:'In Progress', doneF:'Done', delivered:'Delivered',
-    newJob:'New Repair Job', customerName:'Customer Name', phoneNum:'Phone Number',
-    deviceModel:'Device Model', shelf:'Shelf / Location', problem:'Problem / Issue',
-    repairType:'Repair Type', agreedPrice:'Agreed Price (IQD)', notes:'Notes',
-    save:'Save', cancel:'Cancel',
-    confirm:'✓ Confirm', repairDetail:'Repair Job', backup:'Backup',
-    types:['Motherboard repair','Software','Other'],
-    statusWaiting:'Waiting', statusInprogress:'In Progress', statusDone:'Done ✓', statusDelivered:'Delivered', statusUnrepaired:'Not Repaired',
-    startBtn:'▶ Start Repair', doneBtn:'✓ Mark Done', deliveredBtn:'Delivered', editBtn:'Edit', notRepairedBtn:'✕ Not Repaired',
-    notRepairedTitle:'Device Not Repaired', reasonLabel:'Reason Not Repaired',
-    reasonPlaceholder:'e.g. Part unavailable, damage worse than expected, customer declined the price...',
-    shelfLabel:'Shelf', receivedLabel:'Received:',
-    emptyDevices:'No repair jobs.<br>Tap + to add a device.',
-    deleteDevice:'Delete this repair job?',
-    enterCustomer:'Enter customer name', enterModel:'Enter device model',
-    backupTitle:'Backup & Restore', exportTitle:'Export Backup',
-    exportDesc:'Downloads all repair jobs and customer info as a JSON file.',
-    downloadBtn:'Download Backup', restoreTitle:'Restore from Backup',
-    restoreDesc:'Choose a backup file. This will replace all current data.',
-    chooseFile:'Choose File', close:'Close',
-    invalidFile:'Invalid backup file.', cannotRead:'Could not read file.',
-    replaceConfirm:'This will replace ALL current data. Are you sure?',
-    editJob: id=>'Edit '+id,
-    tabAll:'All', tabFinished:'Finished', tabWorking:'Working', tabUnrepaired:'Unrepaired',
-    mFinished:'Finished', mWorking:'Working on', mUnrepaired:'Unrepaired',
-    subReady:n=>n+' ready for pickup', subWaiting:n=>n+' not started', subShare:p=>p+'% of jobs',
-    empty:{finished:'No finished devices yet.', working:'Nothing in progress.', unrepaired:'No unrepaired devices.'},
-    dir:'ltr', lang:'en'
+    jobs:&#x27;Jobs&#x27;,
+    active:&#x27;Active&#x27;, done:&#x27;Done&#x27;, total:&#x27;Total&#x27;,
+    searchDevice:&#x27;Search name, model, ID...&#x27;,
+    allFilter:&#x27;All&#x27;, waiting:&#x27;Waiting&#x27;, inprogress:&#x27;In Progress&#x27;, doneF:&#x27;Done&#x27;, delivered:&#x27;Delivered&#x27;,
+    newJob:&#x27;New Repair Job&#x27;, customerName:&#x27;Customer Name&#x27;, phoneNum:&#x27;Phone Number&#x27;,
+    deviceModel:&#x27;Device Model&#x27;, shelf:&#x27;Shelf / Location&#x27;, problem:&#x27;Problem / Issue&#x27;,
+    repairType:&#x27;Repair Type&#x27;, agreedPrice:&#x27;Agreed Price (IQD)&#x27;, notes:&#x27;Notes&#x27;,
+    save:&#x27;Save&#x27;, cancel:&#x27;Cancel&#x27;,
+    confirm:&#x27;✓ Confirm&#x27;, repairDetail:&#x27;Repair Job&#x27;, backup:&#x27;Backup&#x27;,
+    types:[&#x27;Motherboard repair&#x27;,&#x27;Software&#x27;,&#x27;Other&#x27;],
+    statusWaiting:&#x27;Waiting&#x27;, statusInprogress:&#x27;In Progress&#x27;, statusDone:&#x27;Done ✓&#x27;, statusDelivered:&#x27;Delivered&#x27;, statusUnrepaired:&#x27;Not Repaired&#x27;,
+    startBtn:&#x27;▶ Start Repair&#x27;, doneBtn:&#x27;✓ Mark Done&#x27;, deliveredBtn:&#x27;Delivered&#x27;, editBtn:&#x27;Edit&#x27;, notRepairedBtn:&#x27;✕ Not Repaired&#x27;,
+    notRepairedTitle:&#x27;Device Not Repaired&#x27;, reasonLabel:&#x27;Reason Not Repaired&#x27;,
+    reasonPlaceholder:&#x27;e.g. Part unavailable, damage worse than expected, customer declined the price...&#x27;,
+    shelfLabel:&#x27;Shelf&#x27;, receivedLabel:&#x27;Received:&#x27;,
+    emptyDevices:&#x27;No repair jobs.&lt;br&gt;Tap + to add a device.&#x27;,
+    deleteDevice:&#x27;Delete this repair job?&#x27;,
+    enterCustomer:&#x27;Enter customer name&#x27;, enterModel:&#x27;Enter device model&#x27;,
+    backupTitle:&#x27;Backup &amp; Restore&#x27;, exportTitle:&#x27;Export Backup&#x27;,
+    exportDesc:&#x27;Downloads all repair jobs and customer info as a JSON file.&#x27;,
+    downloadBtn:&#x27;Download Backup&#x27;, restoreTitle:&#x27;Restore from Backup&#x27;,
+    restoreDesc:&#x27;Choose a backup file. This will replace all current data.&#x27;,
+    chooseFile:&#x27;Choose File&#x27;, close:&#x27;Close&#x27;,
+    invalidFile:&#x27;Invalid backup file.&#x27;, cannotRead:&#x27;Could not read file.&#x27;,
+    replaceConfirm:&#x27;This will replace ALL current data. Are you sure?&#x27;,
+    editJob: id=&gt;&#x27;Edit &#x27;+id,
+    tabAll:&#x27;All&#x27;, tabFinished:&#x27;Finished&#x27;, tabWorking:&#x27;Working&#x27;, tabUnrepaired:&#x27;Unrepaired&#x27;,
+    mFinished:&#x27;Finished&#x27;, mWorking:&#x27;Working on&#x27;, mUnrepaired:&#x27;Unrepaired&#x27;,
+    subReady:n=&gt;n+&#x27; ready for pickup&#x27;, subWaiting:n=&gt;n+&#x27; not started&#x27;, subShare:p=&gt;p+&#x27;% of jobs&#x27;,
+    empty:{finished:&#x27;No finished devices yet.&#x27;, working:&#x27;Nothing in progress.&#x27;, unrepaired:&#x27;No unrepaired devices.&#x27;},
+    dir:&#x27;ltr&#x27;, lang:&#x27;en&#x27;
   }
 };
 
 function t(){ return T[currentLang]; }
 
 function toggleLang(){
-  currentLang = currentLang==='ar' ? 'en' : 'ar';
-  localStorage.setItem('lang', currentLang);
+  currentLang = currentLang===&#x27;ar&#x27; ? &#x27;en&#x27; : &#x27;ar&#x27;;
+  localStorage.setItem(&#x27;lang&#x27;, currentLang);
   applyLang();
   renderDevices();
 }
@@ -537,74 +566,74 @@ function toggleLang(){
 function applyLang(){
   const l = t();
   const html = document.documentElement;
-  html.setAttribute('dir', l.dir);
-  html.setAttribute('lang', l.lang);
+  html.setAttribute(&#x27;dir&#x27;, l.dir);
+  html.setAttribute(&#x27;lang&#x27;, l.lang);
   document.body.style.direction = l.dir;
 
   // lang button
-  document.getElementById('lang-btn').textContent = currentLang==='ar' ? 'EN' : 'ع';
+  document.getElementById(&#x27;lang-btn&#x27;).textContent = currentLang===&#x27;ar&#x27; ? &#x27;EN&#x27; : &#x27;ع&#x27;;
 
-  document.querySelectorAll('[data-k]').forEach(e=>{const v=l[e.dataset.k];if(typeof v==='string')e.textContent=v;});
-  document.querySelectorAll('[data-ar]').forEach(e=>{e.textContent=e.dataset[currentLang];});
-  document.getElementById('device-search').placeholder = l.searchDevice;
+  document.querySelectorAll(&#x27;[data-k]&#x27;).forEach(e=&gt;{const v=l[e.dataset.k];if(typeof v===&#x27;string&#x27;)e.textContent=v;});
+  document.querySelectorAll(&#x27;[data-ar]&#x27;).forEach(e=&gt;{e.textContent=e.dataset[currentLang];});
+  document.getElementById(&#x27;device-search&#x27;).placeholder = l.searchDevice;
 
   // unrepaired reason sheet
-  document.getElementById('usheet-title').textContent = l.notRepairedTitle;
-  document.getElementById('u-reason-label').textContent = l.reasonLabel;
-  document.getElementById('u-reason').placeholder = l.reasonPlaceholder;
-  document.getElementById('u-confirm-btn').textContent = l.confirm;
-  document.getElementById('u-cancel-btn').textContent = l.cancel;
+  document.getElementById(&#x27;usheet-title&#x27;).textContent = l.notRepairedTitle;
+  document.getElementById(&#x27;u-reason-label&#x27;).textContent = l.reasonLabel;
+  document.getElementById(&#x27;u-reason&#x27;).placeholder = l.reasonPlaceholder;
+  document.getElementById(&#x27;u-confirm-btn&#x27;).textContent = l.confirm;
+  document.getElementById(&#x27;u-cancel-btn&#x27;).textContent = l.cancel;
 
   // device sheet
-  document.getElementById('dsheet-title').textContent = l.newJob;
-  setLabel('d-customer', l.customerName); setPlaceholder('d-customer', currentLang==='ar'?'مثال: أحمد علي':'e.g. Ahmed Ali');
-  setLabel('d-phone', l.phoneNum);
-  setLabel('d-model', l.deviceModel); setPlaceholder('d-model', 'e.g. Samsung A54');
-  setLabel('d-shelf', l.shelf);
-  setLabel('d-issue', l.problem); setPlaceholder('d-issue', currentLang==='ar'?'مثال: شاشة مكسورة، لا يشحن...':'e.g. Cracked screen, no charge...');
-  setLabel('d-type', l.repairType);
+  document.getElementById(&#x27;dsheet-title&#x27;).textContent = l.newJob;
+  setLabel(&#x27;d-customer&#x27;, l.customerName); setPlaceholder(&#x27;d-customer&#x27;, currentLang===&#x27;ar&#x27;?&#x27;مثال: أحمد علي&#x27;:&#x27;e.g. Ahmed Ali&#x27;);
+  setLabel(&#x27;d-phone&#x27;, l.phoneNum);
+  setLabel(&#x27;d-model&#x27;, l.deviceModel); setPlaceholder(&#x27;d-model&#x27;, &#x27;e.g. Samsung A54&#x27;);
+  setLabel(&#x27;d-shelf&#x27;, l.shelf);
+  setLabel(&#x27;d-issue&#x27;, l.problem); setPlaceholder(&#x27;d-issue&#x27;, currentLang===&#x27;ar&#x27;?&#x27;مثال: شاشة مكسورة، لا يشحن...&#x27;:&#x27;e.g. Cracked screen, no charge...&#x27;);
+  setLabel(&#x27;d-type&#x27;, l.repairType);
   // repair type options
-  const dt = document.getElementById('d-type');
-  for(let i=0;i<dt.options.length;i++) dt.options[i].text = l.types[i];
-  setLabel('d-price', l.agreedPrice);
-  setLabel('d-notes', l.notes); document.getElementById('d-notes').placeholder = currentLang==='ar'?'الباسورد، الملحقات، تعليمات خاصة...':'Password, accessories, special instructions...';
+  const dt = document.getElementById(&#x27;d-type&#x27;);
+  for(let i=0;i&lt;dt.options.length;i++) dt.options[i].text = l.types[i];
+  setLabel(&#x27;d-price&#x27;, l.agreedPrice);
+  setLabel(&#x27;d-notes&#x27;, l.notes); document.getElementById(&#x27;d-notes&#x27;).placeholder = currentLang===&#x27;ar&#x27;?&#x27;الباسورد، الملحقات، تعليمات خاصة...&#x27;:&#x27;Password, accessories, special instructions...&#x27;;
 
   // device sheet buttons
-  const dActions = document.querySelector('#device-sheet .sheet-actions');
+  const dActions = document.querySelector(&#x27;#device-sheet .sheet-actions&#x27;);
   dActions.children[0].textContent = l.save;
   dActions.children[1].textContent = l.cancel;
 
   // detail sheet title
-  document.querySelector('#detail-sheet .sheet-title span').textContent = l.repairDetail;
+  document.querySelector(&#x27;#detail-sheet .sheet-title span&#x27;).textContent = l.repairDetail;
 
   // backup sheet
-  document.querySelector('#backup-sheet .sheet-title span').textContent = l.backupTitle;
-  const bs = document.querySelectorAll('#backup-sheet .backup-section');
-  [[l.exportTitle,l.exportDesc,l.downloadBtn],[l.restoreTitle,l.restoreDesc,l.chooseFile]].forEach((v,i)=>{
-    bs[i].querySelector('.backup-title').textContent = v[0];
-    bs[i].querySelector('.backup-desc').textContent = v[1];
-    bs[i].querySelector('button').textContent = v[2];
+  document.querySelector(&#x27;#backup-sheet .sheet-title span&#x27;).textContent = l.backupTitle;
+  const bs = document.querySelectorAll(&#x27;#backup-sheet .backup-section&#x27;);
+  [[l.exportTitle,l.exportDesc,l.downloadBtn],[l.restoreTitle,l.restoreDesc,l.chooseFile]].forEach((v,i)=&gt;{
+    bs[i].querySelector(&#x27;.backup-title&#x27;).textContent = v[0];
+    bs[i].querySelector(&#x27;.backup-desc&#x27;).textContent = v[1];
+    bs[i].querySelector(&#x27;button&#x27;).textContent = v[2];
   });
-  document.querySelector('#backup-sheet > .sheet > .btn:last-child').textContent = l.close;
+  document.querySelector(&#x27;#backup-sheet &gt; .sheet &gt; .btn:last-child&#x27;).textContent = l.close;
 
   // fab direction
-  document.getElementById('fab-btn').style.left = l.dir==='rtl' ? '16px' : 'auto';
-  document.getElementById('fab-btn').style.right = l.dir==='ltr' ? '16px' : 'auto';
+  document.getElementById(&#x27;fab-btn&#x27;).style.left = l.dir===&#x27;rtl&#x27; ? &#x27;16px&#x27; : &#x27;auto&#x27;;
+  document.getElementById(&#x27;fab-btn&#x27;).style.right = l.dir===&#x27;ltr&#x27; ? &#x27;16px&#x27; : &#x27;auto&#x27;;
 
   // sheet directions
-  document.querySelectorAll('.sheet').forEach(s=>s.style.direction=l.dir);
-  document.querySelectorAll('.sheet-actions').forEach(sa=>{
-    sa.style.flexDirection = l.dir==='rtl' ? 'row-reverse' : 'row';
+  document.querySelectorAll(&#x27;.sheet&#x27;).forEach(s=&gt;s.style.direction=l.dir);
+  document.querySelectorAll(&#x27;.sheet-actions&#x27;).forEach(sa=&gt;{
+    sa.style.flexDirection = l.dir===&#x27;rtl&#x27; ? &#x27;row-reverse&#x27; : &#x27;row&#x27;;
   });
 }
 
 function setLabel(id, text){
   const el = document.getElementById(id);
-  if(el && el.previousElementSibling && el.previousElementSibling.tagName==='LABEL')
+  if(el &amp;&amp; el.previousElementSibling &amp;&amp; el.previousElementSibling.tagName===&#x27;LABEL&#x27;)
     el.previousElementSibling.textContent = text;
   else {
-    const field = el ? el.closest('.field') : null;
-    if(field){ const lbl=field.querySelector('label'); if(lbl) lbl.textContent=text; }
+    const field = el ? el.closest(&#x27;.field&#x27;) : null;
+    if(field){ const lbl=field.querySelector(&#x27;label&#x27;); if(lbl) lbl.textContent=text; }
   }
 }
 function setPlaceholder(id, text){ const el=document.getElementById(id); if(el) el.placeholder=text; }
@@ -612,12 +641,12 @@ function setPlaceholder(id, text){ const el=document.getElementById(id); if(el) 
 // patch statusInfo to use t()
 statusInfo = function(s){
   const l=t();
-  if(s==='waiting')    return {text:l.statusWaiting,    cls:'sb-waiting'};
-  if(s==='inprogress') return {text:l.statusInprogress, cls:'sb-inprogress'};
-  if(s==='done')       return {text:l.statusDone,       cls:'sb-done'};
-  if(s==='delivered')  return {text:l.statusDelivered,  cls:'sb-delivered'};
-  if(s==='unrepaired') return {text:l.statusUnrepaired,  cls:'sb-unrepaired'};
-  return {text:s,cls:'sb-waiting'};
+  if(s===&#x27;waiting&#x27;)    return {text:l.statusWaiting,    cls:&#x27;sb-waiting&#x27;};
+  if(s===&#x27;inprogress&#x27;) return {text:l.statusInprogress, cls:&#x27;sb-inprogress&#x27;};
+  if(s===&#x27;done&#x27;)       return {text:l.statusDone,       cls:&#x27;sb-done&#x27;};
+  if(s===&#x27;delivered&#x27;)  return {text:l.statusDelivered,  cls:&#x27;sb-delivered&#x27;};
+  if(s===&#x27;unrepaired&#x27;) return {text:l.statusUnrepaired,  cls:&#x27;sb-unrepaired&#x27;};
+  return {text:s,cls:&#x27;sb-waiting&#x27;};
 };
 
 // apply on load
@@ -625,10 +654,950 @@ applyLang();
 renderDevices();
 
 // register service worker for installability / offline use
-if('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('sw.js').catch(()=>{});
+if(&#x27;serviceWorker&#x27; in navigator){
+  window.addEventListener(&#x27;load&#x27;, ()=&gt;{
+    navigator.serviceWorker.register(&#x27;sw.js&#x27;).catch(()=&gt;{});
   });
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<iframe id="f-firmware" title="Firmware Tool" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0&quot;&gt;
+&lt;title&gt;أمير سوفت&lt;/title&gt;
+&lt;style&gt;
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0a0c10;--bg2:#12151b;--bg3:rgba(255,255,255,.05);--bg4:rgba(255,255,255,.09);--text:#eef0f4;--text2:#a2aab8;--text3:#6a7282;--accent:#8aa9ff;--acc-rgb:138,169,255;--green:#68d4a6;--amber:#ecb862;--red:#ff8278;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);--radius:16px;--radius-sm:12px;--ease:cubic-bezier(.32,.72,0,1)}
+body{background:radial-gradient(120% 50% at 50% -8%,rgba(138,169,255,.11),transparent 62%) fixed,var(--bg);color:var(--text);font-family:-apple-system,&quot;SF Pro Text&quot;,&quot;Segoe UI&quot;,Roboto,Tahoma,&quot;Noto Sans Arabic&quot;,sans-serif;font-size:14px;line-height:1.45;min-height:100vh;padding-bottom:96px;direction:rtl;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(10,12,16,.72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border)}
+.topbar-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.mark{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,#2a3350,#171c2b);border:1px solid rgba(var(--acc-rgb),.28);box-shadow:0 0 18px -6px rgba(var(--acc-rgb),.6)}
+.lang-btn{min-width:44px;height:34px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:transform .2s var(--ease),background .25s}
+.lang-btn:active{transform:scale(.96);background:var(--bg4)}
+.page{padding:14px 14px 0}
+.search-row{display:flex;gap:8px;margin-bottom:12px;flex-direction:row-reverse}
+.search-row input,#isp-filterType{background:rgba(255,255,255,.04)!important;border:1px solid var(--border)!important;border-radius:var(--radius-sm)!important;padding:12px 14px!important;color:var(--text)!important;font-size:14px!important;outline:none;font-family:inherit;direction:rtl;flex:1;min-width:0;transition:border-color .25s,box-shadow .25s}
+.search-row input::placeholder{color:var(--text3)}
+.search-row input:focus,#isp-filterType:focus,.isp-field input:focus,.isp-field select:focus,.isp-field textarea:focus{border-color:rgba(var(--acc-rgb),.5)!important;box-shadow:0 0 0 3px rgba(var(--acc-rgb),.14)}
+#isp-filterType{flex:0 0 auto}
+.btn{padding:10px 15px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:rgba(255,255,255,.05);color:var(--text);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:transform .2s var(--ease),background .25s,opacity .2s}
+.btn:active{transform:scale(.97);background:var(--bg4)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn-sm{padding:8px 13px;font-size:12.5px}
+.btn-primary,.btn-primary:active{background:linear-gradient(180deg,#a0b8ff,#7f9ff2);border-color:transparent;color:#0a1230;box-shadow:0 8px 20px -10px rgba(var(--acc-rgb),.8)}
+.btn-green{background:rgba(104,212,166,.14);border-color:rgba(104,212,166,.3);color:#7fe0b6;font-weight:700}
+.mode-selector,#brand-selector{display:flex;gap:4px!important;padding:4px;margin-bottom:14px!important;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--border)}
+.mode-selector .btn,#brand-selector .btn{border-color:transparent;background:transparent;color:var(--text3);border-radius:999px;padding:9px 8px;box-shadow:none;transition:background .3s var(--ease),color .2s,transform .2s var(--ease)}
+.mode-selector .btn.btn-primary,#brand-selector .btn.btn-primary{background:rgba(255,255,255,.09);border-color:var(--border2);color:var(--text)}
+#ipsw-device-matches .btn{border-radius:999px}
+.empty{text-align:center;padding:48px 20px;color:var(--text3);font-size:14px;line-height:1.7}
+.part-card{position:relative;margin-bottom:10px;padding:14px 16px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(165deg,rgba(255,255,255,.055),rgba(255,255,255,.014) 55%),#12151b;box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 1px 2px rgba(0,0,0,.4),0 14px 28px -16px rgba(0,0,0,.85);transition:transform .2s var(--ease)}
+.part-card:active{transform:scale(.985)}
+.backup-section{padding:14px 16px;margin-bottom:12px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.012) 55%),#12151b;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 14px 28px -16px rgba(0,0,0,.85)}
+.backup-title{font-size:14.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.backup-desc{font-size:12.5px;color:var(--text2);margin-bottom:12px;line-height:1.55}
+.backup-row{display:flex;gap:8px}
+.footer-note{text-align:center;font-size:11px;color:var(--text3);padding:20px 14px 0;line-height:1.6}
+#mode-isp{direction:ltr;text-align:left}
+.isp-warn{margin:0 0 12px;padding:10px 12px;background:rgba(236,184,98,.08);border:1px solid rgba(236,184,98,.18);border-radius:var(--radius-sm);color:var(--amber);font-size:12.5px;line-height:1.5}
+.isp-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:12px}
+.isp-tabs::-webkit-scrollbar{display:none}
+.isp-tab{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--text2);font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .2s var(--ease)}
+.isp-tab:active{transform:scale(.95)}
+.isp-tab.active{background:rgba(var(--acc-rgb),.14);border-color:rgba(var(--acc-rgb),.3);color:#cfdcff}
+.isp-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;color:rgb(var(--c));background:rgba(var(--c),.11);border:1px solid rgba(var(--c),.18)}
+.isp-badge::before{content:&quot;&quot;;width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.isp-badge.verified{--c:104,212,166}.isp-badge.community{--c:236,184,98}.isp-badge.drill{--c:255,130,120}.isp-badge.edge{--c:128,166,255}
+.isp-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px;font-variant-numeric:tabular-nums}
+.isp-table td,.isp-table th{border-bottom:1px solid rgba(255,255,255,.05);padding:6px;text-align:left}
+.isp-table th{color:var(--text3);font-weight:600;font-size:11px}
+.isp-notes{font-size:12.5px;color:var(--text2);margin-top:8px;line-height:1.55;white-space:pre-wrap}
+.isp-photo{max-width:100%;border-radius:12px;margin-top:8px;border:1px solid var(--border)}
+#isp-dialog{border:1px solid rgba(255,255,255,.09);border-radius:24px;background:linear-gradient(180deg,#1b2029,#12151b);color:var(--text);padding:0;width:min(520px,92vw);max-height:88vh;box-shadow:0 30px 70px -10px rgba(0,0,0,.7)}
+#isp-dialog[open]{animation:dlg .4s var(--ease)}
+@keyframes dlg{from{opacity:0;transform:translateY(24px) scale(.98)}}
+#isp-dialog::backdrop{background:rgba(4,6,10,.62);backdrop-filter:blur(6px)}
+.isp-dlg-inner{padding:20px 18px;overflow-y:auto;max-height:88vh}
+.isp-dlg-inner h2{font-size:18px;font-weight:700;letter-spacing:-.01em;margin:0 0 16px}
+.isp-field{margin-bottom:12px}
+.isp-field label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px}
+.isp-field-row{display:flex;gap:10px}
+.isp-field input,.isp-field select,.isp-field textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);padding:10px 12px;font-size:16px;font-family:inherit;outline:none;transition:border-color .25s,box-shadow .25s}
+.isp-field select option{background:#1b2029}
+.isp-pingrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.isp-pingrid input{font-size:13px;padding:8px}
+.isp-dlg-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;position:sticky;bottom:0;padding-top:10px;background:linear-gradient(180deg,transparent,#12151b 30%)}
+.isp-fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:20px;font-size:28px;font-weight:300;display:flex;align-items:center;justify-content:center;z-index:6;border:none;background:linear-gradient(180deg,#a0b8ff,#7f9ff2);color:#0a1230;cursor:pointer;box-shadow:0 14px 30px -10px rgba(var(--acc-rgb),.75),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .25s var(--ease)}
+.isp-fab:active{transform:scale(.92) rotate(90deg)}
+.isp-conf-note{font-size:11px;color:var(--text3);margin-top:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;topbar&quot;&gt;
+  &lt;div class=&quot;topbar-title&quot;&gt;&lt;span class=&quot;mark&quot;&gt;&lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 16 16&quot; fill=&quot;none&quot; stroke=&quot;#b9c8ff&quot; stroke-width=&quot;1.4&quot; stroke-linecap=&quot;round&quot;&gt;&lt;rect x=&quot;4&quot; y=&quot;4&quot; width=&quot;8&quot; height=&quot;8&quot; rx=&quot;1.8&quot;/&gt;&lt;path d=&quot;M6.5 1.5V4M9.5 1.5V4M6.5 12v2.5M9.5 12v2.5M1.5 6.5H4M1.5 9.5H4M12 6.5h2.5M12 9.5h2.5&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span id=&quot;app-title&quot;&gt;أمير سوفت&lt;/span&gt;&lt;/div&gt;
+  &lt;button class=&quot;lang-btn&quot; id=&quot;lang-btn&quot; onclick=&quot;toggleLang()&quot;&gt;EN&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;page&quot;&gt;
+  &lt;div class=&quot;mode-selector&quot; id=&quot;mode-selector&quot;&gt;&lt;/div&gt;
+
+  &lt;div id=&quot;mode-firmware&quot;&gt;
+  &lt;div id=&quot;brand-selector&quot; style=&quot;display:flex;gap:6px;margin-bottom:14px&quot;&gt;&lt;/div&gt;
+
+  &lt;div id=&quot;brand-ipsw&quot; class=&quot;brand-section&quot;&gt;
+  &lt;div class=&quot;search-row&quot;&gt;
+    &lt;input type=&quot;text&quot; id=&quot;ipsw-search&quot; placeholder=&quot;اسم الجهاز، مثال: iPhone 13&quot; oninput=&quot;renderIpswDeviceMatches()&quot;&gt;
+    &lt;button class=&quot;btn btn-sm&quot; onclick=&quot;refreshIpswDeviceList()&quot; style=&quot;width:44px;justify-content:center&quot; id=&quot;ipsw-refresh-btn&quot;&gt;↻&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;ipsw-device-matches&quot; style=&quot;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;backup-section&quot;&gt;
+    &lt;div class=&quot;backup-title&quot; id=&quot;ipsw-bulk-title&quot;&gt;تحميل جماعي — الأحدث فقط (iPhone 6 → 16 Pro Max)&lt;/div&gt;
+    &lt;div class=&quot;backup-desc&quot; id=&quot;ipsw-bulk-desc&quot;&gt;يجلب أحدث نسخة iOS موقّعة حالياً لكل الأجهزة، ثم يصدّر قائمة روابط لاستيرادها في برنامج التحميل (IDM / ADM / إلخ).&lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot;&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;bulkFetchLatest(&#x27;iphone&#x27;)&quot; style=&quot;flex:1&quot; id=&quot;ipsw-bulk-btn&quot;&gt;▶ جلب الأحدث لكل الأجهزة&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;ipsw-bulk-progress&quot; style=&quot;font-size:12px;color:var(--text2);margin-top:8px&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; id=&quot;ipsw-bulk-export-row&quot; style=&quot;display:none;margin-top:8px&quot;&gt;
+      &lt;button class=&quot;btn btn-green&quot; onclick=&quot;exportBulkLinks(&#x27;iphone&#x27;)&quot; style=&quot;flex:1&quot;&gt;تصدير الروابط (.txt)&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;backup-section&quot;&gt;
+    &lt;div class=&quot;backup-title&quot; id=&quot;ipad-bulk-title&quot;&gt;تحميل جماعي — آيباد (الأحدث فقط)&lt;/div&gt;
+    &lt;div class=&quot;backup-desc&quot; id=&quot;ipad-bulk-desc&quot;&gt;يجلب أحدث نسخة iPadOS موقّعة حالياً لكل أجهزة آيباد، ثم يصدّر قائمة روابط لاستيرادها في برنامج التحميل.&lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot;&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;bulkFetchLatest(&#x27;ipad&#x27;)&quot; style=&quot;flex:1&quot; id=&quot;ipad-bulk-btn&quot;&gt;▶ جلب الأحدث لكل أجهزة آيباد&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;ipad-bulk-progress&quot; style=&quot;font-size:12px;color:var(--text2);margin-top:8px&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; id=&quot;ipad-bulk-export-row&quot; style=&quot;display:none;margin-top:8px&quot;&gt;
+      &lt;button class=&quot;btn btn-green&quot; onclick=&quot;exportBulkLinks(&#x27;ipad&#x27;)&quot; style=&quot;flex:1&quot;&gt;تصدير الروابط (.txt)&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;ipsw-bulk-list&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;ipad-bulk-list&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;ipsw-firmware-list&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;brand-oppo&quot; class=&quot;brand-section&quot; style=&quot;display:none&quot;&gt;
+  &lt;div class=&quot;backup-section&quot; style=&quot;margin-top:0&quot;&gt;
+    &lt;div class=&quot;backup-title&quot; id=&quot;oppo-title&quot;&gt;🟢 أوبو (Oppo / ColorOS)&lt;/div&gt;
+    &lt;div class=&quot;backup-desc&quot; id=&quot;oppo-desc&quot;&gt;أوبو لا تملك جهة إشارة موحّدة مثل Apple — لا يوجد &quot;توقيع&quot; يمنع نسخة قديمة، لذا لا يوجد فهرس مركزي مثل ipsw.me. هذا القسم يفتح صفحة أوبو الرسمية مباشرة حسب رقم الموديل والمنطقة.&lt;/div&gt;
+    &lt;div class=&quot;search-row&quot; style=&quot;margin-bottom:8px&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;oppo-model&quot; placeholder=&quot;رقم الموديل، مثال: CPH2477 أو Reno 10&quot;&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;oppo-region-hint&quot; style=&quot;font-size:11px;color:var(--text3);margin-bottom:8px&quot;&gt;جرّب أكثر من منطقة — بعض الموديلات غير مسجّلة في كل الدول&lt;/div&gt;
+    &lt;div id=&quot;oppo-region-buttons&quot; style=&quot;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:8px&quot;&gt;
+      &lt;a class=&quot;btn&quot; href=&quot;https://www.oppo.com/en/rom/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;flex:1;justify-content:center&quot; id=&quot;oppo-assistant-btn&quot;&gt;أداة ColorOS Assistant (كمبيوتر)&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:8px&quot;&gt;
+      &lt;button class=&quot;btn&quot; onclick=&quot;oppoGoogleFallback()&quot; style=&quot;flex:1;justify-content:center&quot; id=&quot;oppo-google-btn&quot;&gt;بحث Google كبديل&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;oppo-note&quot; style=&quot;font-size:11px;color:var(--text3);margin-top:10px;line-height:1.6&quot;&gt;
+      للأجهزة العالقة/الميتة (hard brick)، الأدوات الشائعة عند الفنيين هي MSM Download Tool (لمعالجات Qualcomm) أو SP Flash Tool (لمعالجات MediaTek) مع ملف Scatter/الفلاش المطابق للموديل تحديداً. هذه الأدوات لا توزَّع من أوبو رسمياً، لذا لم تُدرَج روابط مباشرة لها هنا.
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;brand-samsung&quot; class=&quot;brand-section&quot; style=&quot;display:none&quot;&gt;
+  &lt;div class=&quot;backup-section&quot; style=&quot;margin-top:0&quot;&gt;
+    &lt;div class=&quot;backup-title&quot; id=&quot;samsung-title&quot;&gt;🔵 سامسونج (Samsung)&lt;/div&gt;
+    &lt;div class=&quot;backup-desc&quot; id=&quot;samsung-desc&quot;&gt;سامسونج توزّع الفيرموير عبر خوادمها الداخلية (FUS) وليس عبر صفحة عامة — تحتاج رقم الموديل (مثال: SM-A536E) ورمز المنطقة CSC (تجده عبر *#1234# على الجهاز). هذا القسم يفتح مصادر موثوقة تبحث في تلك الخوادم مباشرة.&lt;/div&gt;
+    &lt;div class=&quot;search-row&quot; style=&quot;margin-bottom:8px&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;samsung-model&quot; placeholder=&quot;رقم الموديل، مثال: SM-A536E&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;search-row&quot; style=&quot;margin-bottom:8px&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;samsung-csc&quot; placeholder=&quot;رمز المنطقة CSC (اختياري)، مثال: MID&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot;&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;openSamsungSource(&#x27;sammobile&#x27;)&quot; style=&quot;flex:1&quot; id=&quot;samsung-sammobile-btn&quot;&gt;SamMobile&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:8px&quot;&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;openSamsungSource(&#x27;samfw&#x27;)&quot; style=&quot;flex:1&quot; id=&quot;samsung-samfw-btn&quot;&gt;SamFw&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:8px&quot;&gt;
+      &lt;a class=&quot;btn&quot; href=&quot;https://github.com/DerBra/Frija&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;flex:1;justify-content:center&quot; id=&quot;samsung-frija-btn&quot;&gt;أداة Frija (كمبيوتر، مفتوحة المصدر)&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:8px&quot;&gt;
+      &lt;button class=&quot;btn&quot; onclick=&quot;samsungGoogleFallback()&quot; style=&quot;flex:1;justify-content:center&quot; id=&quot;samsung-google-btn&quot;&gt;بحث Google كبديل&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;samsung-note&quot; style=&quot;font-size:11px;color:var(--text3);margin-top:10px;line-height:1.6&quot;&gt;
+      SamMobile وSamFw مواقع مرجعية تفهرس فيرموير سامسونج الرسمي حسب الموديل، وليستا أدوات تحميل جماعي. لأجهزة عالقة/ميتة، أداة Frija تسحب النسخة مباشرة من خوادم سامسونج (FUS) عبر الموديل ورمز CSC.
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;footer-note&quot; id=&quot;footer-note&quot;&gt;أمير سوفت — يعتمد على بيانات ipsw.me العامة، والملفات تُنزَّل مباشرة من خوادم Apple&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;mode-isp&quot; style=&quot;display:none&quot;&gt;
+    &lt;div class=&quot;isp-warn&quot;&gt;⚠️ Community/self-verified data. A wrong pin on eMMC/UFS or a wrong drill spot can kill the board. Cross-check anything marked &quot;Community&quot; before you touch a live board.&lt;/div&gt;
+
+    &lt;div class=&quot;search-row&quot;&gt;
+      &lt;input type=&quot;text&quot; id=&quot;isp-search&quot; placeholder=&quot;Search brand, model, chipset…&quot; oninput=&quot;ispRender()&quot;&gt;
+      &lt;select id=&quot;isp-filterType&quot; onchange=&quot;ispRender()&quot; style=&quot;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);padding:10px;font-size:13px&quot;&gt;
+        &lt;option value=&quot;&quot;&gt;All types&lt;/option&gt;
+        &lt;option value=&quot;edge&quot;&gt;Edge / castellation&lt;/option&gt;
+        &lt;option value=&quot;drill&quot;&gt;Hidden / CPU-drill&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;isp-tabs&quot;&gt;
+      &lt;div class=&quot;isp-tab active&quot; data-f=&quot;all&quot; onclick=&quot;ispSetFilter(&#x27;all&#x27;)&quot;&gt;All&lt;/div&gt;
+      &lt;div class=&quot;isp-tab&quot; data-f=&quot;verified&quot; onclick=&quot;ispSetFilter(&#x27;verified&#x27;)&quot;&gt;Verified&lt;/div&gt;
+      &lt;div class=&quot;isp-tab&quot; data-f=&quot;community&quot; onclick=&quot;ispSetFilter(&#x27;community&#x27;)&quot;&gt;Community&lt;/div&gt;
+      &lt;div class=&quot;isp-tab&quot; data-f=&quot;confirmeddrill&quot; onclick=&quot;ispSetFilter(&#x27;confirmeddrill&#x27;)&quot;&gt;Confirmed drill&lt;/div&gt;
+      &lt;div class=&quot;isp-tab&quot; data-f=&quot;sources&quot; onclick=&quot;ispSetFilter(&#x27;sources&#x27;)&quot;&gt;Trusted sources&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;isp-list&quot;&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:12px;gap:8px&quot;&gt;
+      &lt;button class=&quot;btn btn-sm&quot; onclick=&quot;ispExportData()&quot; style=&quot;flex:1&quot;&gt;Export JSON&lt;/button&gt;
+      &lt;button class=&quot;btn btn-sm&quot; onclick=&quot;document.getElementById(&#x27;isp-importFile&#x27;).click()&quot; style=&quot;flex:1&quot;&gt;⬆ Import JSON&lt;/button&gt;
+      &lt;input type=&quot;file&quot; id=&quot;isp-importFile&quot; accept=&quot;application/json&quot; style=&quot;display:none&quot; onchange=&quot;ispImportData(event)&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;footer-note&quot;&gt;Ameer Soft — ISP pinout data is community/self-sourced; verify before use.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button class=&quot;isp-fab&quot; id=&quot;isp-fab&quot; style=&quot;display:none&quot; onclick=&quot;ispOpenEditor()&quot;&gt;+&lt;/button&gt;
+
+&lt;dialog id=&quot;isp-dialog&quot;&gt;
+  &lt;div class=&quot;isp-dlg-inner&quot;&gt;
+    &lt;h2 id=&quot;ispDlgTitle&quot;&gt;New entry&lt;/h2&gt;
+    &lt;input type=&quot;hidden&quot; id=&quot;isp_editId&quot;&gt;
+
+    &lt;div class=&quot;isp-field-row&quot;&gt;
+      &lt;div class=&quot;isp-field&quot; style=&quot;flex:1&quot;&gt;&lt;label&gt;Brand&lt;/label&gt;&lt;input id=&quot;isp_f_brand&quot; placeholder=&quot;Samsung&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;isp-field&quot; style=&quot;flex:1&quot;&gt;&lt;label&gt;Model&lt;/label&gt;&lt;input id=&quot;isp_f_model&quot; placeholder=&quot;M135F&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;isp-field-row&quot;&gt;
+      &lt;div class=&quot;isp-field&quot; style=&quot;flex:1&quot;&gt;&lt;label&gt;Chipset / AP&lt;/label&gt;&lt;input id=&quot;isp_f_chipset&quot; placeholder=&quot;Exynos 850 / MT6833&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;isp-field&quot; style=&quot;flex:1&quot;&gt;&lt;label&gt;Storage&lt;/label&gt;
+        &lt;select id=&quot;isp_f_storage&quot;&gt;&lt;option&gt;eMMC&lt;/option&gt;&lt;option&gt;UFS 2.x&lt;/option&gt;&lt;option&gt;UFS 3.x&lt;/option&gt;&lt;option&gt;Unknown&lt;/option&gt;&lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;isp-field&quot;&gt;
+      &lt;label&gt;Type&lt;/label&gt;
+      &lt;select id=&quot;isp_f_type&quot; onchange=&quot;ispToggleTypeFields()&quot;&gt;
+        &lt;option value=&quot;edge&quot;&gt;Edge / castellation test points&lt;/option&gt;
+        &lt;option value=&quot;drill&quot;&gt;Hidden — requires CPU drill&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;isp-field&quot;&gt;
+      &lt;label&gt;Confidence / source&lt;/label&gt;
+      &lt;select id=&quot;isp_f_conf&quot;&gt;
+        &lt;option value=&quot;verified&quot;&gt;Verified (boardview-traced / self-confirmed)&lt;/option&gt;
+        &lt;option value=&quot;community&quot;&gt;Community-reported (unverified)&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;isp-field&quot;&gt;&lt;label&gt;Source note&lt;/label&gt;&lt;input id=&quot;isp_f_source&quot; placeholder=&quot;e.g. GSM-Forum thread, EasyJTAG DB, traced myself&quot;&gt;&lt;/div&gt;
+
+    &lt;div id=&quot;isp-edgeFields&quot;&gt;
+      &lt;label style=&quot;font-size:12px;color:var(--text2)&quot;&gt;Pin table (name → note, leave blank rows unused)&lt;/label&gt;
+      &lt;div class=&quot;isp-pingrid&quot; id=&quot;isp-pinGrid&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;isp-drillFields&quot; style=&quot;display:none&quot;&gt;
+      &lt;div class=&quot;isp-field&quot;&gt;&lt;label&gt;Board marker / silkscreen number&lt;/label&gt;&lt;input id=&quot;isp_f_marker&quot; placeholder=&quot;e.g. 04&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;isp-field&quot;&gt;&lt;label&gt;Layer / net (if known)&lt;/label&gt;&lt;input id=&quot;isp_f_layer&quot; placeholder=&quot;e.g. inner layer 3&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;isp-field&quot;&gt;
+        &lt;label style=&quot;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;isp_f_confirmeddrill&quot; style=&quot;width:auto&quot;&gt;
+          Confirmed drill-required model (every unit, not just this board)
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;isp-conf-note&quot;&gt;No universal &quot;number ≤3 = no drill&quot; rule is baked in — log what you actually observe. Only check the box once confirmed across more than one unit or a reliable source.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;isp-field&quot;&gt;
+      &lt;label&gt;📷 Upload ISP / test-point photo (optional)&lt;/label&gt;
+      &lt;input type=&quot;file&quot; id=&quot;isp_f_photo&quot; accept=&quot;image/*&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;isp-field&quot;&gt;&lt;label&gt;Notes / warnings&lt;/label&gt;&lt;textarea id=&quot;isp_f_notes&quot; rows=&quot;3&quot; placeholder=&quot;Anything a tech should know before touching this board&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;isp-dlg-actions&quot;&gt;
+      &lt;button class=&quot;btn&quot; onclick=&quot;ispCloseEditor()&quot;&gt;Cancel&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; id=&quot;isp-delBtn&quot; style=&quot;display:none;background:var(--red);border-color:var(--red);color:#fff&quot; onclick=&quot;ispDeleteCurrent()&quot;&gt;Delete&lt;/button&gt;
+      &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;ispSaveEntry()&quot;&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;
+
+&lt;script&gt;
+let currentLang = localStorage.getItem(&#x27;amirsoft_lang&#x27;) || &#x27;ar&#x27;;
+function toggleLang(){
+  currentLang = currentLang===&#x27;ar&#x27; ? &#x27;en&#x27; : &#x27;ar&#x27;;
+  localStorage.setItem(&#x27;amirsoft_lang&#x27;, currentLang);
+  applyLang();
+  renderIpswDeviceMatches();
+  if (typeof renderModeSelector === &#x27;function&#x27;) renderModeSelector();
+  if (typeof currentMode !== &#x27;undefined&#x27;) document.documentElement.setAttribute(&#x27;dir&#x27;, currentMode===&#x27;isp&#x27; ? &#x27;ltr&#x27; : (currentLang===&#x27;ar&#x27;?&#x27;rtl&#x27;:&#x27;ltr&#x27;));
+}
+function applyLang(){
+  const isAr = currentLang === &#x27;ar&#x27;;
+  document.documentElement.setAttribute(&#x27;dir&#x27;, isAr?&#x27;rtl&#x27;:&#x27;ltr&#x27;);
+  document.documentElement.setAttribute(&#x27;lang&#x27;, isAr?&#x27;ar&#x27;:&#x27;en&#x27;);
+  document.body.style.direction = isAr?&#x27;rtl&#x27;:&#x27;ltr&#x27;;
+  document.getElementById(&#x27;lang-btn&#x27;).textContent = isAr ? &#x27;EN&#x27; : &#x27;ع&#x27;;
+  document.getElementById(&#x27;app-title&#x27;).textContent = isAr ? &#x27;أمير سوفت&#x27; : &#x27;Ameer Soft&#x27;;
+  document.getElementById(&#x27;ipsw-search&#x27;).placeholder = isAr ? &#x27;اسم الجهاز، مثال: iPhone 13&#x27; : &#x27;Device name, e.g. iPhone 13&#x27;;
+  document.getElementById(&#x27;ipsw-bulk-title&#x27;).textContent = isAr ? &#x27;تحميل جماعي — الأحدث فقط (iPhone 6 → 16 Pro Max)&#x27; : &#x27;Bulk download — latest only (iPhone 6 → 16 Pro Max)&#x27;;
+  document.getElementById(&#x27;ipsw-bulk-desc&#x27;).textContent = isAr
+    ? &#x27;يجلب أحدث نسخة iOS موقّعة حالياً لكل الأجهزة، ثم يصدّر قائمة روابط لاستيرادها في برنامج التحميل (IDM / ADM / إلخ).&#x27;
+    : &#x27;Fetches the latest currently-signed iOS version for every device, then exports a link list to import into your download manager (IDM / ADM / etc).&#x27;;
+  document.getElementById(&#x27;ipsw-bulk-btn&#x27;).textContent = isAr ? &#x27;▶ جلب الأحدث لكل الأجهزة&#x27; : &#x27;▶ Fetch latest for all devices&#x27;;
+  document.querySelector(&#x27;#ipsw-bulk-export-row .btn&#x27;).textContent = isAr ? &#x27;تصدير الروابط (.txt)&#x27; : &#x27;Export links (.txt)&#x27;;
+  document.getElementById(&#x27;ipad-bulk-title&#x27;).textContent = isAr ? &#x27;تحميل جماعي — آيباد (الأحدث فقط)&#x27; : &#x27;Bulk download — iPad (latest only)&#x27;;
+  document.getElementById(&#x27;ipad-bulk-desc&#x27;).textContent = isAr
+    ? &#x27;يجلب أحدث نسخة iPadOS موقّعة حالياً لكل أجهزة آيباد، ثم يصدّر قائمة روابط لاستيرادها في برنامج التحميل.&#x27;
+    : &#x27;Fetches the latest currently-signed iPadOS version for every iPad model, then exports a link list to import into your download manager.&#x27;;
+  document.getElementById(&#x27;ipad-bulk-btn&#x27;).textContent = isAr ? &#x27;▶ جلب الأحدث لكل أجهزة آيباد&#x27; : &#x27;▶ Fetch latest for all iPads&#x27;;
+  document.querySelector(&#x27;#ipad-bulk-export-row .btn&#x27;).textContent = isAr ? &#x27;تصدير الروابط (.txt)&#x27; : &#x27;Export links (.txt)&#x27;;
+  document.getElementById(&#x27;footer-note&#x27;).textContent = isAr
+    ? &#x27;أمير سوفت — يعتمد على بيانات ipsw.me العامة، والملفات تُنزَّل مباشرة من خوادم Apple&#x27;
+    : &#x27;Amir Soft — powered by public ipsw.me data; files download directly from Apple\u2019s servers&#x27;;
+  document.getElementById(&#x27;oppo-title&#x27;).textContent = isAr ? &#x27;🟢 أوبو (Oppo / ColorOS)&#x27; : &#x27;🟢 Oppo (ColorOS)&#x27;;
+  document.getElementById(&#x27;oppo-desc&#x27;).textContent = isAr
+    ? &#x27;أوبو لا تملك جهة إشارة موحّدة مثل Apple — لا يوجد &quot;توقيع&quot; يمنع نسخة قديمة، لذا لا يوجد فهرس مركزي مثل ipsw.me. هذا القسم يفتح صفحة أوبو الرسمية مباشرة حسب رقم الموديل والمنطقة.&#x27;
+    : &#x27;Oppo has no signing gate like Apple — no version ever becomes &quot;unsigned&quot;, so there\u2019s no central index like ipsw.me. This section just opens Oppo\u2019s own official page for your model and region.&#x27;;
+  document.getElementById(&#x27;oppo-model&#x27;).placeholder = isAr ? &#x27;رقم الموديل، مثال: CPH2477 أو Reno 10&#x27; : &#x27;Model number, e.g. CPH2477 or Reno 10&#x27;;
+  document.getElementById(&#x27;oppo-region-hint&#x27;).textContent = isAr
+    ? &#x27;جرّب أكثر من منطقة — بعض الموديلات غير مسجّلة في كل الدول&#x27;
+    : &#x27;Try more than one region — some models aren\u2019t registered in every country&#x27;;
+  document.getElementById(&#x27;oppo-assistant-btn&#x27;).textContent = isAr ? &#x27;أداة ColorOS Assistant (كمبيوتر)&#x27; : &#x27;ColorOS Assistant (PC tool)&#x27;;
+  document.getElementById(&#x27;oppo-google-btn&#x27;).textContent = isAr ? &#x27;بحث Google كبديل&#x27; : &#x27;Google search fallback&#x27;;
+  document.getElementById(&#x27;oppo-note&#x27;).textContent = isAr
+    ? &#x27;للأجهزة العالقة/الميتة (hard brick)، الأدوات الشائعة عند الفنيين هي MSM Download Tool (لمعالجات Qualcomm) أو SP Flash Tool (لمعالجات MediaTek) مع ملف Scatter/الفلاش المطابق للموديل تحديداً. هذه الأدوات لا توزَّع من أوبو رسمياً، لذا لم تُدرَج روابط مباشرة لها هنا.&#x27;
+    : &#x27;For hard-bricked/dead-boot devices, technicians commonly use MSM Download Tool (Qualcomm chipsets) or SP Flash Tool (MediaTek chipsets) with the matching scatter/flash file for that exact model. These tools aren\u2019t officially distributed by Oppo, so no direct links are included here.&#x27;;
+  document.getElementById(&#x27;samsung-title&#x27;).textContent = isAr ? &#x27;🔵 سامسونج (Samsung)&#x27; : &#x27;🔵 Samsung&#x27;;
+  document.getElementById(&#x27;samsung-desc&#x27;).textContent = isAr
+    ? &#x27;سامسونج توزّع الفيرموير عبر خوادمها الداخلية (FUS) وليس عبر صفحة عامة — تحتاج رقم الموديل (مثال: SM-A536E) ورمز المنطقة CSC (تجده عبر *#1234# على الجهاز). هذا القسم يفتح مصادر موثوقة تبحث في تلك الخوادم مباشرة.&#x27;
+    : &#x27;Samsung distributes firmware through its own internal servers (FUS), not a public page — you need the model number (e.g. SM-A536E) and the region CSC code (find it via *#1234# on the device). This section opens trusted sources that query those servers directly.&#x27;;
+  document.getElementById(&#x27;samsung-model&#x27;).placeholder = isAr ? &#x27;رقم الموديل، مثال: SM-A536E&#x27; : &#x27;Model number, e.g. SM-A536E&#x27;;
+  document.getElementById(&#x27;samsung-csc&#x27;).placeholder = isAr ? &#x27;رمز المنطقة CSC (اختياري)، مثال: MID&#x27; : &#x27;Region CSC code (optional), e.g. MID&#x27;;
+  document.getElementById(&#x27;samsung-sammobile-btn&#x27;).textContent = &#x27;SamMobile&#x27;;
+  document.getElementById(&#x27;samsung-samfw-btn&#x27;).textContent = &#x27;SamFw&#x27;;
+  document.getElementById(&#x27;samsung-frija-btn&#x27;).textContent = isAr ? &#x27;أداة Frija (كمبيوتر، مفتوحة المصدر)&#x27; : &#x27;Frija tool (PC, open-source)&#x27;;
+  document.getElementById(&#x27;samsung-google-btn&#x27;).textContent = isAr ? &#x27;بحث Google كبديل&#x27; : &#x27;Google search fallback&#x27;;
+  document.getElementById(&#x27;samsung-note&#x27;).textContent = isAr
+    ? &#x27;SamMobile وSamFw مواقع مرجعية تفهرس فيرموير سامسونج الرسمي حسب الموديل، وليستا أدوات تحميل جماعي. لأجهزة عالقة/ميتة، أداة Frija تسحب النسخة مباشرة من خوادم سامسونج (FUS) عبر الموديل ورمز CSC.&#x27;
+    : &#x27;SamMobile and SamFw are reference sites that index official Samsung firmware by model — not bulk download tools. For bricked/dead-boot devices, the Frija tool pulls the firmware directly from Samsung\u2019s own servers (FUS) using the model and CSC code.&#x27;;
+  if(typeof renderOppoRegionButtons === &#x27;function&#x27;) renderOppoRegionButtons();
+  if(typeof renderBrandSelector === &#x27;function&#x27;) renderBrandSelector();
+}
+
+// ===== IPSW لوكب =====
+function formatFwDate(dateStr){
+  if(!dateStr) return &#x27;&#x27;;
+  const d = new Date(dateStr);
+  if(isNaN(d.getTime())) return &#x27;&#x27;;
+  const dd = String(d.getDate()).padStart(2,&#x27;0&#x27;);
+  const mm = String(d.getMonth()+1).padStart(2,&#x27;0&#x27;);
+  const yyyy = d.getFullYear();
+  return `${dd}/${mm}/${yyyy}`;
+}
+let ipswDeviceList = JSON.parse(localStorage.getItem(&#x27;ipsw_devices_v1&#x27;) || &#x27;null&#x27;);
+let ipswSearchTimer = null;
+
+async function ensureIpswDeviceList(force){
+  if(ipswDeviceList &amp;&amp; !force) return ipswDeviceList;
+  const btn = document.getElementById(&#x27;ipsw-refresh-btn&#x27;);
+  if(btn) btn.textContent = &#x27;…&#x27;;
+  try{
+    const res = await fetch(&#x27;https://api.ipsw.me/v4/devices&#x27;);
+    if(!res.ok) throw new Error(&#x27;bad response&#x27;);
+    const data = await res.json();
+    ipswDeviceList = data.filter(d =&gt; /iphone|ipad/i.test(d.identifier));
+    localStorage.setItem(&#x27;ipsw_devices_v1&#x27;, JSON.stringify(ipswDeviceList));
+    localStorage.setItem(&#x27;ipsw_devices_ts&#x27;, String(Date.now()));
+  }catch(e){
+    if(!ipswDeviceList) ipswDeviceList = [];
+  }
+  if(btn) btn.textContent = &#x27;↻&#x27;;
+  return ipswDeviceList;
+}
+function refreshIpswDeviceList(){ ensureIpswDeviceList(true).then(renderIpswDeviceMatches); }
+
+function renderIpswDeviceMatches(){
+  clearTimeout(ipswSearchTimer);
+  ipswSearchTimer = setTimeout(async ()=&gt;{
+    const q = (document.getElementById(&#x27;ipsw-search&#x27;).value||&#x27;&#x27;).trim().toLowerCase();
+    const listEl = document.getElementById(&#x27;ipsw-device-matches&#x27;);
+    const isAr = currentLang === &#x27;ar&#x27;;
+    if(!q){ listEl.innerHTML=&#x27;&#x27;; document.getElementById(&#x27;ipsw-firmware-list&#x27;).innerHTML=&#x27;&#x27;; return; }
+    listEl.innerHTML = `&lt;div class=&quot;empty&quot; style=&quot;padding:10px&quot;&gt;${isAr?&#x27;...جارٍ البحث&#x27;:&#x27;Searching...&#x27;}&lt;/div&gt;`;
+    const devices = await ensureIpswDeviceList(false);
+    const matches = devices.filter(d=&gt;d.name.toLowerCase().includes(q)).slice(0,12);
+    if(!matches.length){
+      listEl.innerHTML = `&lt;div class=&quot;empty&quot; style=&quot;padding:10px&quot;&gt;${isAr?&#x27;لا توجد نتائج&#x27;:&#x27;No matches&#x27;}&lt;/div&gt;`;
+      return;
+    }
+    listEl.innerHTML = matches.map(d=&gt;
+      `&lt;button class=&quot;btn btn-sm&quot; onclick=&quot;loadIpswFirmwares(&#x27;${d.identifier}&#x27;,this)&quot;&gt;${d.name} &lt;span style=&quot;font-size:11px;color:var(--text3)&quot;&gt;${d.identifier}&lt;/span&gt;&lt;/button&gt;`
+    ).join(&#x27;&#x27;);
+  }, 300);
+}
+
+async function loadIpswFirmwares(identifier, btnEl){
+  document.querySelectorAll(&#x27;#ipsw-device-matches .btn&#x27;).forEach(b=&gt;b.classList.remove(&#x27;btn-primary&#x27;));
+  if(btnEl) btnEl.classList.add(&#x27;btn-primary&#x27;);
+  const isAr = currentLang === &#x27;ar&#x27;;
+  const fwEl = document.getElementById(&#x27;ipsw-firmware-list&#x27;);
+  fwEl.innerHTML = `&lt;div class=&quot;empty&quot;&gt;${isAr?&#x27;...جاري التحميل&#x27;:&#x27;Loading...&#x27;}&lt;/div&gt;`;
+  try{
+    const res = await fetch(`https://api.ipsw.me/v4/device/${identifier}?type=ipsw`);
+    if(!res.ok) throw new Error(&#x27;bad response&#x27;);
+    const data = await res.json();
+    const fws = (data.firmwares||[]).slice();
+    if(!fws.length){
+      fwEl.innerHTML = `&lt;div class=&quot;empty&quot;&gt;${isAr?&#x27;لا توجد نسخ متوفرة&#x27;:&#x27;No firmwares found&#x27;}&lt;/div&gt;`;
+      return;
+    }
+    const groups = {};
+    fws.forEach(f=&gt;{
+      const major = String(f.version).split(&#x27;.&#x27;)[0];
+      if(!groups[major]) groups[major] = [];
+      groups[major].push(f);
+    });
+    const majors = Object.keys(groups).sort((a,b)=&gt;Number(b)-Number(a));
+    majors.forEach(m=&gt;{
+      groups[m].sort((a,b)=&gt;{
+        const pa = String(a.version).split(&#x27;.&#x27;).map(Number);
+        const pb = String(b.version).split(&#x27;.&#x27;).map(Number);
+        for(let i=0;i&lt;Math.max(pa.length,pb.length);i++){
+          const va = pa[i]||0, vb = pb[i]||0;
+          if(va!==vb) return vb-va;
+        }
+        return 0;
+      });
+    });
+    const devName = (ipswDeviceList.find(d=&gt;d.identifier===identifier)||{}).name || identifier;
+    const board = data.boardconfig || (data.boards &amp;&amp; data.boards[0] &amp;&amp; data.boards[0].boardconfig) || &#x27;&#x27;;
+    fwEl.innerHTML = `
+      &lt;div style=&quot;font-size:13px;font-weight:700;margin-bottom:10px&quot;&gt;${devName} &lt;span style=&quot;font-size:11px;font-weight:400;color:var(--text3)&quot;&gt;${identifier}${board?&#x27; · &#x27;+board:&#x27;&#x27;}&lt;/span&gt;&lt;/div&gt;
+    ` + majors.map(m=&gt;`
+      &lt;div style=&quot;font-size:13px;font-weight:800;margin:14px 0 6px;color:var(--text2)&quot;&gt;iOS ${m}&lt;/div&gt;
+      ${groups[m].map(f=&gt;`
+        &lt;div class=&quot;part-card&quot; style=&quot;margin-bottom:8px&quot;&gt;
+          &lt;div style=&quot;display:flex;justify-content:space-between;align-items:center;gap:10px&quot;&gt;
+            &lt;div&gt;
+              &lt;div style=&quot;font-weight:700&quot;&gt;iOS ${f.version} &lt;span style=&quot;font-size:11px;color:var(--text3)&quot;&gt;(${f.buildid})&lt;/span&gt;&lt;/div&gt;
+              &lt;div style=&quot;font-size:12px;color:${f.signed?&#x27;var(--green)&#x27;:&#x27;var(--red)&#x27;};margin-top:2px&quot;&gt;
+                ${f.signed ? (isAr?&#x27;✓ موقّع حالياً (يمكن التثبيت)&#x27;:&#x27;✓ Currently signed&#x27;) : (isAr?&#x27;✕ غير موقّع&#x27;:&#x27;✕ Not signed&#x27;)}
+              &lt;/div&gt;
+              ${f.releasedate ? `&lt;div style=&quot;font-size:11px;color:var(--text3);margin-top:2px&quot;&gt;${isAr?&#x27;تاريخ الإصدار: &#x27;:&#x27;Released: &#x27;}${formatFwDate(f.releasedate)}&lt;/div&gt;` : &#x27;&#x27;}
+            &lt;/div&gt;
+            &lt;a class=&quot;btn btn-sm btn-primary&quot; href=&quot;${f.url}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;${isAr?&#x27;تنزيل&#x27;:&#x27;Download&#x27;}&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      `).join(&#x27;&#x27;)}
+    `).join(&#x27;&#x27;);
+  }catch(e){
+    fwEl.innerHTML = `&lt;div class=&quot;empty&quot;&gt;${isAr?&#x27;تعذر الاتصال بالخادم. تحقق من الإنترنت.&#x27;:&#x27;Could not reach server. Check connection.&#x27;}&lt;/div&gt;`;
+  }
+}
+
+// ===== تحميل جماعي: iPhone 6 -&gt; 16 Pro Max، أحدث نسخة موقّعة فقط =====
+const IPSW_BULK_RANGE = [
+  &#x27;iPhone 6&#x27;,&#x27;iPhone 6 Plus&#x27;,&#x27;iPhone 6s&#x27;,&#x27;iPhone 6s Plus&#x27;,
+  &#x27;iPhone SE (1st generation)&#x27;,&#x27;iPhone SE&#x27;,
+  &#x27;iPhone 7&#x27;,&#x27;iPhone 7 Plus&#x27;,&#x27;iPhone 8&#x27;,&#x27;iPhone 8 Plus&#x27;,
+  &#x27;iPhone X&#x27;,&#x27;iPhone XR&#x27;,&#x27;iPhone XS&#x27;,&#x27;iPhone XS Max&#x27;,
+  &#x27;iPhone 11&#x27;,&#x27;iPhone 11 Pro&#x27;,&#x27;iPhone 11 Pro Max&#x27;,
+  &#x27;iPhone SE (2nd generation)&#x27;,
+  &#x27;iPhone 12 mini&#x27;,&#x27;iPhone 12&#x27;,&#x27;iPhone 12 Pro&#x27;,&#x27;iPhone 12 Pro Max&#x27;,
+  &#x27;iPhone 13 mini&#x27;,&#x27;iPhone 13&#x27;,&#x27;iPhone 13 Pro&#x27;,&#x27;iPhone 13 Pro Max&#x27;,
+  &#x27;iPhone SE (3rd generation)&#x27;,
+  &#x27;iPhone 14&#x27;,&#x27;iPhone 14 Plus&#x27;,&#x27;iPhone 14 Pro&#x27;,&#x27;iPhone 14 Pro Max&#x27;,
+  &#x27;iPhone 15&#x27;,&#x27;iPhone 15 Plus&#x27;,&#x27;iPhone 15 Pro&#x27;,&#x27;iPhone 15 Pro Max&#x27;,
+  &#x27;iPhone 16&#x27;,&#x27;iPhone 16 Plus&#x27;,&#x27;iPhone 16 Pro&#x27;,&#x27;iPhone 16 Pro Max&#x27;
+];
+let ipswBulkResults = [];
+let ipadBulkResults = [];
+
+async function bulkFetchLatest(kind){
+  const isAr = currentLang === &#x27;ar&#x27;;
+  const isIpad = kind === &#x27;ipad&#x27;;
+  const btn = document.getElementById(isIpad ? &#x27;ipad-bulk-btn&#x27; : &#x27;ipsw-bulk-btn&#x27;);
+  const prog = document.getElementById(isIpad ? &#x27;ipad-bulk-progress&#x27; : &#x27;ipsw-bulk-progress&#x27;);
+  const listEl = document.getElementById(isIpad ? &#x27;ipad-bulk-list&#x27; : &#x27;ipsw-bulk-list&#x27;);
+  const exportRow = document.getElementById(isIpad ? &#x27;ipad-bulk-export-row&#x27; : &#x27;ipsw-bulk-export-row&#x27;);
+  btn.disabled = true;
+  exportRow.style.display = &#x27;none&#x27;;
+  listEl.innerHTML = &#x27;&#x27;;
+  let results = [];
+
+  const devices = await ensureIpswDeviceList(false);
+  let targets = [];
+
+  if(isIpad){
+    // No hardcoded model-name list here on purpose: iPad naming/suffixes (Wi-Fi vs
+    // Wi-Fi+Cellular, generation labels) shift more than iPhone&#x27;s and a stale hardcoded
+    // list would silently drop new models the same way the old iPhone X bug did.
+    // Instead, pull every device whose identifier starts with &quot;iPad&quot; and dedupe by name.
+    const seenNames = new Set();
+    devices.filter(d=&gt;/^ipad/i.test(d.identifier)).forEach(d=&gt;{
+      if(!seenNames.has(d.name)){ seenNames.add(d.name); targets.push(d); }
+    });
+  } else {
+    IPSW_BULK_RANGE.forEach(name=&gt;{
+      // some devices are region-suffixed on ipsw.me (e.g. &quot;iPhone X (Global)&quot;, &quot;iPhone X (GSM)&quot;)
+      // strip that suffix before comparing so &quot;iPhone X&quot; still matches those exactly,
+      // without also matching a different model like &quot;iPhone XS&quot;/&quot;iPhone XS Max&quot;
+      const stripRegion = n =&gt; n.replace(/\s*\((?:GSM\/CDMA|GSM|CDMA|Global)\)\s*$/i,&#x27;&#x27;).trim().toLowerCase();
+      const candidates = devices.filter(d=&gt;stripRegion(d.name) === name.toLowerCase());
+      // exclude any GSM-only labeled variant, prefer a Global-labeled one if present
+      const noGsm = candidates.filter(d=&gt;!/\bgsm\b/i.test(d.name));
+      const pick = noGsm.find(d=&gt;/global/i.test(d.name)) || noGsm[0] || candidates[0];
+      if(pick &amp;&amp; !targets.some(t=&gt;t.identifier===pick.identifier)) targets.push(pick);
+    });
+  }
+
+  for(let i=0;i&lt;targets.length;i++){
+    const dev = targets[i];
+    prog.textContent = (isAr?`جاري الجلب: `:`Fetching: `) + dev.name + ` (${i+1}/${targets.length})`;
+    try{
+      const res = await fetch(`https://api.ipsw.me/v4/device/${dev.identifier}?type=ipsw`);
+      const data = await res.json();
+      const fws = (data.firmwares||[]);
+      const latestSigned = fws.find(f=&gt;f.signed);
+      const board = data.boardconfig || (data.boards &amp;&amp; data.boards[0] &amp;&amp; data.boards[0].boardconfig) || &#x27;&#x27;;
+      if(latestSigned){
+        results.push({name:dev.name, identifier:dev.identifier, board:board, version:latestSigned.version, buildid:latestSigned.buildid, url:latestSigned.url, releasedate:latestSigned.releasedate});
+      }
+    }catch(e){ /* skip failed device, continue */ }
+  }
+
+  if(isIpad) ipadBulkResults = results; else ipswBulkResults = results;
+
+  prog.textContent = isAr
+    ? `تم: ${results.length} من ${targets.length} جهاز`
+    : `Done: ${results.length} of ${targets.length} devices`;
+  btn.disabled = false;
+
+  listEl.innerHTML = groupBulkByFirmware(results).map(g=&gt;`
+    &lt;div class=&quot;part-card&quot; style=&quot;margin-bottom:8px&quot;&gt;
+      &lt;div style=&quot;display:flex;justify-content:space-between;align-items:center;gap:10px&quot;&gt;
+        &lt;div&gt;
+          &lt;div style=&quot;font-weight:700&quot;&gt;${g.names.join(&#x27; + &#x27;)} &lt;span style=&quot;font-size:11px;font-weight:400;color:var(--text3)&quot;&gt;${g.identifiers.join(&#x27;, &#x27;)}&lt;/span&gt;&lt;/div&gt;
+          &lt;div style=&quot;font-size:12px;color:var(--text2)&quot;&gt;iOS ${g.version} &lt;span style=&quot;color:var(--text3)&quot;&gt;(${g.buildid})&lt;/span&gt;&lt;/div&gt;
+          ${g.releasedate ? `&lt;div style=&quot;font-size:11px;color:var(--text3);margin-top:2px&quot;&gt;${currentLang===&#x27;ar&#x27;?&#x27;تاريخ الإصدار: &#x27;:&#x27;Released: &#x27;}${formatFwDate(g.releasedate)}&lt;/div&gt;` : &#x27;&#x27;}
+        &lt;/div&gt;
+        &lt;a class=&quot;btn btn-sm btn-primary&quot; href=&quot;${g.url}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;⬇&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `).join(&#x27;&#x27;);
+
+  if(results.length) exportRow.style.display = &#x27;flex&#x27;;
+}
+
+function groupBulkByFirmware(results){
+  const byUrl = {};
+  const order = [];
+  results.forEach(r=&gt;{
+    if(!byUrl[r.url]){
+      byUrl[r.url] = {names:[], identifiers:[], boards:[], version:r.version, buildid:r.buildid, url:r.url, releasedate:r.releasedate};
+      order.push(r.url);
+    }
+    byUrl[r.url].names.push(r.name);
+    byUrl[r.url].identifiers.push(r.board ? `${r.identifier} · ${r.board}` : r.identifier);
+    if(r.board) byUrl[r.url].boards.push(r.board);
+  });
+  return order.map(u=&gt;byUrl[u]);
+}
+
+function exportBulkLinks(kind){
+  const results = kind === &#x27;ipad&#x27; ? ipadBulkResults : ipswBulkResults;
+  if(!results.length) return;
+  const uniqueUrls = [...new Set(results.map(r=&gt;r.url))];
+  const lines = uniqueUrls.join(&#x27;\n&#x27;);
+  const blob = new Blob([lines], {type:&#x27;text/plain&#x27;});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement(&#x27;a&#x27;);
+  a.href = url;
+  a.download = kind === &#x27;ipad&#x27; ? &#x27;ameer_soft_ipad_links.txt&#x27; : &#x27;ameer_soft_ipsw_links.txt&#x27;;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+const OPPO_REGIONS = [
+  {code:&#x27;eg-en&#x27;, ar:&#x27;مصر&#x27;, en:&#x27;Egypt&#x27;},
+  {code:&#x27;in&#x27;,    ar:&#x27;الهند&#x27;, en:&#x27;India&#x27;},
+  {code:&#x27;en&#x27;,    ar:&#x27;عالمي&#x27;, en:&#x27;Global&#x27;},
+  {code:&#x27;au&#x27;,    ar:&#x27;أستراليا&#x27;, en:&#x27;Australia&#x27;},
+  {code:&#x27;nz&#x27;,    ar:&#x27;نيوزيلندا&#x27;, en:&#x27;New Zealand&#x27;}
+];
+
+function renderOppoRegionButtons(){
+  const isAr = currentLang === &#x27;ar&#x27;;
+  const wrap = document.getElementById(&#x27;oppo-region-buttons&#x27;);
+  wrap.innerHTML = OPPO_REGIONS.map(r=&gt;
+    `&lt;button class=&quot;btn btn-sm&quot; onclick=&quot;openOppoRegion(&#x27;${r.code}&#x27;)&quot;&gt;${isAr?r.ar:r.en}&lt;/button&gt;`
+  ).join(&#x27;&#x27;);
+}
+
+function openOppoRegion(region){
+  const model = (document.getElementById(&#x27;oppo-model&#x27;).value||&#x27;&#x27;).trim();
+  const isAr = currentLang === &#x27;ar&#x27;;
+  if(!model){
+    alert(isAr ? &#x27;اكتب رقم الموديل أولاً&#x27; : &#x27;Enter a model number first&#x27;);
+    return;
+  }
+  const url = `https://support.oppo.com/${region}/software-update/software-download/?m=${encodeURIComponent(model)}`;
+  window.open(url, &#x27;_blank&#x27;, &#x27;noopener&#x27;);
+}
+
+function oppoGoogleFallback(){
+  const model = (document.getElementById(&#x27;oppo-model&#x27;).value||&#x27;&#x27;).trim();
+  const isAr = currentLang === &#x27;ar&#x27;;
+  if(!model){
+    alert(isAr ? &#x27;اكتب رقم الموديل أولاً&#x27; : &#x27;Enter a model number first&#x27;);
+    return;
+  }
+  const q = encodeURIComponent(`${model} firmware download oppo`);
+  window.open(`https://www.google.com/search?q=${q}`, &#x27;_blank&#x27;, &#x27;noopener&#x27;);
+}
+
+// ===== محدد الشركة (iPhone / Oppo / Samsung) =====
+const BRANDS = [
+  {id:&#x27;ipsw&#x27;,    icon:&#x27;📱&#x27;, ar:&#x27;آيفون&#x27;, en:&#x27;iPhone&#x27;},
+  {id:&#x27;oppo&#x27;,    icon:&#x27;🟢&#x27;, ar:&#x27;أوبو&#x27;, en:&#x27;Oppo&#x27;},
+  {id:&#x27;samsung&#x27;, icon:&#x27;🔵&#x27;, ar:&#x27;سامسونج&#x27;, en:&#x27;Samsung&#x27;}
+];
+let currentBrand = localStorage.getItem(&#x27;amirsoft_brand&#x27;) || &#x27;ipsw&#x27;;
+
+function renderBrandSelector(){
+  const isAr = currentLang === &#x27;ar&#x27;;
+  const wrap = document.getElementById(&#x27;brand-selector&#x27;);
+  wrap.innerHTML = BRANDS.map(b=&gt;
+    `&lt;button class=&quot;btn ${b.id===currentBrand?&#x27;btn-primary&#x27;:&#x27;&#x27;}&quot; style=&quot;flex:1;justify-content:center&quot; onclick=&quot;showBrand(&#x27;${b.id}&#x27;)&quot;&gt;${b.icon} ${isAr?b.ar:b.en}&lt;/button&gt;`
+  ).join(&#x27;&#x27;);
+}
+
+function showBrand(id){
+  currentBrand = id;
+  localStorage.setItem(&#x27;amirsoft_brand&#x27;, id);
+  BRANDS.forEach(b=&gt;{
+    document.getElementById(&#x27;brand-&#x27;+b.id).style.display = (b.id===id) ? &#x27;block&#x27; : &#x27;none&#x27;;
+  });
+  renderBrandSelector();
+}
+
+// ===== سامسونج =====
+function openSamsungSource(source){
+  const model = (document.getElementById(&#x27;samsung-model&#x27;).value||&#x27;&#x27;).trim();
+  const csc = (document.getElementById(&#x27;samsung-csc&#x27;).value||&#x27;&#x27;).trim();
+  const isAr = currentLang === &#x27;ar&#x27;;
+  if(!model){
+    alert(isAr ? &#x27;اكتب رقم الموديل أولاً&#x27; : &#x27;Enter a model number first&#x27;);
+    return;
+  }
+  let url;
+  if(source === &#x27;sammobile&#x27;){
+    url = `https://www.sammobile.com/firmwares/?device=${encodeURIComponent(model)}`;
+  }else{
+    url = `https://www.samfw.com/firmware/${encodeURIComponent(model)}${csc?&#x27;/&#x27;+encodeURIComponent(csc):&#x27;&#x27;}`;
+  }
+  window.open(url, &#x27;_blank&#x27;, &#x27;noopener&#x27;);
+}
+
+function samsungGoogleFallback(){
+  const model = (document.getElementById(&#x27;samsung-model&#x27;).value||&#x27;&#x27;).trim();
+  const isAr = currentLang === &#x27;ar&#x27;;
+  if(!model){
+    alert(isAr ? &#x27;اكتب رقم الموديل أولاً&#x27; : &#x27;Enter a model number first&#x27;);
+    return;
+  }
+  const q = encodeURIComponent(`${model} firmware download samsung`);
+  window.open(`https://www.google.com/search?q=${q}`, &#x27;_blank&#x27;, &#x27;noopener&#x27;);
+}
+
+// ===== وضع التطبيق: فيرموير / ISP =====
+const MODES = [
+  {id:&#x27;firmware&#x27;, icon:&#x27;📱&#x27;, ar:&#x27;الفيرموير&#x27;, en:&#x27;Firmware&#x27;},
+  {id:&#x27;isp&#x27;,      icon:&#x27;🔧&#x27;, ar:&#x27;ISP&#x27;, en:&#x27;ISP&#x27;}
+];
+let currentMode = localStorage.getItem(&#x27;ameersoft_mode&#x27;) || &#x27;firmware&#x27;;
+
+function renderModeSelector(){
+  const isAr = currentLang === &#x27;ar&#x27;;
+  const wrap = document.getElementById(&#x27;mode-selector&#x27;);
+  wrap.innerHTML = MODES.map(m=&gt;
+    `&lt;button class=&quot;btn ${m.id===currentMode?&#x27;btn-primary&#x27;:&#x27;&#x27;}&quot; style=&quot;flex:1;justify-content:center&quot; onclick=&quot;showMode(&#x27;${m.id}&#x27;)&quot;&gt;${m.icon} ${isAr?m.ar:m.en}&lt;/button&gt;`
+  ).join(&#x27;&#x27;);
+}
+function showMode(id){
+  currentMode = id;
+  localStorage.setItem(&#x27;ameersoft_mode&#x27;, id);
+  document.getElementById(&#x27;mode-firmware&#x27;).style.display = id===&#x27;firmware&#x27; ? &#x27;block&#x27;:&#x27;none&#x27;;
+  document.getElementById(&#x27;mode-isp&#x27;).style.display = id===&#x27;isp&#x27; ? &#x27;block&#x27;:&#x27;none&#x27;;
+  document.getElementById(&#x27;isp-fab&#x27;).style.display = id===&#x27;isp&#x27; ? &#x27;flex&#x27;:&#x27;none&#x27;;
+  document.documentElement.setAttribute(&#x27;dir&#x27;, id===&#x27;isp&#x27; ? &#x27;ltr&#x27; : (currentLang===&#x27;ar&#x27;?&#x27;rtl&#x27;:&#x27;ltr&#x27;));
+  renderModeSelector();
+  if(id===&#x27;isp&#x27;) ispRender();
+}
+
+// ===== ISP Pinout tool (namespaced isp*) =====
+const ISP_PIN_LABELS = [&quot;VCC 3.3V&quot;,&quot;VCC 1.8V&quot;,&quot;GND&quot;,&quot;CLK&quot;,&quot;CMD&quot;,&quot;DAT0&quot;,&quot;DAT1&quot;,&quot;DAT2&quot;,&quot;DAT3&quot;,&quot;RST/Other&quot;];
+const ISP_STORE_KEY = &quot;isp_pinout_db_v1&quot;;
+
+const ISP_SEED = [
+  {
+    id:&quot;seed-emmc-std&quot;, brand:&quot;Reference&quot;, model:&quot;Generic eMMC ISP&quot;, chipset:&quot;Standard eMMC 5.0/5.1&quot;,
+    storage:&quot;eMMC&quot;, type:&quot;edge&quot;, confidence:&quot;verified&quot;, confirmedDrill:false,
+    source:&quot;JEDEC eMMC standard pinout, widely used as the ISP baseline across brands&quot;,
+    pins:{&quot;VCC 3.3V&quot;:&quot;Power&quot;,&quot;VCC 1.8V&quot;:&quot;—&quot;,&quot;GND&quot;:&quot;Ground (multiple)&quot;,&quot;CLK&quot;:&quot;Clock&quot;,
+          &quot;CMD&quot;:&quot;Command&quot;,&quot;DAT0&quot;:&quot;Data line 0 — required minimum&quot;,&quot;DAT1&quot;:&quot;Data 1 (optional)&quot;,
+          &quot;DAT2&quot;:&quot;Data 2 (optional)&quot;,&quot;DAT3&quot;:&quot;Data 3 (optional)&quot;,&quot;RST/Other&quot;:&quot;Reset — leave floating unless specified&quot;},
+    marker:&quot;&quot;, layer:&quot;&quot;, photo:&quot;&quot;,
+    notes:&quot;Baseline reference only — not device-specific.&quot;
+  },
+  {
+    id:&quot;seed-m135f-drill&quot;, brand:&quot;Samsung&quot;, model:&quot;M135F (Galaxy M13)&quot;, chipset:&quot;MT6833 / Exynos variant&quot;,
+    storage:&quot;eMMC&quot;, type:&quot;drill&quot;, confidence:&quot;community&quot;, confirmedDrill:false,
+    source:&quot;User-reported pattern — needs cross-check&quot;,
+    pins:{}, marker:&quot;04&quot;, layer:&quot;unconfirmed&quot;, photo:&quot;&quot;,
+    notes:&quot;DATA0 reported routed under the CPU package — accessible only via drill to the marked via. Not confirmed as a universal marker-number rule.&quot;
+  },
+  {
+    id:&quot;seed-a047m-drill&quot;, brand:&quot;Samsung&quot;, model:&quot;A047M (Galaxy A04s)&quot;, chipset:&quot;MediaTek (MTK)&quot;,
+    storage:&quot;eMMC&quot;, type:&quot;drill&quot;, confidence:&quot;community&quot;, confirmedDrill:true,
+    source:&quot;Multiple repair-forum guides — treat as strong signal, confirm on a donor board&quot;,
+    pins:{}, marker:&quot;&quot;, layer:&quot;&quot;, photo:&quot;&quot;,
+    notes:&quot;DATA0 requires a fine drill/scrape on the CPU. Reported consistent across units of this model.&quot;
+  },
+  {
+    id:&quot;seed-a145m-drill&quot;, brand:&quot;Samsung&quot;, model:&quot;A145M (Galaxy A14)&quot;, chipset:&quot;MediaTek / Exynos variant&quot;,
+    storage:&quot;eMMC&quot;, type:&quot;drill&quot;, confidence:&quot;community&quot;, confirmedDrill:true,
+    source:&quot;Multiple repair-forum guides — treat as strong signal, confirm on a donor board&quot;,
+    pins:{}, marker:&quot;&quot;, layer:&quot;&quot;, photo:&quot;&quot;,
+    notes:&quot;DATA0 not exposed on the board — connects directly to the CPU. Reported as a model-wide trait.&quot;
+  }
+];
+let ispDb = JSON.parse(localStorage.getItem(ISP_STORE_KEY) || &quot;null&quot;) || ISP_SEED;
+function ispSave(){ localStorage.setItem(ISP_STORE_KEY, JSON.stringify(ispDb)); }
+
+const ISP_TRUSTED_SOURCES = [
+  {name:&quot;GSM-Forum&quot;, url:&quot;https://www.gsm-forum.net/&quot;, tier:&quot;Best general source&quot;,
+   note:&quot;Largest active repair community. Pinout/testpoint threads get corrected in replies — read the thread, not just the first post.&quot;},
+  {name:&quot;Boardview files (via OpenBoardView)&quot;, url:&quot;https://github.com/OpenBoardView/OpenBoardView&quot;, tier:&quot;Most reliable when available&quot;,
+   note:&quot;Trace CLK/CMD/DAT lines yourself from the board file instead of trusting a transcribed pin list.&quot;},
+  {name:&quot;NeedROM&quot;, url:&quot;https://www.needrom.com/&quot;, tier:&quot;Firmware + repair repository&quot;,
+   note:&quot;Large model-specific repository, often has schematic/boardview links. Cross-check before trusting a pinout.&quot;},
+  {name:&quot;GSMHosni&quot;, url:&quot;https://www.gsmhosni.com/&quot;, tier:&quot;Repair repository&quot;,
+   note:&quot;Boardview/schematic aggregator — treat as a lead, not a final answer.&quot;},
+  {name:&quot;Paid tool databases (EasyJTAG, Medusa Pro, Octoplus/UMT, Z3X, RIFF Box)&quot;, url:&quot;&quot;, tier:&quot;Curated, incentive-aligned&quot;,
+   note:&quot;Vendors get support tickets if data is wrong, generally better-maintained than free forum posts.&quot;},
+  {name:&quot;Chip-vendor reference schematics&quot;, url:&quot;&quot;, tier:&quot;Closest to primary source&quot;,
+   note:&quot;Rare to obtain directly, but most authoritative when a leaked reference design is available.&quot;}
+];
+
+let ispActiveTab = &quot;all&quot;;
+function ispSetFilter(f){
+  ispActiveTab = f;
+  document.querySelectorAll(&quot;.isp-tab&quot;).forEach(t=&gt;t.classList.toggle(&quot;active&quot;, t.dataset.f===f));
+  ispRender();
+}
+function ispEsc(s){ return String(s??&quot;&quot;).replace(/[&amp;&lt;&gt;&quot;]/g, c=&gt;({&quot;&amp;&quot;:&quot;&amp;amp;&quot;,&quot;&lt;&quot;:&quot;&amp;lt;&quot;,&quot;&gt;&quot;:&quot;&amp;gt;&quot;,&#x27;&quot;&#x27;:&quot;&amp;quot;&quot;}[c])); }
+
+function ispRenderSources(){
+  const list = document.getElementById(&quot;isp-list&quot;);
+  list.innerHTML = `&lt;div class=&quot;isp-notes&quot; style=&quot;margin-bottom:10px&quot;&gt;Ranked roughly best → weakest. None of these replace tracing the board yourself when the stakes are high.&lt;/div&gt;` +
+    ISP_TRUSTED_SOURCES.map(s=&gt;`
+      &lt;div class=&quot;part-card&quot;&gt;
+        &lt;div style=&quot;display:flex;justify-content:space-between;align-items:center;gap:8px&quot;&gt;
+          &lt;div style=&quot;font-weight:700&quot;&gt;${ispEsc(s.name)}&lt;/div&gt;
+          &lt;span class=&quot;isp-badge verified&quot;&gt;${ispEsc(s.tier)}&lt;/span&gt;
+        &lt;/div&gt;
+        ${s.url?`&lt;div style=&quot;font-size:12px;margin-top:4px&quot;&gt;&lt;a href=&quot;${ispEsc(s.url)}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;color:var(--accent)&quot;&gt;${ispEsc(s.url)}&lt;/a&gt;&lt;/div&gt;`:&quot;&quot;}
+        &lt;div class=&quot;isp-notes&quot;&gt;${ispEsc(s.note)}&lt;/div&gt;
+      &lt;/div&gt;`).join(&quot;&quot;);
+}
+
+function ispRender(){
+  if (ispActiveTab === &quot;sources&quot;){ ispRenderSources(); return; }
+  const q = (document.getElementById(&quot;isp-search&quot;).value||&quot;&quot;).trim().toLowerCase();
+  const typeF = document.getElementById(&quot;isp-filterType&quot;).value;
+  const list = document.getElementById(&quot;isp-list&quot;);
+  let items = ispDb.filter(e=&gt;{
+    if (typeF &amp;&amp; e.type !== typeF) return false;
+    if (ispActiveTab===&quot;verified&quot; &amp;&amp; e.confidence!==&quot;verified&quot;) return false;
+    if (ispActiveTab===&quot;community&quot; &amp;&amp; e.confidence!==&quot;community&quot;) return false;
+    if (ispActiveTab===&quot;confirmeddrill&quot; &amp;&amp; !e.confirmedDrill) return false;
+    if (!q) return true;
+    return (e.brand+&quot; &quot;+e.model+&quot; &quot;+e.chipset).toLowerCase().includes(q);
+  });
+  if (!items.length){ list.innerHTML = &#x27;&lt;div class=&quot;empty&quot;&gt;No entries match. Tap + to add one.&lt;/div&gt;&#x27;; return; }
+  list.innerHTML = items.map(e=&gt;{
+    const pinRows = e.type===&quot;edge&quot; ? Object.entries(e.pins||{}).filter(([,v])=&gt;v)
+      .map(([k,v])=&gt;`&lt;tr&gt;&lt;td&gt;${ispEsc(k)}&lt;/td&gt;&lt;td&gt;${ispEsc(v)}&lt;/td&gt;&lt;/tr&gt;`).join(&quot;&quot;) : &quot;&quot;;
+    return `
+    &lt;div class=&quot;part-card&quot;&gt;
+      &lt;div style=&quot;display:flex;justify-content:space-between;align-items:flex-start;gap:8px&quot;&gt;
+        &lt;div&gt;
+          &lt;div style=&quot;font-weight:700;font-size:15px&quot;&gt;${ispEsc(e.brand)} — ${ispEsc(e.model)}&lt;/div&gt;
+          &lt;div style=&quot;font-size:12px;color:var(--text3)&quot;&gt;${ispEsc(e.chipset||&quot;&quot;)} ${e.storage?(&quot;· &quot;+ispEsc(e.storage)):&quot;&quot;}&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;display:flex;flex-direction:column;gap:5px;align-items:flex-end&quot;&gt;
+          &lt;span class=&quot;isp-badge ${e.type===&#x27;drill&#x27;?&#x27;drill&#x27;:&#x27;edge&#x27;}&quot;&gt;${e.type===&#x27;drill&#x27;?&#x27;CPU drill&#x27;:&#x27;Edge points&#x27;}&lt;/span&gt;
+          &lt;span class=&quot;isp-badge ${e.confidence}&quot;&gt;${e.confidence===&#x27;verified&#x27;?&#x27;Verified&#x27;:&#x27;Community&#x27;}&lt;/span&gt;
+          ${e.confirmedDrill?&#x27;&lt;span class=&quot;isp-badge drill&quot;&gt;Confirmed model-wide&lt;/span&gt;&#x27;:&#x27;&#x27;}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      ${e.type===&#x27;edge&#x27; ? `&lt;table class=&quot;isp-table&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Pin&lt;/th&gt;&lt;th&gt;Note&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;${pinRows||&#x27;&lt;tr&gt;&lt;td colspan=2 style=&quot;color:var(--text3)&quot;&gt;No pins logged yet&lt;/td&gt;&lt;/tr&gt;&#x27;}&lt;/tbody&gt;&lt;/table&gt;` : `
+        &lt;div class=&quot;isp-notes&quot;&gt;&lt;strong&gt;Board marker:&lt;/strong&gt; ${ispEsc(e.marker||&quot;—&quot;)}  ${e.layer?(&quot;· &quot;+ispEsc(e.layer)):&quot;&quot;}&lt;/div&gt;`}
+      ${e.photo?`&lt;img class=&quot;isp-photo&quot; src=&quot;${e.photo}&quot;&gt;`:&quot;&quot;}
+      ${e.notes?`&lt;div class=&quot;isp-notes&quot;&gt;${ispEsc(e.notes)}&lt;/div&gt;`:&quot;&quot;}
+      &lt;div class=&quot;isp-notes&quot;&gt;Source: ${ispEsc(e.source||&quot;—&quot;)}&lt;/div&gt;
+      &lt;div class=&quot;backup-row&quot; style=&quot;margin-top:10px&quot;&gt;
+        &lt;button class=&quot;btn btn-sm&quot; onclick=&quot;ispOpenEditor(&#x27;${e.id}&#x27;)&quot;&gt;Edit&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;`;
+  }).join(&quot;&quot;);
+}
+
+function ispToggleTypeFields(){
+  const t = document.getElementById(&quot;isp_f_type&quot;).value;
+  document.getElementById(&quot;isp-edgeFields&quot;).style.display = t===&quot;edge&quot; ? &quot;block&quot;:&quot;none&quot;;
+  document.getElementById(&quot;isp-drillFields&quot;).style.display = t===&quot;drill&quot; ? &quot;block&quot;:&quot;none&quot;;
+}
+function ispBuildPinGrid(existing){
+  const grid = document.getElementById(&quot;isp-pinGrid&quot;);
+  grid.innerHTML = ISP_PIN_LABELS.map(label=&gt;{
+    const val = existing &amp;&amp; existing[label] ? existing[label] : &quot;&quot;;
+    return `&lt;input data-pin=&quot;${ispEsc(label)}&quot; placeholder=&quot;${ispEsc(label)}&quot; value=&quot;${ispEsc(val)}&quot;&gt;`;
+  }).join(&quot;&quot;);
+}
+function ispOpenEditor(id){
+  ispBuildPinGrid();
+  document.getElementById(&quot;isp-delBtn&quot;).style.display = id ? &quot;inline-flex&quot; : &quot;none&quot;;
+  document.getElementById(&quot;ispDlgTitle&quot;).textContent = id ? &quot;Edit entry&quot; : &quot;New entry&quot;;
+  document.getElementById(&quot;isp_editId&quot;).value = id || &quot;&quot;;
+  if (id){
+    const e = ispDb.find(x=&gt;x.id===id);
+    document.getElementById(&quot;isp_f_brand&quot;).value = e.brand;
+    document.getElementById(&quot;isp_f_model&quot;).value = e.model;
+    document.getElementById(&quot;isp_f_chipset&quot;).value = e.chipset||&quot;&quot;;
+    document.getElementById(&quot;isp_f_storage&quot;).value = e.storage||&quot;eMMC&quot;;
+    document.getElementById(&quot;isp_f_type&quot;).value = e.type;
+    document.getElementById(&quot;isp_f_conf&quot;).value = e.confidence;
+    document.getElementById(&quot;isp_f_source&quot;).value = e.source||&quot;&quot;;
+    document.getElementById(&quot;isp_f_marker&quot;).value = e.marker||&quot;&quot;;
+    document.getElementById(&quot;isp_f_layer&quot;).value = e.layer||&quot;&quot;;
+    document.getElementById(&quot;isp_f_notes&quot;).value = e.notes||&quot;&quot;;
+    document.getElementById(&quot;isp_f_confirmeddrill&quot;).checked = !!e.confirmedDrill;
+    ispBuildPinGrid(e.pins);
+  } else {
+    [&quot;isp_f_brand&quot;,&quot;isp_f_model&quot;,&quot;isp_f_chipset&quot;,&quot;isp_f_source&quot;,&quot;isp_f_marker&quot;,&quot;isp_f_layer&quot;,&quot;isp_f_notes&quot;].forEach(id=&gt;document.getElementById(id).value=&quot;&quot;);
+    document.getElementById(&quot;isp_f_type&quot;).value = &quot;edge&quot;;
+    document.getElementById(&quot;isp_f_conf&quot;).value = &quot;community&quot;;
+    document.getElementById(&quot;isp_f_confirmeddrill&quot;).checked = false;
+  }
+  ispToggleTypeFields();
+  document.getElementById(&quot;isp-dialog&quot;).showModal();
+}
+function ispCloseEditor(){ document.getElementById(&quot;isp-dialog&quot;).close(); }
+function ispSaveEntry(){
+  const id = document.getElementById(&quot;isp_editId&quot;).value || (&quot;e&quot;+Date.now());
+  const type = document.getElementById(&quot;isp_f_type&quot;).value;
+  const pins = {};
+  if (type===&quot;edge&quot;){
+    document.querySelectorAll(&quot;#isp-pinGrid input&quot;).forEach(inp=&gt;{
+      if (inp.value.trim()) pins[inp.dataset.pin] = inp.value.trim();
+    });
+  }
+  const finish = (photoData)=&gt;{
+    const entry = {
+      id, brand: document.getElementById(&quot;isp_f_brand&quot;).value.trim(),
+      model: document.getElementById(&quot;isp_f_model&quot;).value.trim(),
+      chipset: document.getElementById(&quot;isp_f_chipset&quot;).value.trim(),
+      storage: document.getElementById(&quot;isp_f_storage&quot;).value,
+      type, confidence: document.getElementById(&quot;isp_f_conf&quot;).value,
+      source: document.getElementById(&quot;isp_f_source&quot;).value.trim(),
+      pins,
+      marker: document.getElementById(&quot;isp_f_marker&quot;).value.trim(),
+      layer: document.getElementById(&quot;isp_f_layer&quot;).value.trim(),
+      photo: photoData,
+      confirmedDrill: type===&quot;drill&quot; ? document.getElementById(&quot;isp_f_confirmeddrill&quot;).checked : false,
+      notes: document.getElementById(&quot;isp_f_notes&quot;).value.trim()
+    };
+    if (!entry.brand || !entry.model){ alert(&quot;Brand and model are required.&quot;); return; }
+    const idx = ispDb.findIndex(x=&gt;x.id===id);
+    if (idx&gt;-1) ispDb[idx] = entry; else ispDb.push(entry);
+    ispSave(); ispCloseEditor(); ispRender();
+  };
+  const photoInput = document.getElementById(&quot;isp_f_photo&quot;);
+  const existing = ispDb.find(x=&gt;x.id===id);
+  if (photoInput.files &amp;&amp; photoInput.files[0]){
+    const reader = new FileReader();
+    reader.onload = ()=&gt;finish(reader.result);
+    reader.readAsDataURL(photoInput.files[0]);
+  } else {
+    finish(existing ? existing.photo : &quot;&quot;);
+  }
+}
+function ispDeleteCurrent(){
+  const id = document.getElementById(&quot;isp_editId&quot;).value;
+  if (!id) return;
+  if (!confirm(&quot;Delete this entry?&quot;)) return;
+  ispDb = ispDb.filter(x=&gt;x.id!==id);
+  ispSave(); ispCloseEditor(); ispRender();
+}
+function ispExportData(){
+  const blob = new Blob([JSON.stringify(ispDb,null,2)], {type:&quot;application/json&quot;});
+  const a = document.createElement(&quot;a&quot;);
+  a.href = URL.createObjectURL(blob);
+  a.download = &quot;isp-pinout-db.json&quot;;
+  a.click();
+}
+function ispImportData(ev){
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ()=&gt;{
+    try{
+      const incoming = JSON.parse(reader.result);
+      if (!Array.isArray(incoming)) throw new Error(&quot;bad format&quot;);
+      const existingIds = new Set(ispDb.map(e=&gt;e.id));
+      incoming.forEach(e=&gt;{ if(!existingIds.has(e.id)) ispDb.push(e); });
+      ispSave(); ispRender();
+      alert(&quot;Imported &quot;+incoming.length+&quot; entries (duplicates by id skipped).&quot;);
+    }catch(err){ alert(&quot;Import failed: not a valid export file.&quot;); }
+  };
+  reader.readAsText(file);
+}
+
+applyLang();
+renderOppoRegionButtons();
+renderBrandSelector();
+showBrand(currentBrand);
+renderModeSelector();
+showMode(currentMode);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" hidden></iframe>
+<script>
+function show(name){
+  document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('on', b.dataset.tab===name));
+  document.getElementById('f-tracker').hidden = name!=='tracker';
+  document.getElementById('f-firmware').hidden = name!=='firmware';
 }
 </script>
 </body>
